@@ -1,0 +1,110 @@
+{
+  "id": 1,
+  "personal_information": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john_doe@gmail.com",
+    "phone_number": {
+      "country_code": "+1",
+      "number": "2015678976"
+    },
+    "account_information": {
+      "id": 1,
+      "tier": "basic",
+      "subscription": {
+        "monthly_subscription_price": 1299,
+        "monthly_subscription_price_currency": "USD",
+        "monthly_subscription_price_formatted": "$12.99",
+        "monthly_subscription_price_currency_formatted": "$",
+        "months_active": 10,
+        "date_subscription_started": "01/01/2019",
+        "month_started": 1,
+        "year_started": 2019,
+        "day_started": 1
+      },
+      "credit_card_information": {
+        "last_four_digits": "1234",
+        "expiration_date": "01/2020",
+        "expiration_month": 1,
+        "expiration_year": 2020
+      },
+      "billing_information": {
+        "first_name": "John",
+        "last_name": "Doe",
+        "address": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10001",
+        "country": "USA"
+      },
+      "payment_history": [
+        {
+          "date_fulfilled": "01/01/2019",
+          "month_fulfilled": 1,
+          "year_fulfilled": 2019,
+          "day_fulfilled": 1,
+          "customer_id": 1,
+          "amount_paid": 1299,
+          "amount_paid_currency": "USD",
+          "amount_paid_formatted": "$12.99",
+          "amount_paid_currency_formatted": "$",
+          "tier": "basic",
+          "payment_id": 3870874596797
+        },
+        {
+          "date_fulfilled": "12/01/2018",
+          "month_fulfilled": 12,
+          "year_fulfilled": 2018,
+          "day_fulfilled": 1,
+          "customer_id": 1,
+          "amount_paid": 1299,
+          "amount_paid_currency": "USD",
+          "amount_paid_formatted": "$12.99",
+          "amount_paid_currency_formatted": "$",
+          "tier": "basic",
+          "payment_id": 3870874436767
+        }
+      ]
+    }
+  },
+  "streaming_information": {
+    "active_shows": 34,
+    "active_movies": 10,
+    "currently_watching": {
+      "id": 344567909865867,
+      "details": {
+        "title": "Spider-Man",
+        "year": 2002,
+        "release_date": "05/03/2002",
+        "rating": "PG-13",
+        "duration": 7260000,
+        "director": ["Sam Raimi"],
+        "screenplay": ["David Koepp"],
+        "production_companies": [
+          "Columbia Pictures",
+          "Marvel Enterprises",
+          "Laura Ziskin Productions"
+        ],
+        "distributed_by": "Sony Pictures Releasing",
+        "cast": ["Tobey Maguire", "Kirsten Dunst", "Willem Dafoe"],
+        "genres": ["Action", "Adventure", "Sci-Fi"],
+        "description": "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."
+      },
+      "video_details": {
+        "current_location": 4260000,
+        "current_location_formatted": "1:11:00",
+        "current_location_percentage": 0.62,
+        "streaming_quality": "1440p",
+        "streaming_quality_formatted": "HD",
+        "streaming_speed": 1,
+        "streaming_speed_formatted": "1x"
+      }
+    },
+    "previous_ten": [
+      344567909865867, 123456789012345, 987654321098765, 567890123456789,
+      234567890123456, 876543210987654, 654321098765432, 345678901234567,
+      789012345678901, 456789012345678
+    ],
+    "most_watched_genre": ["Action", "Adventure", "Sci-Fi"]
+  }
+}
