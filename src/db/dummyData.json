@@ -1,110 +1,328 @@
-{
-  "id": 1,
-  "personal_information": {
-    "first_name": "John",
-    "last_name": "Doe",
-    "email": "john_doe@gmail.com",
-    "phone_number": {
-      "country_code": "+1",
-      "number": "2015678976"
-    },
-    "account_information": {
-      "id": 1,
-      "tier": "basic",
-      "subscription": {
-        "monthly_subscription_price": 1299,
-        "monthly_subscription_price_currency": "USD",
-        "monthly_subscription_price_formatted": "$12.99",
-        "monthly_subscription_price_currency_formatted": "$",
-        "months_active": 10,
-        "date_subscription_started": "01/01/2019",
-        "month_started": 1,
-        "year_started": 2019,
-        "day_started": 1
+[
+  {
+    "id": 1,
+    "personal_information": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john_doe@gmail.com",
+      "phone_number": {
+        "country_code": "+1",
+        "number": "2015678976"
       },
-      "credit_card_information": {
-        "last_four_digits": "1234",
-        "expiration_date": "01/2020",
-        "expiration_month": 1,
-        "expiration_year": 2020
-      },
-      "billing_information": {
-        "first_name": "John",
-        "last_name": "Doe",
-        "address": "123 Main St",
-        "city": "New York",
-        "state": "NY",
-        "zip_code": "10001",
-        "country": "USA"
-      },
-      "payment_history": [
-        {
-          "date_fulfilled": "01/01/2019",
-          "month_fulfilled": 1,
-          "year_fulfilled": 2019,
-          "day_fulfilled": 1,
-          "customer_id": 1,
-          "amount_paid": 1299,
-          "amount_paid_currency": "USD",
-          "amount_paid_formatted": "$12.99",
-          "amount_paid_currency_formatted": "$",
-          "tier": "basic",
-          "payment_id": 3870874596797
+      "account_information": {
+        "id": 1,
+        "tier": "basic",
+        "subscription": {
+          "monthly_subscription_price": 1299,
+          "monthly_subscription_price_currency": "USD",
+          "monthly_subscription_price_formatted": "$12.99",
+          "monthly_subscription_price_currency_formatted": "$",
+          "months_active": 10,
+          "date_subscription_started": "01/01/2019",
+          "month_started": 1,
+          "year_started": 2019,
+          "day_started": 1
         },
-        {
-          "date_fulfilled": "12/01/2018",
-          "month_fulfilled": 12,
-          "year_fulfilled": 2018,
-          "day_fulfilled": 1,
-          "customer_id": 1,
-          "amount_paid": 1299,
-          "amount_paid_currency": "USD",
-          "amount_paid_formatted": "$12.99",
-          "amount_paid_currency_formatted": "$",
-          "tier": "basic",
-          "payment_id": 3870874436767
-        }
-      ]
-    }
-  },
-  "streaming_information": {
-    "active_shows": 34,
-    "active_movies": 10,
-    "currently_watching": {
-      "id": 344567909865867,
-      "details": {
-        "title": "Spider-Man",
-        "year": 2002,
-        "release_date": "05/03/2002",
-        "rating": "PG-13",
-        "duration": 7260000,
-        "director": ["Sam Raimi"],
-        "screenplay": ["David Koepp"],
-        "production_companies": [
-          "Columbia Pictures",
-          "Marvel Enterprises",
-          "Laura Ziskin Productions"
-        ],
-        "distributed_by": "Sony Pictures Releasing",
-        "cast": ["Tobey Maguire", "Kirsten Dunst", "Willem Dafoe"],
-        "genres": ["Action", "Adventure", "Sci-Fi"],
-        "description": "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."
-      },
-      "video_details": {
-        "current_location": 4260000,
-        "current_location_formatted": "1:11:00",
-        "current_location_percentage": 0.62,
-        "streaming_quality": "1440p",
-        "streaming_quality_formatted": "HD",
-        "streaming_speed": 1,
-        "streaming_speed_formatted": "1x"
+        "credit_card_information": {
+          "last_four_digits": "1234",
+          "expiration_date": "01/2020",
+          "expiration_month": 1,
+          "expiration_year": 2020
+        },
+        "billing_information": {
+          "first_name": "John",
+          "last_name": "Doe",
+          "address": "123 Main St",
+          "city": "New York",
+          "state": "NY",
+          "zip_code": "10001",
+          "country": "USA"
+        },
+        "payment_history": [
+          {
+            "date_fulfilled": "01/01/2019",
+            "month_fulfilled": 1,
+            "year_fulfilled": 2019,
+            "day_fulfilled": 1,
+            "customer_id": 1,
+            "amount_paid": 1299,
+            "amount_paid_currency": "USD",
+            "amount_paid_formatted": "$12.99",
+            "amount_paid_currency_formatted": "$",
+            "tier": "basic",
+            "payment_id": 3870874596797
+          },
+          {
+            "date_fulfilled": "12/01/2018",
+            "month_fulfilled": 12,
+            "year_fulfilled": 2018,
+            "day_fulfilled": 1,
+            "customer_id": 1,
+            "amount_paid": 1299,
+            "amount_paid_currency": "USD",
+            "amount_paid_formatted": "$12.99",
+            "amount_paid_currency_formatted": "$",
+            "tier": "basic",
+            "payment_id": 3870874436767
+          }
+        ]
       }
     },
-    "previous_ten": [
-      344567909865867, 123456789012345, 987654321098765, 567890123456789,
-      234567890123456, 876543210987654, 654321098765432, 345678901234567,
-      789012345678901, 456789012345678
-    ],
-    "most_watched_genre": ["Action", "Adventure", "Sci-Fi"]
+    "streaming_information": {
+      "active_shows": 34,
+      "active_movies": 10,
+      "currently_watching": {
+        "id": 344567909865867,
+        "details": {
+          "title": "Spider-Man",
+          "year": 2002,
+          "release_date": "05/03/2002",
+          "rating": "PG-13",
+          "duration": 7260000,
+          "director": ["Sam Raimi"],
+          "screenplay": ["David Koepp"],
+          "production_companies": [
+            "Columbia Pictures",
+            "Marvel Enterprises",
+            "Laura Ziskin Productions"
+          ],
+          "distributed_by": "Sony Pictures Releasing",
+          "cast": ["Tobey Maguire", "Kirsten Dunst", "Willem Dafoe"],
+          "genres": ["Action", "Adventure", "Sci-Fi"],
+          "description": "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."
+        },
+        "video_details": {
+          "current_location": 4260000,
+          "current_location_formatted": "1:11:00",
+          "current_location_percentage": 0.62,
+          "streaming_quality": "1440p",
+          "streaming_quality_formatted": "HD",
+          "streaming_speed": 1,
+          "streaming_speed_formatted": "1x"
+        }
+      },
+      "previous_ten": [
+        344567909865867, 123456789012345, 987654321098765, 567890123456789,
+        234567890123456, 876543210987654, 654321098765432, 345678901234567,
+        789012345678901, 456789012345678
+      ],
+      "most_watched_genre": ["Action", "Adventure", "Sci-Fi"]
+    }
+  },
+  {
+    "id": 2,
+    "personal_information": {
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "email": "alice.smith@example.com",
+      "phone_number": {
+        "country_code": "+1",
+        "number": "1234567890"
+      },
+      "account_information": {
+        "id": 2,
+        "tier": "premium",
+        "subscription": {
+          "monthly_subscription_price": 1499,
+          "monthly_subscription_price_currency": "USD",
+          "monthly_subscription_price_formatted": "$14.99",
+          "monthly_subscription_price_currency_formatted": "$",
+          "months_active": 15,
+          "date_subscription_started": "01/05/2018",
+          "month_started": 5,
+          "year_started": 2018,
+          "day_started": 1
+        },
+        "credit_card_information": {
+          "last_four_digits": "5678",
+          "expiration_date": "03/2023",
+          "expiration_month": 3,
+          "expiration_year": 2023
+        },
+        "billing_information": {
+          "first_name": "Alice",
+          "last_name": "Smith",
+          "address": "456 Elm St",
+          "city": "Los Angeles",
+          "state": "CA",
+          "zip_code": "90001",
+          "country": "USA"
+        },
+        "payment_history": [
+          {
+            "date_fulfilled": "01/05/2018",
+            "month_fulfilled": 5,
+            "year_fulfilled": 2018,
+            "day_fulfilled": 1,
+            "customer_id": 2,
+            "amount_paid": 1499,
+            "amount_paid_currency": "USD",
+            "amount_paid_formatted": "$14.99",
+            "amount_paid_currency_formatted": "$",
+            "tier": "premium",
+            "payment_id": 3870874596798
+          },
+          {
+            "date_fulfilled": "12/01/2017",
+            "month_fulfilled": 1,
+            "year_fulfilled": 2017,
+            "day_fulfilled": 1,
+            "customer_id": 2,
+            "amount_paid": 1499,
+            "amount_paid_currency": "USD",
+            "amount_paid_formatted": "$14.99",
+            "amount_paid_currency_formatted": "$",
+            "tier": "premium",
+            "payment_id": 3870874436768
+          }
+        ]
+      }
+    },
+    "streaming_information": {
+      "active_shows": 30,
+      "active_movies": 8,
+      "currently_watching": {
+        "id": 987654321098765,
+        "details": {
+          "title": "Inception",
+          "year": 2010,
+          "release_date": "07/16/2010",
+          "rating": "PG-13",
+          "duration": 8880000,
+          "director": ["Christopher Nolan"],
+          "screenplay": ["Christopher Nolan"],
+          "production_companies": [
+            "Legendary Pictures",
+            "Syncopy",
+            "Warner Bros. Pictures"
+          ],
+          "distributed_by": "Warner Bros. Pictures",
+          "cast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
+          "genres": ["Action", "Adventure", "Sci-Fi", "Thriller"],
+          "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O."
+        },
+        "video_details": {
+          "current_location": 4260000,
+          "current_location_formatted": "1:11:00",
+          "current_location_percentage": 0.48,
+          "streaming_quality": "1080p",
+          "streaming_quality_formatted": "Full HD",
+          "streaming_speed": 1.2,
+          "streaming_speed_formatted": "1.2x"
+        }
+      },
+      "previous_ten": [
+        344567909865867, 123456789012345, 987654321098765, 567890123456789,
+        234567890123456, 876543210987654, 654321098765432, 345678901234567,
+        789012345678901, 456789012345678
+      ],
+      "most_watched_genre": ["Action", "Adventure", "Sci-Fi"]
+    }
+  },
+  {
+    "id": 3,
+    "personal_information": {
+      "first_name": "Bob",
+      "last_name": "Johnson",
+      "email": "bob.johnson@example.com",
+      "phone_number": {
+        "country_code": "+1",
+        "number": "9876543210"
+      },
+      "account_information": {
+        "id": 3,
+        "tier": "basic",
+        "subscription": {
+          "monthly_subscription_price": 999,
+          "monthly_subscription_price_currency": "USD",
+          "monthly_subscription_price_formatted": "$9.99",
+          "monthly_subscription_price_currency_formatted": "$",
+          "months_active": 10,
+          "date_subscription_started": "03/15/2019",
+          "month_started": 3,
+          "year_started": 2019,
+          "day_started": 15
+        },
+        "credit_card_information": {
+          "last_four_digits": "1234",
+          "expiration_date": "09/2023",
+          "expiration_month": 9,
+          "expiration_year": 2023
+        },
+        "billing_information": {
+          "first_name": "Bob",
+          "last_name": "Johnson",
+          "address": "789 Oak St",
+          "city": "New York",
+          "state": "NY",
+          "zip_code": "10001",
+          "country": "USA"
+        },
+        "payment_history": [
+          {
+            "date_fulfilled": "03/15/2019",
+            "month_fulfilled": 3,
+            "year_fulfilled": 2019,
+            "day_fulfilled": 15,
+            "customer_id": 3,
+            "amount_paid": 999,
+            "amount_paid_currency": "USD",
+            "amount_paid_formatted": "$9.99",
+            "amount_paid_currency_formatted": "$",
+            "tier": "basic",
+            "payment_id": 987654321098765
+          },
+          {
+            "date_fulfilled": "02/01/2019",
+            "month_fulfilled": 1,
+            "year_fulfilled": 2019,
+            "day_fulfilled": 1,
+            "customer_id": 3,
+            "amount_paid": 999,
+            "amount_paid_currency": "USD",
+            "amount_paid_formatted": "$9.99",
+            "amount_paid_currency_formatted": "$",
+            "tier": "basic",
+            "payment_id": 987654321012345
+          }
+        ]
+      }
+    },
+    "streaming_information": {
+      "active_shows": 15,
+      "active_movies": 5,
+      "currently_watching": {
+        "id": 123456789012345,
+        "details": {
+          "title": "The Shawshank Redemption",
+          "year": 1994,
+          "release_date": "09/23/1994",
+          "rating": "R",
+          "duration": 8520000,
+          "director": ["Frank Darabont"],
+          "screenplay": ["Frank Darabont"],
+          "production_companies": ["Castle Rock Entertainment"],
+          "distributed_by": "Columbia Pictures",
+          "cast": ["Tim Robbins", "Morgan Freeman"],
+          "genres": ["Drama", "Crime"],
+          "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
+        },
+        "video_details": {
+          "current_location": 3600000,
+          "current_location_formatted": "1:00:00",
+          "current_location_percentage": 0.42,
+          "streaming_quality": "720p",
+          "streaming_quality_formatted": "HD",
+          "streaming_speed": 1.5,
+          "streaming_speed_formatted": "1.5x"
+        }
+      },
+      "previous_ten": [
+        234567890123456, 876543210987654, 654321098765432, 345678901234567,
+        789012345678901, 456789012345678, 987654321098765, 567890123456789,
+        344567909865867, 123456789012345
+      ],
+      "most_watched_genre": ["Drama", "Crime"]
+    }
   }
-}
+]
