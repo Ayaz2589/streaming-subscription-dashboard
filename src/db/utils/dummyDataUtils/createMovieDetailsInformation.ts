@@ -1,7 +1,12 @@
 import { MovieAPIRequest, Movie } from "./types";
 
-const url =
-  "https://moviesdatabase.p.rapidapi.com/titles?list=top_rated_lowest_100&startYear=2000&endYear=2023&limit=30";
+const urlList = `list=top_rated_lowest_100`;
+const urlStartYear = `startYear=2000`;
+const urlEndYear = `endYear=2023`;
+const urlLimit = `limit=30`;
+const urlBase = `https://moviesdatabase.p.rapidapi.com/titles?`;
+
+const url = `${urlBase}${urlList}&${urlStartYear}&${urlEndYear}&${urlLimit}`;
 const options = {
   method: "GET",
   headers: {
@@ -41,7 +46,7 @@ const generateStreamingInformation = () => {
   return { hasStarted, hasEnded };
 };
 
-const randomBool = () => Math.random() > 0.5 ? true : false;
+const randomBool = () => (Math.random() > 0.5 ? true : false);
 
 const createMovieDetailsInformation = async () => {
   try {
