@@ -1,3 +1,4 @@
+import secrets from "../../../../secrets"
 import { MovieAPIRequest, Movie } from "./types";
 
 const urlList = `list=top_rated_lowest_100`;
@@ -7,11 +8,15 @@ const urlLimit = `limit=30`;
 const urlBase = `https://moviesdatabase.p.rapidapi.com/titles?`;
 
 const url = `${urlBase}${urlList}&${urlStartYear}&${urlEndYear}&${urlLimit}`;
+
+const apiKey = secrets.createMovie.apiHeaders.apiKey.key;
+const apiHost = secrets.createMovie.apiHeaders.apiHost.host;
+
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "pMOBWm9PU0mshtIJr3GSvm0K3xS4p1fI5AcjsnrbdPHbr5XSsI",
-    "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+    "X-RapidAPI-Key": apiKey,
+    "X-RapidAPI-Host": apiHost,
   },
 };
 
