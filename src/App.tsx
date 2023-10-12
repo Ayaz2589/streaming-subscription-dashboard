@@ -1,9 +1,13 @@
 import { useEffect } from "react";
-import { createPersonalInformation } from "./db/utils/dummyDataUtils/index";
+import {
+  createPersonalInformation,
+  createMovieDetailsInformation,
+} from "./db/utils/dummyDataUtils/index";
 
 function App() {
   useEffect(() => {
-    createPersonalInformation();
+    // createPersonalInformation();
+    createMovieDetailsInformation();
   }, []);
 
   return <>Hello</>;
