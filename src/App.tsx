@@ -1,15 +1,14 @@
 import { useEffect } from "react";
-import {
-  createPersonalInformation,
-  createMovieDetailsInformation,
-  createStreamingInformtion,
-} from "./db/utils/dummyDataUtils/index";
+import { createDummyDataJSON } from "./db/utils/dummyDataUtils/index";
 
 function App() {
   useEffect(() => {
-    // createPersonalInformation();
-    // createMovieDetailsInformation();
-    createStreamingInformtion();
+    const getData = async () => {
+      const response = await createDummyDataJSON();
+      const data = JSON.parse(response);
+      console.log(data);
+    };
+    getData();
   }, []);
 
   return <>Hello</>;

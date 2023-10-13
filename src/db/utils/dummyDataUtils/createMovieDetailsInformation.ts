@@ -1,4 +1,4 @@
-import secrets from "../../../../secrets"
+import secrets from "../../../../secrets";
 import { MovieAPIRequest, Movie } from "./types";
 
 const urlList = `list=top_rated_lowest_100`;
@@ -58,11 +58,10 @@ const createMovieDetailsInformation = async () => {
     const response = await fetch(url, options);
     const { results } = await response.json();
     if (results?.length) {
-      const formattedMovieObject: Movie = results.map(
+      const formattedMovieObjectArray: Movie[] = results.map(
         (movie: MovieAPIRequest) => createMovie(movie)
       );
-      console.log(formattedMovieObject);
-      return formattedMovieObject;
+      return formattedMovieObjectArray;
     }
   } catch (error) {
     console.log(error);

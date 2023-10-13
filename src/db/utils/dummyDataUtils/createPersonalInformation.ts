@@ -13,10 +13,10 @@ const createPersonalInformation = async () => {
     const response = await fetch(url, options);
     const { users } = await response.json();
     if (response.ok && users?.length) {
-      const formattedUserObject: User = users.map((user: UserAPIRequest) =>
+      const formattedUserObjectArray: User[] = users.map((user: UserAPIRequest) =>
         createUser(user)
       );
-      return formattedUserObject;
+      return formattedUserObjectArray;
     }
   } catch (error) {
     console.log(error);
