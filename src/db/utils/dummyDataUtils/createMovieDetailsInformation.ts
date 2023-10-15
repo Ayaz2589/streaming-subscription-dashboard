@@ -24,6 +24,8 @@ const lorumIpsum =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam";
 
 const createMovie = (movie: MovieAPIRequest): Movie => {
+  const runtimeMinutes = generateRandomRuntimeMinutes();
+  const streamingInformation = generateStreamingInformation(runtimeMinutes);
   return {
     id: movie._id,
     title: movie.titleText.text,
@@ -32,8 +34,8 @@ const createMovie = (movie: MovieAPIRequest): Movie => {
     primaryImage: movie.primaryImage.url,
     originalTitle: movie.originalTitleText.text,
     description: lorumIpsum,
-    runtimeMinutes: generateRandomRuntimeMinutes(),
-    streaming_information: generateStreamingInformation(),
+    runtimeMinutes: runtimeMinutes,
+    streaming_information: streamingInformation,
     isFavorite: randomBool(),
   };
 };
@@ -42,13 +44,18 @@ const generateRandomRuntimeMinutes = (min = 100, max = 180) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const generateStreamingInformation = () => {
+const generateStreamingInformation = (runTime: number) => {
   const hasStarted = randomBool();
   let hasEnded;
 
   hasStarted ? (hasEnded = randomBool()) : (hasEnded = false);
 
-  return { hasStarted, hasEnded };
+  if (!hasEnded) {
+    const randomMinutes = Math.floor(Math.random() * (runTime - 1) + 1);
+    return { hasStarted, hasEnded, minutesWatched: randomMinutes };
+  }
+
+  return { hasStarted, hasEnded, minutesWatched: runTime };
 };
 
 const randomBool = () => (Math.random() > 0.5 ? true : false);
