@@ -1,8 +1,8 @@
-import { Movie } from "../";
+import { Movie, Login } from "../";
 
 export default interface Streaming {
     member_since: string | Date;
-    last_login_in_minutes: number;
+    login_history: Login[];
     streaming_plan: string;
     is_active: boolean;
     streaming_quality: string;

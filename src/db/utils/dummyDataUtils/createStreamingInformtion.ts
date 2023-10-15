@@ -1,4 +1,4 @@
-import { Streaming } from "./types";
+import { Streaming, Login } from "./types";
 
 const mobileDevices = [
   "iPhone 15",
@@ -39,22 +39,38 @@ const getRandomDateWithinLast5Years = (): Date => {
   return randomDate;
 };
 
-function getRandomLastLogin(date: Date): number {
+const generateLoginDates = (): Login[] => {
+  const loginDates: Login[] = [];
   const currentDate = new Date();
-  const timeDifferenceMinutes = Math.floor(
-    (currentDate.getTime() - date.getTime()) / 60000
-  );
 
-  const random = Math.random();
+  for (let i = 0; i < 90; i++) {
+    const newDate = new Date(currentDate);
+    const randomHours = Math.floor(Math.random() * 24);
+    const randomMinutes = Math.floor(Math.random() * 60);
+    const randomSeconds = Math.floor(Math.random() * 60);
 
-  if (random < 0.05) {
-    return 10080; // 1 Week
-  } else {
-    const randomMinutes =
-      Math.floor(Math.random() * (timeDifferenceMinutes + 31)) - 30;
+    newDate.setHours(currentDate.getHours() - i * 24);
+    newDate.setHours(randomHours);
+    newDate.setMinutes(randomMinutes);
+    newDate.setSeconds(randomSeconds);
 
-    return Math.max(0, randomMinutes);
+    const returnObject: Login = {
+      date: newDate,
+      watch_time_in_minutes: randomNumberInMidRange(),
+    };
+    loginDates.push(returnObject);
   }
+
+  return loginDates;
+};
+
+function randomNumberInMidRange(min: number = 1, max: number = 120): number {
+  const middle = (min + max) / 2;
+
+  const range = (max - min) / 2;
+  const randomOffset = Math.random() * range - range / 2;
+
+  return middle + randomOffset;
 }
 
 const randomNumber = (min: number, max: number): number => {
@@ -67,12 +83,11 @@ const randomBool = () => (Math.random() > 0.5 ? true : false);
 
 const createStreamingInformtion = (): Streaming => {
   const memberSince = getRandomDateWithinLast5Years();
-  const lastLogin = getRandomLastLogin(memberSince);
   const isActive = randomBool();
 
   const formattedStreamingObject: Streaming = {
     member_since: memberSince,
-    last_login_in_minutes: lastLogin,
+    login_history: generateLoginDates(),
     streaming_plan: streamingPlans[randomNumber(0, 2)],
     is_active: isActive,
     streaming_quality: streamingQualities[randomNumber(0, 2)],
