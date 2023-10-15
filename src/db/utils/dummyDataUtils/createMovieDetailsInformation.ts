@@ -53,7 +53,11 @@ const generateStreamingInformation = (
 
   hasStarted ? (hasEnded = randomBool()) : (hasEnded = false);
 
-  if (!hasEnded) {
+  if (!hasEnded && !hasStarted) {
+    return { hasStarted, hasEnded, minutesWatched: 0 };
+  }
+
+  if (!hasEnded && hasStarted) {
     const randomMinutes = Math.floor(Math.random() * (runTime - 1) + 1);
     return { hasStarted, hasEnded, minutesWatched: randomMinutes };
   }
