@@ -1,5 +1,5 @@
 import secrets from "../../../../secrets";
-import { MovieAPIRequest, Movie } from "./types";
+import { MovieAPIRequest, Movie, StreamingInformation } from "./types";
 
 const urlList = `list=top_rated_lowest_100`;
 const urlStartYear = `startYear=2000`;
@@ -25,7 +25,8 @@ const lorumIpsum =
 
 const createMovie = (movie: MovieAPIRequest): Movie => {
   const runtimeMinutes = generateRandomRuntimeMinutes();
-  const streamingInformation = generateStreamingInformation(runtimeMinutes);
+  const streamingInformation: StreamingInformation =
+    generateStreamingInformation(runtimeMinutes);
   return {
     id: movie._id,
     title: movie.titleText.text,
@@ -44,7 +45,9 @@ const generateRandomRuntimeMinutes = (min = 100, max = 180) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const generateStreamingInformation = (runTime: number) => {
+const generateStreamingInformation = (
+  runTime: number
+): StreamingInformation => {
   const hasStarted = randomBool();
   let hasEnded;
 

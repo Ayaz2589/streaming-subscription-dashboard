@@ -1,3 +1,5 @@
+import { StreamingInformation } from "..";
+
 export default interface Movie {
   id: string;
   title: string;
@@ -7,9 +9,6 @@ export default interface Movie {
   originalTitle: string;
   description: string;
   runtimeMinutes: number;
-  streaming_information: {
-    hasStarted: boolean;
-    hasEnded: boolean;
-  };
+  streaming_information: StreamingInformation;
   isFavorite: boolean;
 }
