@@ -1,8 +1,8 @@
 import { useFetch } from "./hooks";
 
 function App() {
-  const { data } = useFetch();
-  console.log(data);
+  const { data, loading, error } = useFetch();
+  console.log({ data, loading, error });
   return <>Hello</>;
 }
 
