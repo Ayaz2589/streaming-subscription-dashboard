@@ -38,7 +38,7 @@ interface Props {
   window?: () => Window;
 }
 
-export default function ResponsiveDrawer(props: Props) {
+const ResponsiveDrawer = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [currentSection, setCurrentSection] = React.useState<string>("/");
@@ -170,4 +170,6 @@ export default function ResponsiveDrawer(props: Props) {
       </Box>
     </Box>
   );
-}
+};
+
+export default ResponsiveDrawer;
