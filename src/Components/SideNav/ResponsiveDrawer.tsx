@@ -129,13 +129,14 @@ export default function ResponsiveDrawer(props: Props) {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
         <Toolbar />
-        <Typography paragraph>Lorem ipsum dolor sit amet</Typography>
-        <Typography paragraph>Consequat mauris nunc</Typography>
+        <Box
+          sx={{ backgroundColor: "lightblue", width: "100%", height: "90vh" }}
+        ></Box>
       </Box>
     </Box>
   );
