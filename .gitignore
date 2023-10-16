@@ -25,4 +25,4 @@ dist-ssr
 
 # IDE - VSCode
 .node_modules
-.secret
+.secrets
