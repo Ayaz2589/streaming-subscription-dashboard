@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { createDummyDataJSON } from "../db/utils/dummyDataUtils";
 
-const useFetch = () => {
+interface UseFetch {
+  data: [];
+  loading: boolean;
+  error: boolean;
+}
+
+const useFetch = (): UseFetch => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

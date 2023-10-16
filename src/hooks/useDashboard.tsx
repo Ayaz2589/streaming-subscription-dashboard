@@ -12,3 +12,5 @@ export const useDashboard = (): UseDashboard => {
 
   return { state, setData, removeData };
 };
+
+export default useDashboard
