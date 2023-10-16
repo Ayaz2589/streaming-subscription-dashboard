@@ -17,6 +17,8 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import TheatersIcon from "@mui/icons-material/Theaters";
 
+import { Dashboard } from "../";
+
 const drawerWidth = 240;
 
 enum SideNavItems {
@@ -45,7 +47,7 @@ export default function ResponsiveDrawer(props: Props) {
         {[SideNavItems.Dashboard, SideNavItems.User, SideNavItems.Movies].map(
           (text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => console.log("clicked")}>
                 <ListItemIcon>
                   {index === 0 ? <DashboardIcon /> : null}
                   {index === 1 ? <PersonIcon /> : null}
@@ -134,9 +136,7 @@ export default function ResponsiveDrawer(props: Props) {
         }}
       >
         <Toolbar />
-        <Box
-          sx={{ backgroundColor: "lightblue", width: "100%", height: "90vh" }}
-        ></Box>
+        <Dashboard />
       </Box>
     </Box>
   );
