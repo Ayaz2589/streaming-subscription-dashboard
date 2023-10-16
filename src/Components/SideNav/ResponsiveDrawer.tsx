@@ -1,4 +1,5 @@
 import * as React from "react";
+import { BrowserRouter } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,7 +18,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import TheatersIcon from "@mui/icons-material/Theaters";
 
-import { Dashboard } from "../";
+import { ContentContainer } from "../";
 
 const drawerWidth = 240;
 
@@ -27,6 +28,12 @@ enum SideNavItems {
   Movies = "Movies",
 }
 
+export enum SectionRoutes {
+  Dashboard = "/",
+  Users = "/users",
+  Movies = "/movies",
+}
+
 interface Props {
   window?: () => Window;
 }
@@ -34,9 +41,26 @@ interface Props {
 export default function ResponsiveDrawer(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [currentSection, setCurrentSection] = React.useState<string>("/");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleSectionChange = (index: number) => {
+    switch (index) {
+      case 0:
+        setCurrentSection(SectionRoutes.Dashboard);
+        break;
+      case 1:
+        setCurrentSection(SectionRoutes.Users);
+        break;
+      case 2:
+        setCurrentSection(SectionRoutes.Movies);
+        break;
+      default:
+        setCurrentSection("/");
+    }
   };
 
   const drawer = (
@@ -47,7 +71,11 @@ export default function ResponsiveDrawer(props: Props) {
         {[SideNavItems.Dashboard, SideNavItems.User, SideNavItems.Movies].map(
           (text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => console.log("clicked")}>
+              <ListItemButton
+                onClick={() => {
+                  handleSectionChange(index);
+                }}
+              >
                 <ListItemIcon>
                   {index === 0 ? <DashboardIcon /> : null}
                   {index === 1 ? <PersonIcon /> : null}
@@ -136,7 +164,9 @@ export default function ResponsiveDrawer(props: Props) {
         }}
       >
         <Toolbar />
-        <Dashboard />
+        <BrowserRouter>
+          <ContentContainer currentSection={currentSection} />
+        </BrowserRouter>
       </Box>
     </Box>
   );
