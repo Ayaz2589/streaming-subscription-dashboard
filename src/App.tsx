@@ -2,7 +2,6 @@ import {
   initialState,
   DashboardContextProvider,
 } from "./context/DashboardContext";
-import { useFetch } from "./hooks";
 import { Main } from "./Components";
 
 function App() {

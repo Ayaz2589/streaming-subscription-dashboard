@@ -37,7 +37,8 @@ const createDummyDataJSON = async () => {
         },
       ];
     }, [] as JSONObject[]);
-    return JSON.stringify(objectToReturn);
+
+    return JSON.stringify({ users: objectToReturn, movies });
   }
 
   return "[]";
