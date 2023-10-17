@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
 import Box from "@mui/material/Box";
+import { MostWatchedPieChart } from "..";
 
 const Dashboard = () => {
   const { state } = useDashboard();
@@ -15,9 +16,9 @@ const Dashboard = () => {
   console.log(mostWatchedMovies);
 
   return (
-    <Box
-      sx={{ backgroundColor: "lightblue", width: "100%", height: "90vh" }}
-    ></Box>
+    <Box>
+      <MostWatchedPieChart />
+    </Box>
   );
 };
 
