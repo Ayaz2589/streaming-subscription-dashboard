@@ -1,7 +1,7 @@
 import { useMemo } from "react";
+import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
-import Box from "@mui/material/Box";
 import { MostWatchedPieChart } from "..";
 
 const Dashboard = () => {
@@ -13,11 +13,9 @@ const Dashboard = () => {
     [movies, users]
   );
 
-  console.log(mostWatchedMovies);
-
   return (
     <Box>
-      <MostWatchedPieChart />
+      { mostWatchedMovies ? <MostWatchedPieChart mostWatchedMovies={mostWatchedMovies} /> : null }
     </Box>
   );
 };

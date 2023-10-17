@@ -1,19 +1,57 @@
 import { PieChart } from "@mui/x-charts/PieChart";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
-export default function BasicPie() {
-  return (
-    <PieChart
-      series={[
-        {
-          data: [
-            { id: 0, value: 10, label: "series A" },
-            { id: 1, value: 15, label: "series B" },
-            { id: 2, value: 20, label: "series C" },
-          ],
-        },
-      ]}
-      width={400}
-      height={200}
-    />
-  );
+interface BasicPieProps {
+  mostWatchedMovies: [
+    string,
+    { count: number; title: string; image: string }
+  ][];
 }
+
+enum MOVIE_COUNT {
+  FIVE = 5,
+  TEN = 10,
+}
+
+const BasicPie = ({ mostWatchedMovies }: BasicPieProps) => {
+  const moviesToRender = mostWatchedMovies
+    ?.slice(0, MOVIE_COUNT.FIVE)
+    .map((movie) => {
+      return { id: movie[0], value: movie[1].count, label: movie[1].title };
+    });
+  return (
+    <Paper
+      sx={{
+        width: 400,
+        padding: "50px",
+        borderRadius: "1rem",
+        backgroundColor: "#eee",
+      }}
+      elevation={3}
+    >
+      <Typography sx={{ textAlign: "center" }}>
+        Top 5 Most Watched Movies
+      </Typography>
+      <PieChart
+        series={[
+          {
+            data: moviesToRender,
+          },
+        ]}
+        width={300}
+        margin={{ top: 10, bottom: 100, left: 0, right: 0 }}
+        height={450}
+        slotProps={{
+          legend: {
+            direction: "row",
+            position: { vertical: "bottom", horizontal: "middle" },
+            padding: 0,
+          },
+        }}
+      />
+    </Paper>
+  );
+};
+
+export default BasicPie;
