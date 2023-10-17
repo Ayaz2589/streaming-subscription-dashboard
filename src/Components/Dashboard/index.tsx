@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
-import { MostWatchedPieChart } from "..";
+import { MostWatchedPieChart, ActiveUserDisplay } from "..";
 
 const Dashboard = () => {
   const { state } = useDashboard();
@@ -13,9 +13,16 @@ const Dashboard = () => {
     [movies, users]
   );
 
+  console.log(users);
+
   return (
-    <Box>
-      { mostWatchedMovies ? <MostWatchedPieChart mostWatchedMovies={mostWatchedMovies} /> : null }
+    <Box
+      sx={{ display: "flex", flexWrap: "wrap", gap: "1rem", padding: "0.5rem" }}
+    >
+      {mostWatchedMovies ? (
+        <MostWatchedPieChart mostWatchedMovies={mostWatchedMovies} />
+      ) : null}
+      {users?.length ? <ActiveUserDisplay count={users.length} /> : null}
     </Box>
   );
 };
