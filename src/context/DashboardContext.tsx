@@ -1,20 +1,11 @@
 import { createContext, useReducer, ReactElement, useCallback } from "react";
-
-export enum ActionType {
-  SET_DATA = "SET_DATA",
-  REMOVE_DATA = "REMOVE_DATA",
-}
-
-interface Actions {
-  type: ActionType;
-  payload: {
-    data: [];
-  };
-}
-
-export interface InitialState {
-  data: [];
-}
+import {
+  Actions,
+  ActionType,
+  InitialState,
+  UseDashboardContextType,
+  DashboardContextChildren,
+} from "./types";
 
 export const initialState: InitialState = {
   data: [],
@@ -31,7 +22,7 @@ const stateReducer = (state: InitialState, action: Actions): InitialState => {
   }
 };
 
-const useDashboardContext = (initialState: InitialState) => {
+export const useDashboardContext = (initialState: InitialState) => {
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
   const setData = useCallback((data: []) => {
@@ -45,8 +36,6 @@ const useDashboardContext = (initialState: InitialState) => {
   return { state, setData, removeData };
 };
 
-type UseDashboardContextType = ReturnType<typeof useDashboardContext>;
-
 const initialStateContext: UseDashboardContextType = {
   state: initialState,
   setData: () => {},
@@ -56,14 +45,10 @@ const initialStateContext: UseDashboardContextType = {
 export const DashboardContext =
   createContext<UseDashboardContextType>(initialStateContext);
 
-interface Children {
-  children?: ReactElement | undefined;
-}
-
 export const DashboardContextProvider = ({
   children,
   ...initialState
-}: Children & InitialState): ReactElement => {
+}: DashboardContextChildren & InitialState): ReactElement => {
   return (
     <DashboardContext.Provider value={useDashboardContext(initialState)}>
       {children}
