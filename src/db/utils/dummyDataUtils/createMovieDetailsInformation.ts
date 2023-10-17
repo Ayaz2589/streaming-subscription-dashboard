@@ -1,5 +1,5 @@
 import secrets from "../../../../secrets";
-import { MovieAPIRequest, Movie, StreamingInformation } from "./types";
+import { MovieAPIRequest, Movie } from "./types";
 
 const urlList = `list=top_rated_lowest_100`;
 const urlStartYear = `startYear=2000`;
@@ -25,8 +25,6 @@ const lorumIpsum =
 
 const createMovie = (movie: MovieAPIRequest): Movie => {
   const runtimeMinutes = generateRandomRuntimeMinutes();
-  const streamingInformation: StreamingInformation =
-    generateStreamingInformation(runtimeMinutes);
   return {
     id: movie._id,
     title: movie.titleText.text,
@@ -36,33 +34,12 @@ const createMovie = (movie: MovieAPIRequest): Movie => {
     originalTitle: movie.originalTitleText.text,
     description: lorumIpsum,
     runtimeMinutes: runtimeMinutes,
-    streaming_information: streamingInformation,
     isFavorite: randomBool(),
   };
 };
 
 const generateRandomRuntimeMinutes = (min = 100, max = 180) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-const generateStreamingInformation = (
-  runTime: number
-): StreamingInformation => {
-  const hasStarted = randomBool();
-  let hasEnded;
-
-  hasStarted ? (hasEnded = randomBool()) : (hasEnded = false);
-
-  if (!hasEnded && !hasStarted) {
-    return { hasStarted, hasEnded, minutesWatched: 0 };
-  }
-
-  if (!hasEnded && hasStarted) {
-    const randomMinutes = Math.floor(Math.random() * (runTime - 1) + 1);
-    return { hasStarted, hasEnded, minutesWatched: randomMinutes };
-  }
-
-  return { hasStarted, hasEnded, minutesWatched: runTime };
 };
 
 const randomBool = () => (Math.random() > 0.5 ? true : false);

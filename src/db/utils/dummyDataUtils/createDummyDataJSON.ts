@@ -1,9 +1,5 @@
-import { Movie, User, JSONObject } from "./types";
-import {
-  createPersonalInformation,
-  createMovieDetailsInformation,
-  createStreamingInformtion,
-} from ".";
+import { Movie, User, JSONObject, StreamingInformation } from "./types";
+import { createPersonalInformation, createMovieDetailsInformation } from ".";
 
 const getRandomItemdFromArray = (inputArray: Movie[]) => {
   const newArray = [];
@@ -18,6 +14,22 @@ const getRandomItemdFromArray = (inputArray: Movie[]) => {
   return newArray;
 };
 
+const randomBool = () => (Math.random() > 0.5 ? true : false);
+
+const generateStreamingInformation = (
+  runTime: number
+): StreamingInformation => {
+  const hasStarted = true;
+  const hasEnded = randomBool();
+
+  if (!hasEnded && hasStarted) {
+    const randomMinutes = Math.floor(Math.random() * (runTime - 1) + 1);
+    return { hasStarted, hasEnded, minutesWatched: randomMinutes };
+  }
+
+  return { hasStarted, hasEnded, minutesWatched: runTime };
+};
+
 const createDummyDataJSON = async () => {
   const users = await createPersonalInformation();
   const movies = await createMovieDetailsInformation();
@@ -28,12 +40,20 @@ const createDummyDataJSON = async () => {
 
   if (users?.length && movies?.length) {
     const objectToReturn = users?.reduce<User[]>((accum, value) => {
+      const watchedMovies = getRandomItemdFromArray(movies).map((movie) => {
+        const runtimeMinutes = movie.runtimeMinutes;
+        const streamingInformation: StreamingInformation =
+          generateStreamingInformation(runtimeMinutes);
+        return {
+          ...movie,
+          streaming: streamingInformation,
+        };
+      });
       return [
         ...accum,
         {
           ...value,
-          streaming: createStreamingInformtion(),
-          movies: getRandomItemdFromArray(movies),
+          watchedMovies,
         },
       ];
     }, [] as JSONObject[]);
