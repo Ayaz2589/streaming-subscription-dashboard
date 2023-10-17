@@ -1,1 +1,1 @@
-export type { default as MostWatchedMovie } from "./MostWatchedMovies";
+export type { default as WatchedMovie } from "./WatchedMovies";

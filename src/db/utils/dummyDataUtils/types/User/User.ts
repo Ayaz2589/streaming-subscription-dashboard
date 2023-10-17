@@ -1,4 +1,6 @@
+import { Movie } from "..";
 export default interface User {
+  watchedMovies: Movie[] | undefined;
   billingAddress: {
     value: string;
     city: string;

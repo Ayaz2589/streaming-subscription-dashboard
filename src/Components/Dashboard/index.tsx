@@ -1,15 +1,18 @@
-import { useCallback } from "react";
+import { useMemo } from "react";
 import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
-import { MostWatchedMovie } from "../../db/utils/dashboardUtils/types";
 import Box from "@mui/material/Box";
 
 const Dashboard = () => {
   const { state } = useDashboard();
   const { users, movies } = state.data;
 
-  const mostWatchedMovies: MostWatchedMovie[] = getHighestWatchedMovies(movies, users)
+  const mostWatchedMovies = useMemo(
+    () => getHighestWatchedMovies(movies, users),
+    [movies, users]
+  );
 
+  console.log(mostWatchedMovies);
 
   return (
     <Box
