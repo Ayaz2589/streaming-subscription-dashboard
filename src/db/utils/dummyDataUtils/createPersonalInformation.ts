@@ -13,8 +13,8 @@ const createPersonalInformation = async () => {
     const response = await fetch(url, options);
     const { users } = await response.json();
     if (response.ok && users?.length) {
-      const formattedUserObjectArray: User[] = users.map((user: UserAPIRequest) =>
-        createUser(user)
+      const formattedUserObjectArray: User[] = users.map(
+        (user: UserAPIRequest) => createUser(user)
       );
       return formattedUserObjectArray;
     }
@@ -25,7 +25,11 @@ const createPersonalInformation = async () => {
 
 export default createPersonalInformation;
 
+const randomBool = () => (Math.random() > 0.5 ? true : false);
+
 const createUser = (user: UserAPIRequest): User => ({
+  watchedMovies: undefined,
+  isAccountActive: randomBool(),
   billingAddress: {
     value: user.address.address,
     city: user.address.city,

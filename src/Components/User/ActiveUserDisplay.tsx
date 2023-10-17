@@ -1,7 +1,13 @@
 import { Paper, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-const ActiveUserDisplay = ({ count }: { count: string }) => {
+const ActiveUserDisplay = ({
+  count,
+  title,
+}: {
+  count: string;
+  title: string;
+}) => {
   return (
     <Paper
       sx={{
@@ -16,7 +22,7 @@ const ActiveUserDisplay = ({ count }: { count: string }) => {
       }}
     >
       <PersonIcon sx={{ fontSize: "2rem" }} />
-      <Typography variant="h5">Active Users: {count}</Typography>
+      <Typography variant="h5">{`${title}: ${count}`}</Typography>
     </Paper>
   );
 };
