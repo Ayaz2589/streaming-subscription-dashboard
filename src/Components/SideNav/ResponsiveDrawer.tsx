@@ -28,7 +28,7 @@ enum SideNavItems {
   Movies = "Movies",
 }
 
-export enum SectionRoutes {
+enum SectionRoutes {
   Dashboard = "/",
   Users = "/users",
   Movies = "/movies",

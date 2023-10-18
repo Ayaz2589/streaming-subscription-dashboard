@@ -2,11 +2,15 @@ import { useEffect } from "react";
 import { Dashboard, User, Movies, SingleUser } from "../";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-import { SectionRoutes } from "../SideNav/ResponsiveDrawer";
+enum SectionRoutes {
+  Dashboard = "/",
+  Users = "/users",
+  Movies = "/movies",
+}
 
 const ContentContainer = ({ currentSection }: { currentSection: string }) => {
-  useEffect(() => navigate(currentSection), [currentSection]);
   const navigate = useNavigate();
+  useEffect(() => navigate(currentSection), [currentSection, navigate]);
   return (
     <Routes>
       <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
