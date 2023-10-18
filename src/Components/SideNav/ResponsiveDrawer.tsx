@@ -16,7 +16,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
-import TheatersIcon from "@mui/icons-material/Theaters";
+// import TheatersIcon from "@mui/icons-material/Theaters";
 
 import { ContentContainer } from "../";
 
@@ -68,7 +68,7 @@ const ResponsiveDrawer = (props: Props) => {
       <Toolbar />
       <Divider />
       <List>
-        {[SideNavItems.Dashboard, SideNavItems.User].map(
+        {[SideNavItems.Dashboard, SideNavItems.User].map( // to re-add movies, add it to this array
           (text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
