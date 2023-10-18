@@ -20,6 +20,7 @@ const ActiveUserDisplay = ({
         justifyContent: "center",
         gap: "1rem",
       }}
+      elevation={0}
     >
       <PersonIcon sx={{ fontSize: "2rem" }} />
       <Typography variant="h5">{`${title}: ${count}`}</Typography>

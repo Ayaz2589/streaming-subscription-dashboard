@@ -28,7 +28,7 @@ const BasicPie = ({ mostWatchedMovies }: BasicPieProps) => {
         borderRadius: "1rem",
         backgroundColor: "#eee",
       }}
-      elevation={3}
+      elevation={0}
     >
       <Typography sx={{ textAlign: "center" }}>
         Top 5 Most Watched Movies
