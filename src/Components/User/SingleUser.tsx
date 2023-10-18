@@ -4,12 +4,15 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { formatUserMoviesForTable } from "../../db/utils";
+import { UserMoviesTable } from "..";
 
 const SingleUser = () => {
   const location = useLocation();
   const { selectedUser } = location.state;
   const navigate = useNavigate();
-  console.log(selectedUser);
+  const formattedMovies = formatUserMoviesForTable(selectedUser.watchedMovies);
+  console.log(formattedMovies);
   return (
     <Box>
       <Button
@@ -36,6 +39,7 @@ const SingleUser = () => {
             <Typography variant="h6">{`User ID: ${selectedUser.username}`}</Typography>
           </Box>
         </Box>
+        <UserMoviesTable formatedMovies={formattedMovies} handleUserClick={() => {}}/>
       </Paper>
     </Box>
   );
