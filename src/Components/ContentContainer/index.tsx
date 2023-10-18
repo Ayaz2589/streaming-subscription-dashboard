@@ -10,7 +10,7 @@ enum SectionRoutes {
 
 const ContentContainer = ({ currentSection }: { currentSection: string }) => {
   const navigate = useNavigate();
-  useEffect(() => navigate(currentSection), [currentSection, navigate]);
+  useEffect(() => navigate(currentSection), [currentSection]);
   return (
     <Routes>
       <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
