@@ -8,7 +8,7 @@ import {
 } from "./types";
 
 export const initialState: InitialState = {
-  data: [],
+  data: {},
 };
 
 const stateReducer = (state: InitialState, action: Actions): InitialState => {
@@ -16,7 +16,7 @@ const stateReducer = (state: InitialState, action: Actions): InitialState => {
     case ActionType.SET_DATA:
       return { data: action.payload.data };
     case ActionType.REMOVE_DATA:
-      return { data: [] };
+      return { data: {} };
     default:
       return state;
   }
@@ -25,7 +25,7 @@ const stateReducer = (state: InitialState, action: Actions): InitialState => {
 export const useDashboardContext = (initialState: InitialState) => {
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
-  const setData = useCallback((data: []) => {
+  const setData = useCallback((data: object) => {
     dispatch({ type: ActionType.SET_DATA, payload: { data } });
   }, []);
 

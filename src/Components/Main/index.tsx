@@ -1,19 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { User, Movie } from "../../db/utils/dummyDataUtils/types";
 
 import { useFetch, useDashboard } from "../../hooks";
 import { ResponsiveDrawer } from "..";
 
 const Main = () => {
   const { data, loading, error } = useFetch();
+  console.log(data)
   const { setData } = useDashboard();
+
+  const cachedSetData = useCallback(
+    (data: { users: User[]; movies: Movie[] }) => setData(data),
+    [setData]
+  );
 
   useEffect(() => {
     if (data) {
-      setData(data);
+      cachedSetData(data);
     }
-  }, [data]);
+  }, [data, cachedSetData]);
 
   if (error) return <div>Something went wrong...</div>; // Make better error handling
 

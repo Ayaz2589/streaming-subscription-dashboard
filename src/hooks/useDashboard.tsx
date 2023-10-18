@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { DashboardContext, InitialState } from "../context/DashboardContext";
+import { DashboardContext } from "../context/DashboardContext";
+import { InitialState } from "../context/types";
 
 interface UseDashboard {
   state: InitialState;
-  setData: (data: []) => void;
+  setData: (data: object) => void;
   removeData: () => void;
 }
 
@@ -13,4 +14,4 @@ export const useDashboard = (): UseDashboard => {
   return { state, setData, removeData };
 };
 
-export default useDashboard
+export default useDashboard;

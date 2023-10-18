@@ -6,7 +6,7 @@ export enum ActionType {
 interface Actions {
   type: ActionType;
   payload: {
-    data: [];
+    data: object;
   };
 }
 

@@ -3,9 +3,7 @@ import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
 import { MostWatchedPieChart, ActiveUserDisplay } from "..";
-import { User } from "../../db/utils/dummyDataUtils/types";
 import { ActiveUsersBarChart } from ".."
-import CircularProgress from "@mui/material/CircularProgress";
 
 const Dashboard = () => {
   const { state } = useDashboard();
