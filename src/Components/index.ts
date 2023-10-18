@@ -4,6 +4,7 @@ export { default as Movies } from "./Movies";
 export { default as User } from "./User";
 export { default as ContentContainer } from "./ContentContainer";
 export { default as Main } from "./Main";
-export { default as MostWatchedPieChart } from "./Chart/MostWatchedPieChart"
-export { default as ActiveUserDisplay } from "./User/ActiveUserDisplay"
-export { default as AllUsersTable } from "./Table/AllUsersTable"
+export { default as MostWatchedPieChart } from "./Chart/MostWatchedPieChart";
+export { default as ActiveUserDisplay } from "./User/ActiveUserDisplay";
+export { default as AllUsersTable } from "./Table/AllUsersTable";
+export { default as SingleUser } from "./User/SingleUser";

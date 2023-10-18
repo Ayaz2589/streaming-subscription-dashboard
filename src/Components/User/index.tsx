@@ -14,7 +14,7 @@ const Users = () => {
 
   useEffect(() => {
     if (selectedUser) {
-      navigate(`/users/${selectedUser.id}`);
+      navigate(`/users/${selectedUser.id}`, { state: { selectedUser } });
     } else {
       navigate("/users");
     }
