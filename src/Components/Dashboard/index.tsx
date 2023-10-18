@@ -4,6 +4,8 @@ import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
 import { MostWatchedPieChart, ActiveUserDisplay } from "..";
 import { User } from "../../db/utils/dummyDataUtils/types";
+import { ActiveUsersBarChart } from ".."
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Dashboard = () => {
   const { state } = useDashboard();
@@ -24,14 +26,7 @@ const Dashboard = () => {
       {users?.length ? (
         <Box sx={{ gap: "1rem", display: "flex", flexDirection: "column" }}>
           <ActiveUserDisplay count={users.length} title="Total Users" />
-          <ActiveUserDisplay
-            count={users.filter((user: User) => user.isAccountActive).length}
-            title="Active Users"
-          />
-          <ActiveUserDisplay
-            count={users.filter((user: User) => !user.isAccountActive).length}
-            title="In-Active Users"
-          />
+          <ActiveUsersBarChart users={users} />
         </Box>
       ) : null}
     </Box>

@@ -68,7 +68,7 @@ const ResponsiveDrawer = (props: Props) => {
       <Toolbar />
       <Divider />
       <List>
-        {[SideNavItems.Dashboard, SideNavItems.User, SideNavItems.Movies].map(
+        {[SideNavItems.Dashboard, SideNavItems.User].map(
           (text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
@@ -79,7 +79,7 @@ const ResponsiveDrawer = (props: Props) => {
                 <ListItemIcon>
                   {index === 0 ? <DashboardIcon /> : null}
                   {index === 1 ? <PersonIcon /> : null}
-                  {index === 2 ? <TheatersIcon /> : null}
+                  {/* {index === 2 ? <TheatersIcon /> : null} */}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
