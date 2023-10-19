@@ -1,27 +1,82 @@
-# React + TypeScript + Vite
+# Movie Streaming Analytics Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- This Application is LIVE on: https://ayaz2589.github.io/
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This repository contains the source code for a mock movie streaming site analytics dashboard. The application generates a dummy JSON object that various components fetch to render interactive charts and tables using Material UI. It serves as a practical example of how to create a complex React application with TypeScript, demonstrating various React features and custom hooks for efficient state management and data fetching.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- TypeScript
+- Material UI
+- React Router v6
+- Vite
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Data Fetching
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Demonstrates how to fetch data from an API and handle it in a React application.
+- Utilizes React's `useEffect` and `useCallback` for efficient data retrieval and updates.
+
+### Custom State Management
+
+- Creates a custom state management solution using `useReducer` and `useContext` to maintain application-wide state.
+- Showcases the power of React's `useReducer`, `useContext`, `useMemo`, and `useCallback` for managing state and actions.
+
+### Custom Hooks
+
+- Introduces custom hooks like `useFetch` and `useDashboard` to simplify data fetching and state management.
+- Illustrates the benefits of encapsulating complex logic into reusable custom hooks.
+
+### UI Design with Material UI
+
+- Designs the user interface using Material UI, a popular and customizable UI framework for React applications.
+- Utilizes Material UI's components for building a visually appealing and responsive dashboard.
+
+### Interactive Charts
+
+- Utilizes Material UI X-Charts components to visualize complex data in an easily understandable manner.
+- Offers insights into how to handle and display data using interactive charts.
+
+## Getting Started
+
+To run this application locally, follow these steps:
+
+1. Clone this repository to your local machine:
+
+   ```bash
+   git clone https://github.com/Ayaz2589/streaming-subscription-dashboard.git
+   ```
+2. Navigate to the project directory:
+
+   ```bash
+   cd movie-analytics-dashboard
+   ```
+3. Install the dependencies
+
+   ```bash
+   npm install
+   ```
+
+4. Start the deverlopment server
+
+   ```bash
+   npm run dev
+   ```
+The application will be accessible in your web browser at `http://localhost:5173`.
+
+## Contributors
+
+- Ayaz Uddin ([Your GitHub Profile](https://github.com/Ayaz2589))
+
+
+---
+
+**Note:** This is a mock project intended for educational and demonstration purposes only. The data used in this application is fictional and does not represent any real-world data.
+
+Feel free to explore and contribute to this project. If you have any questions or suggestions, please open an issue or create a pull request. We appreciate your involvement!
+
+For any additional details or inquiries, please contact the project maintainers.
