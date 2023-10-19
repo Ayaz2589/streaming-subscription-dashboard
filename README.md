@@ -53,7 +53,7 @@ To run this application locally, follow these steps:
 2. Navigate to the project directory:
 
    ```bash
-   cd movie-analytics-dashboard
+   cd streaming-subscription-dashboard
    ```
 3. Install the dependencies
 
