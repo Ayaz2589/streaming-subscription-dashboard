@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
 const Users = () => {
-  const [selectedUser, updateSelectedUser] = useState<User | null>(null);
+  const [selectedUser, updateSelectedUser] = useState<User | undefined>(undefined);
   const { state } = useDashboard();
   const { users } = state.data;
   const navigate = useNavigate();

@@ -8,7 +8,6 @@ import { ResponsiveDrawer } from "..";
 
 const Main = () => {
   const { data, loading, error } = useFetch();
-  console.log(data)
   const { setData } = useDashboard();
 
   const cachedSetData = useCallback(

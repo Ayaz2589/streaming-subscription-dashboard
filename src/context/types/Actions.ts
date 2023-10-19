@@ -1,3 +1,5 @@
+import { User, Movie } from "../../db/utils/dummyDataUtils/types";
+
 export enum ActionType {
   SET_DATA = "SET_DATA",
   REMOVE_DATA = "REMOVE_DATA",
@@ -6,7 +8,7 @@ export enum ActionType {
 interface Actions {
   type: ActionType;
   payload: {
-    data: object;
+    data: { users: User[]; movies: Movie[] } };
   };
 }
 
