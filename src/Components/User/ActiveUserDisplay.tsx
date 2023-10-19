@@ -5,7 +5,7 @@ const ActiveUserDisplay = ({
   count,
   title,
 }: {
-  count: string;
+  count: number;
   title: string;
 }) => {
   return (

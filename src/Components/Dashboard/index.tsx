@@ -7,7 +7,7 @@ import { ActiveUsersBarChart } from ".."
 
 const Dashboard = () => {
   const { state } = useDashboard();
-  const { users, movies } = state.data;
+  const { users, movies } = state.data
 
   const mostWatchedMovies = useMemo(
     () => getHighestWatchedMovies(movies, users),
