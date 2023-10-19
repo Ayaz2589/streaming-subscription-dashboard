@@ -8,7 +8,7 @@ export enum ActionType {
 interface Actions {
   type: ActionType;
   payload: {
-    data: { users: User[]; movies: Movie[] } };
+    data: { users: User[]; movies: Movie[] };
   };
 }
 

@@ -8,7 +8,7 @@ const formatUserMoviesForTable = (movies: Movie[]): UserMovieTable[] => {
       id: movie.id,
       title: movie.title,
       isFavorite: movie.isFavorite,
-      hasEnded: movie.streaming.hasEnded,
+      hasEnded: movie.streaming?.hasEnded,
     };
   });
 

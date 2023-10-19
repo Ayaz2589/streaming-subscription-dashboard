@@ -10,5 +10,5 @@ export default interface Movie {
   description: string;
   runtimeMinutes: number;
   isFavorite: boolean;
-  streaming: StreamingInformation;
+  streaming?: StreamingInformation;
 }
