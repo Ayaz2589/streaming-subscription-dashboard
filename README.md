@@ -70,7 +70,7 @@ The application will be accessible in your web browser at `http://localhost:5173
 
 ## Contributors
 
-- Ayaz Uddin ([Your GitHub Profile](https://github.com/Ayaz2589))
+- Ayaz Uddin ([GitHub Profile](https://github.com/Ayaz2589))
 
 
 ---
