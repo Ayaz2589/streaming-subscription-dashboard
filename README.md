@@ -1,6 +1,6 @@
 # Movie Streaming Analytics Dashboard
 
-- This Application is LIVE on: https://ayaz2589.github.io/
+- This Application is LIVE on: https://ayaz2589.github.io/streaming-subscription-dashboard/
 
 ## Overview
 
