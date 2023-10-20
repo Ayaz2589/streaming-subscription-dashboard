@@ -17,8 +17,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 // import TheatersIcon from "@mui/icons-material/Theaters";
 
-import { ContentContainer } from "../";
-
 const drawerWidth = 240;
 
 enum SideNavItems {
@@ -27,39 +25,17 @@ enum SideNavItems {
   Movies = "Movies",
 }
 
-enum SectionRoutes {
-  Dashboard = "/",
-  Users = "/users",
-  Movies = "/movies",
-}
-
 interface Props {
   window?: () => Window;
+  handleSectionChange: (index: number) => void;
 }
 
 const ResponsiveDrawer = (props: Props) => {
-  const { window } = props;
+  const { window, handleSectionChange } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [currentSection, setCurrentSection] = React.useState<string>("/");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-
-  const handleSectionChange = (index: number) => {
-    switch (index) {
-      case 0:
-        setCurrentSection(SectionRoutes.Dashboard);
-        break;
-      case 1:
-        setCurrentSection(SectionRoutes.Users);
-        break;
-      case 2:
-        setCurrentSection(SectionRoutes.Movies);
-        break;
-      default:
-        setCurrentSection("/");
-    }
   };
 
   const drawer = (
@@ -121,7 +97,7 @@ const ResponsiveDrawer = (props: Props) => {
             sx={{
               color: "#6f6af8",
               padding: ".6rem 0rem",
-              fontWeight: "light"
+              fontWeight: "light",
             }}
           >
             Streaming Service Dashboard
@@ -173,10 +149,7 @@ const ResponsiveDrawer = (props: Props) => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar />
-        <BrowserRouter>
-          <ContentContainer currentSection={currentSection} />
-        </BrowserRouter>
+        {/* <Toolbar /> */}
       </Box>
     </Box>
   );
