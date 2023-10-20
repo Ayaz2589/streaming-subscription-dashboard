@@ -51,5 +51,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-// <PieChart data={pieChartUserData}) />

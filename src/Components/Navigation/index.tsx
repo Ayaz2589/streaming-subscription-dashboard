@@ -38,7 +38,6 @@ const ResponsiveDrawer = (props: Props) => {
     setMobileOpen(!mobileOpen);
   };
 
-
   const drawer = (
     <Box sx={{ backgroundColor: "#6f6af8", height: "100vh" }}>
       <Toolbar />
@@ -53,11 +52,17 @@ const ResponsiveDrawer = (props: Props) => {
                 }}
               >
                 <ListItemIcon>
-                  {index === 0 ? <DashboardIcon /> : null}
-                  {index === 1 ? <PersonIcon /> : null}
+                  {index === 0 ? (
+                    <DashboardIcon sx={{ color: "#fff", fontSize: "2rem" }} />
+                  ) : null}
+                  {index === 1 ? (
+                    <PersonIcon sx={{ color: "#fff", fontSize: "2rem" }} />
+                  ) : null}
                   {/* {index === 2 ? <TheatersIcon /> : null} */}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <Typography variant="h5" sx={{ color: "white" }}>
+                  {text}
+                </Typography>
               </ListItemButton>
             </ListItem>
           )
