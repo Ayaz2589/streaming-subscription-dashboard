@@ -96,18 +96,6 @@ const ResponsiveDrawer = (props: Props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h3"
-            noWrap
-            component="div"
-            sx={{
-              color: "#6f6af8",
-              padding: ".6rem 0rem",
-              fontWeight: "light",
-            }}
-          >
-            {currentSection === "/users" ? "Users" : "Dashboard"}
-          </Typography>
         </Toolbar>
       </AppBar>
       <Box

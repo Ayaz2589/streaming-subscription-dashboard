@@ -1,6 +1,6 @@
-import Paper from "@mui/material/Paper";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { User } from "../../db/utils/dummyDataUtils/types";
+import { HoverPaper } from "..";
 
 const chartSetting = {
   yAxis: [
@@ -32,14 +32,14 @@ const ActiveUsersBarChart = ({ users }: { users: User[] }) => {
     },
   ];
   return (
-    <Paper
+    <HoverPaper
       sx={{
         width: 400,
         padding: "4rem 0rem 4rem 1rem",
         borderRadius: "1rem",
         backgroundColor: "#eee",
       }}
-      elevation={0}
+      onClick={() => {}}
     >
       <BarChart
         dataset={dataset}
@@ -50,7 +50,7 @@ const ActiveUsersBarChart = ({ users }: { users: User[] }) => {
         ]}
         {...chartSetting}
       />
-    </Paper>
+    </HoverPaper>
   );
 };
 

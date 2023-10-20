@@ -1,5 +1,6 @@
-import { Paper, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
+import { HoverPaper } from "..";
 
 const ActiveUserDisplay = ({
   count,
@@ -9,7 +10,7 @@ const ActiveUserDisplay = ({
   title: string;
 }) => {
   return (
-    <Paper
+    <HoverPaper
       sx={{
         width: 400,
         padding: "50px",
@@ -20,11 +21,10 @@ const ActiveUserDisplay = ({
         justifyContent: "center",
         gap: "1rem",
       }}
-      elevation={0}
     >
       <PersonIcon sx={{ fontSize: "2rem" }} />
       <Typography variant="h5">{`${title}: ${count}`}</Typography>
-    </Paper>
+    </HoverPaper>
   );
 };
 

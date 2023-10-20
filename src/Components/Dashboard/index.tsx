@@ -1,9 +1,8 @@
 import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
-import { ActiveUserDisplay, PieChart } from "..";
+import { ActiveUserDisplay, PieChart, HoverPaper, Header } from "..";
 import { ActiveUsersBarChart } from "..";
 import { User } from "../../db/utils/dummyDataUtils/types";
-import Paper from "@mui/material/Paper";
 
 const Dashboard = () => {
   const { state } = useDashboard();
@@ -16,8 +15,11 @@ const Dashboard = () => {
     { id: 1, value: users.length - activeUsers, label: "In-Active" },
   ];
 
+
+
   return (
     <Box>
+      <Header text="Dashboard" />
       <Box
         sx={{
           display: "flex",
@@ -27,17 +29,16 @@ const Dashboard = () => {
         }}
       >
         {activeUsers ? (
-          <Paper
+          <HoverPaper
             sx={{
               width: 400,
               padding: "50px",
               borderRadius: "1rem",
               backgroundColor: "#eee",
             }}
-            elevation={0}
           >
             <PieChart data={pieChartUserData} title="User Account Status" />
-          </Paper>
+          </HoverPaper>
         ) : null}
         {users?.length ? (
           <Box sx={{ gap: "1rem", display: "flex", flexDirection: "column" }}>
