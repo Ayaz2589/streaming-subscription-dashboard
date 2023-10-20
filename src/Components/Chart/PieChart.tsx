@@ -1,26 +1,16 @@
 import { PieChart as MUIPieChart } from "@mui/x-charts/PieChart";
-import Paper from "@mui/material/Paper";
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 interface PieProps {
   data: { id: number; value: number; label: string }[];
+  title: string;
 }
 
-const PieChart = ({ data }: PieProps) => {
-  // const usersToRender = users.map((user) => {
-  //   return { id: user.status, value: user.count, label: user.status };
-  // });
+const PieChart = ({ data, title }: PieProps) => {
   return (
-    <Paper
-      sx={{
-        width: 400,
-        padding: "50px",
-        borderRadius: "1rem",
-        backgroundColor: "#eee",
-      }}
-      elevation={0}
-    >
-      <Typography sx={{ textAlign: "center" }}>User Account Status</Typography>
+    <Box>
+      <Typography sx={{ textAlign: "center" }}>{title}</Typography>
       <MUIPieChart
         colors={["#6f6af8", "#4946a8"]}
         series={[
@@ -39,7 +29,7 @@ const PieChart = ({ data }: PieProps) => {
           },
         }}
       />
-    </Paper>
+    </Box>
   );
 };
 

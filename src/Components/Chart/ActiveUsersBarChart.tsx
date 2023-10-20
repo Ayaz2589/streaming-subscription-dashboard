@@ -43,6 +43,7 @@ const ActiveUsersBarChart = ({ users }: { users: User[] }) => {
     >
       <BarChart
         dataset={dataset}
+        colors={["#6f6af8", "#4946a8"]}
         xAxis={[{ scaleType: "band", dataKey: "status" }]}
         series={[
           { dataKey: "user_count", label: "Active Users", valueFormatter },

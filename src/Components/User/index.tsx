@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AllUsersTable } from "..";
+import { AllUsersTable, PieChart } from "..";
 import { useDashboard } from "../../hooks";
 import { formatUsersForTable } from "../../db/utils";
 import { User } from "../../db/utils/dummyDataUtils/types";
@@ -7,7 +7,9 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
 const Users = () => {
-  const [selectedUser, updateSelectedUser] = useState<User | undefined>(undefined);
+  const [selectedUser, updateSelectedUser] = useState<User | undefined>(
+    undefined
+  );
   const { state } = useDashboard();
   const { users } = state.data;
   const navigate = useNavigate();
@@ -21,18 +23,31 @@ const Users = () => {
   }, [selectedUser, navigate]);
 
   const formattedUsers = formatUsersForTable(users);
+  const activeUsers = users.filter((user: User) => user.isAccountActive).length;
+
+  const pieChartUserData = [
+    { id: 0, value: activeUsers, label: "Active" },
+    { id: 1, value: users.length - activeUsers, label: "In-Active" },
+  ];
 
   const handleUserClick = (userId: number) => {
     const selectedUser = users.find((user: User) => user.id === userId);
     updateSelectedUser(selectedUser);
   };
   return (
-    <Box>
+    <Box sx={{ display: "flex", width: "100%", flexWrap: "wrap" }}>
       {formattedUsers?.length ? (
-        <AllUsersTable
-          formatedUsers={formattedUsers}
-          handleUserClick={handleUserClick}
-        />
+        <Box>
+          <AllUsersTable
+            formatedUsers={formattedUsers}
+            handleUserClick={handleUserClick}
+          />
+        </Box>
+      ) : null}
+      {pieChartUserData?.length ? (
+        <Box sx={{ display: "flex", justifyContent: "center", width: "50%" }}>
+          <PieChart data={pieChartUserData} title="User Account Status" />
+        </Box>
       ) : null}
     </Box>
   );
