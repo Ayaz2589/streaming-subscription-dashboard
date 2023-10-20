@@ -58,7 +58,10 @@ const Main = () => {
       />
       ;
       <BrowserRouter>
-        <ContentContainer currentSection={currentSection} />
+        <ContentContainer
+          currentSection={currentSection}
+          handleSectionChange={handleSectionChange}
+        />
       </BrowserRouter>
     </Box>
   );

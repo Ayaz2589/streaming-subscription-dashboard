@@ -14,7 +14,13 @@ const chartSetting = {
 
 const valueFormatter = (value: number) => `${value}`;
 
-const ActiveUsersBarChart = ({ users }: { users: User[] }) => {
+const ActiveUsersBarChart = ({
+  users,
+  handleSectionChange,
+}: {
+  users: User[];
+  handleSectionChange: (index: number) => void;
+}) => {
   const activeUsers = users.filter((user: User) => user.isAccountActive).length;
 
   const inActiveUsers = users.filter(
@@ -39,7 +45,7 @@ const ActiveUsersBarChart = ({ users }: { users: User[] }) => {
         borderRadius: "1rem",
         backgroundColor: "#eee",
       }}
-      onClick={() => {}}
+      onClick={() => handleSectionChange(1)}
     >
       <BarChart
         dataset={dataset}

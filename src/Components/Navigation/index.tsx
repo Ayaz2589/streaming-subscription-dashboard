@@ -8,12 +8,12 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
+import { Header } from "..";
 // import TheatersIcon from "@mui/icons-material/Theaters";
 
 const drawerWidth = 240;
@@ -84,6 +84,7 @@ const ResponsiveDrawer = (props: Props) => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           backgroundColor: "#fff",
+          marginTop: "1rem",
         }}
       >
         <Toolbar>
@@ -96,6 +97,11 @@ const ResponsiveDrawer = (props: Props) => {
           >
             <MenuIcon />
           </IconButton>
+          {currentSection === "/users" ? (
+            <Header text="Users" />
+          ) : (
+            <Header text="Dashboard" />
+          )}
         </Toolbar>
       </AppBar>
       <Box

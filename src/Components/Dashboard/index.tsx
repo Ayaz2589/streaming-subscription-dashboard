@@ -1,10 +1,14 @@
 import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
-import { ActiveUserDisplay, PieChart, HoverPaper, Header } from "..";
+import { ActiveUserDisplay, PieChart, HoverPaper } from "..";
 import { ActiveUsersBarChart } from "..";
 import { User } from "../../db/utils/dummyDataUtils/types";
 
-const Dashboard = () => {
+const Dashboard = ({
+  handleSectionChange,
+}: {
+  handleSectionChange: (index: number) => void;
+}) => {
   const { state } = useDashboard();
   const { users } = state.data;
 
@@ -15,11 +19,8 @@ const Dashboard = () => {
     { id: 1, value: users.length - activeUsers, label: "In-Active" },
   ];
 
-
-
   return (
     <Box>
-      <Header text="Dashboard" />
       <Box
         sx={{
           display: "flex",
@@ -36,14 +37,22 @@ const Dashboard = () => {
               borderRadius: "1rem",
               backgroundColor: "#eee",
             }}
+            onClick={() => handleSectionChange(1)}
           >
             <PieChart data={pieChartUserData} title="User Account Status" />
           </HoverPaper>
         ) : null}
         {users?.length ? (
           <Box sx={{ gap: "1rem", display: "flex", flexDirection: "column" }}>
-            <ActiveUserDisplay count={users.length} title="Total Users" />
-            <ActiveUsersBarChart users={users} />
+            <ActiveUserDisplay
+              count={users.length}
+              title="Total Users"
+              handleSectionChange={handleSectionChange}
+            />
+            <ActiveUsersBarChart
+              users={users}
+              handleSectionChange={handleSectionChange}
+            />
           </Box>
         ) : null}
       </Box>

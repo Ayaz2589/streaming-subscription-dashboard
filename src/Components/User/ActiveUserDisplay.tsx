@@ -5,9 +5,11 @@ import { HoverPaper } from "..";
 const ActiveUserDisplay = ({
   count,
   title,
+  handleSectionChange,
 }: {
   count: number;
   title: string;
+  handleSectionChange: (index: number) => void;
 }) => {
   return (
     <HoverPaper
@@ -21,6 +23,7 @@ const ActiveUserDisplay = ({
         justifyContent: "center",
         gap: "1rem",
       }}
+      onClick={() => handleSectionChange(1)}
     >
       <PersonIcon sx={{ fontSize: "2rem" }} />
       <Typography variant="h5">{`${title}: ${count}`}</Typography>

@@ -9,7 +9,13 @@ enum SectionRoutes {
   Movies = "/movies",
 }
 
-const ContentContainer = ({ currentSection }: { currentSection: string }) => {
+const ContentContainer = ({
+  currentSection,
+  handleSectionChange,
+}: {
+  currentSection: string;
+  handleSectionChange: (index: number) => void;
+}) => {
   const navigate = useNavigate();
   useEffect(() => navigate(currentSection), [currentSection]);
   return (
@@ -21,7 +27,10 @@ const ContentContainer = ({ currentSection }: { currentSection: string }) => {
       }}
     >
       <Routes>
-        <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
+        <Route
+          path={SectionRoutes.Dashboard}
+          element={<Dashboard handleSectionChange={handleSectionChange} />}
+        />
         <Route path={SectionRoutes.Users}>
           <Route index element={<User />} />
           <Route path=":id" element={<SingleUser />} />
