@@ -15,6 +15,7 @@ enum MOVIE_COUNT {
 }
 
 const BasicPie = ({ mostWatchedMovies }: BasicPieProps) => {
+  console.log(mostWatchedMovies)
   const moviesToRender = mostWatchedMovies
     ?.slice(0, MOVIE_COUNT.FIVE)
     .map((movie) => {

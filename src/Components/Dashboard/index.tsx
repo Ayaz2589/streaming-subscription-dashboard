@@ -2,9 +2,9 @@ import { useMemo } from "react";
 import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
 import { getHighestWatchedMovies } from "../../db/utils";
-import { MostWatchedPieChart, ActiveUserDisplay } from "..";
+import { MostWatchedPieChart, ActiveUserDisplay, PieChart } from "..";
 import { ActiveUsersBarChart } from "..";
-import { Header } from "..";
+import { User } from "../../db/utils/dummyDataUtils/types";
 
 const Dashboard = () => {
   const { state } = useDashboard();
@@ -14,6 +14,13 @@ const Dashboard = () => {
     () => getHighestWatchedMovies(movies, users),
     [movies, users]
   );
+
+  const activeUsers = users.filter((user: User) => user.isAccountActive).length;
+
+  const pieChartUserData = [
+    { id: 0, value: activeUsers, label: "Active" },
+    { id: 1, value: users.length - activeUsers, label: "In-Active" },
+  ]
 
   return (
     <Box>
@@ -25,9 +32,7 @@ const Dashboard = () => {
           padding: "0.5rem",
         }}
       >
-        {mostWatchedMovies ? (
-          <MostWatchedPieChart mostWatchedMovies={mostWatchedMovies} />
-        ) : null}
+        {activeUsers ? <PieChart data={pieChartUserData} /> : null}
         {users?.length ? (
           <Box sx={{ gap: "1rem", display: "flex", flexDirection: "column" }}>
             <ActiveUserDisplay count={users.length} title="Total Users" />

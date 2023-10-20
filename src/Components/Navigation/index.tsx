@@ -1,5 +1,4 @@
 import * as React from "react";
-import { BrowserRouter } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -27,16 +26,18 @@ enum SideNavItems {
 
 interface Props {
   window?: () => Window;
+  currentSection: string;
   handleSectionChange: (index: number) => void;
 }
 
 const ResponsiveDrawer = (props: Props) => {
-  const { window, handleSectionChange } = props;
+  const { window, handleSectionChange, currentSection } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
 
   const drawer = (
     <Box sx={{ backgroundColor: "#6f6af8", height: "100vh" }}>
@@ -100,7 +101,7 @@ const ResponsiveDrawer = (props: Props) => {
               fontWeight: "light",
             }}
           >
-            Streaming Service Dashboard
+            {currentSection === "/users" ? "Users" : "Dashboard"}
           </Typography>
         </Toolbar>
       </AppBar>

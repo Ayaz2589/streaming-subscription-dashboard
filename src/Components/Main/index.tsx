@@ -52,7 +52,11 @@ const Main = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <ResponsiveDrawer handleSectionChange={handleSectionChange} />;
+      <ResponsiveDrawer
+        handleSectionChange={handleSectionChange}
+        currentSection={currentSection}
+      />
+      ;
       <BrowserRouter>
         <ContentContainer currentSection={currentSection} />
       </BrowserRouter>
