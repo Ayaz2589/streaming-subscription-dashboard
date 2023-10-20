@@ -9,5 +9,6 @@ export { default as ActiveUsersBarChart } from "./Chart/ActiveUsersBarChart";
 export { default as ActiveUserDisplay } from "./User/ActiveUserDisplay";
 export { default as AllUsersTable } from "./Table/AllUsersTable";
 export { default as UserMoviesTable } from "./Table/UserMoviesTable";
+export { default as Header } from "./Header";
 
 export { default as SingleUser } from "./User/SingleUser";

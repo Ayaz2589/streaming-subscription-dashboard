@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -64,11 +63,11 @@ const ResponsiveDrawer = (props: Props) => {
   };
 
   const drawer = (
-    <div>
+    <Box sx={{ backgroundColor: "#6f6af8", height: "100vh" }}>
       <Toolbar />
-      <Divider />
       <List>
-        {[SideNavItems.Dashboard, SideNavItems.User].map( // to re-add movies, add it to this array
+        {[SideNavItems.Dashboard, SideNavItems.User].map(
+          // to re-add movies, add it to this array
           (text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
@@ -87,7 +86,7 @@ const ResponsiveDrawer = (props: Props) => {
           )
         )}
       </List>
-    </div>
+    </Box>
   );
 
   const container =
@@ -98,9 +97,11 @@ const ResponsiveDrawer = (props: Props) => {
       <CssBaseline />
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor: "#fff",
         }}
       >
         <Toolbar>
@@ -113,7 +114,16 @@ const ResponsiveDrawer = (props: Props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h3"
+            noWrap
+            component="div"
+            sx={{
+              color: "#6f6af8",
+              padding: ".6rem 0rem",
+              fontWeight: "light"
+            }}
+          >
             Streaming Service Dashboard
           </Typography>
         </Toolbar>
