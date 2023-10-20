@@ -1,20 +1,13 @@
-import { useMemo } from "react";
 import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
-import { getHighestWatchedMovies } from "../../db/utils";
-import { MostWatchedPieChart, ActiveUserDisplay, PieChart } from "..";
+import { ActiveUserDisplay, PieChart } from "..";
 import { ActiveUsersBarChart } from "..";
 import { User } from "../../db/utils/dummyDataUtils/types";
 import Paper from "@mui/material/Paper";
 
 const Dashboard = () => {
   const { state } = useDashboard();
-  const { users, movies } = state.data;
-
-  const mostWatchedMovies = useMemo(
-    () => getHighestWatchedMovies(movies, users),
-    [movies, users]
-  );
+  const { users } = state.data;
 
   const activeUsers = users.filter((user: User) => user.isAccountActive).length;
 
