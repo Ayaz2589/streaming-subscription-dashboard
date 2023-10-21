@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { createDummyDataJSON } from "../db/utils";
-import { User, Movie } from "../db/utils/dummyDataUtils/types";
+import { createDummyDataJSON } from "../utils";
+import { User, Movie } from "../utils/dummyDataUtils/types";
 
 interface UseFetch {
   data: Data;

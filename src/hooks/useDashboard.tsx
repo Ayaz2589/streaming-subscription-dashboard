@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DashboardContext } from "../context/DashboardContext";
 import { InitialState } from "../context/types";
-import { User, Movie } from "../db/utils/dummyDataUtils/types";
+import { User, Movie } from "../utils/dummyDataUtils/types";
 
 interface UseDashboard {
   state: InitialState;

@@ -4,8 +4,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { formatUserMoviesForTable } from "../../db/utils";
+import { formatUserMoviesForTable } from "../../utils";
 import { UserMoviesTable } from "..";
+import { colors } from "../../utils";
 
 const SingleUser = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const SingleUser = () => {
       >
         Back
       </Button>
-      <Paper elevation={0} sx={{ backgroundColor: "#eee" }}>
+      <Paper elevation={0} sx={{ backgroundColor: colors.base.lightGray }}>
         <Box sx={{ display: "flex" }}>
           <img src={selectedUser.avatar} height={150} width={150} />
           <Box
@@ -39,7 +40,10 @@ const SingleUser = () => {
             <Typography variant="h6">{`User ID: ${selectedUser.username}`}</Typography>
           </Box>
         </Box>
-        <UserMoviesTable formatedMovies={formattedMovies} handleUserClick={() => {}}/>
+        <UserMoviesTable
+          formatedMovies={formattedMovies}
+          handleUserClick={() => {}}
+        />
       </Paper>
     </Box>
   );

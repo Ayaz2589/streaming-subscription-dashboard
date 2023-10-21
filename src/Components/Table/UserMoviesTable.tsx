@@ -1,6 +1,7 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
-import { UserMovieTable } from "../../db/utils/dashboardUtils/types";
+import { UserMovieTable } from "../../utils/dashboardUtils/types";
+import { colors } from "../../utils";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 250 },
@@ -21,7 +22,7 @@ const UserMovies = ({
       sx={{
         height: 400,
         width: "100%",
-        backgroundColor: "#eee",
+        backgroundColor: colors.base.lightGray,
         cursor: "pointer",
       }}
     >

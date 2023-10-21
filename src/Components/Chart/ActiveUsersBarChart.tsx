@@ -1,6 +1,7 @@
 import { BarChart } from "@mui/x-charts/BarChart";
-import { User } from "../../db/utils/dummyDataUtils/types";
+import { User } from "../../utils/dummyDataUtils/types";
 import { HoverPaper } from "..";
+import { colors } from "../../utils";
 
 const chartSetting = {
   yAxis: [
@@ -43,13 +44,13 @@ const ActiveUsersBarChart = ({
         width: 400,
         padding: "4rem 0rem 4rem 1rem",
         borderRadius: "1rem",
-        backgroundColor: "#eee",
+        backgroundColor: colors.base.lightGray,
       }}
       onClick={() => handleSectionChange(1)}
     >
       <BarChart
         dataset={dataset}
-        colors={["#6f6af8", "#4946a8"]}
+        colors={colors.light.pieChart.colors}
         xAxis={[{ scaleType: "band", dataKey: "status" }]}
         series={[
           { dataKey: "user_count", label: "Active Users", valueFormatter },

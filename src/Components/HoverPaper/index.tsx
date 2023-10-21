@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import Paper from "@mui/material/Paper";
+import { colors } from "../../utils";
 
 const HoverPaper = ({
   children,
@@ -22,7 +23,9 @@ const HoverPaper = ({
 
   const paperStyle = {
     ...sx,
-    backgroundColor: isHovered ? "#e8e8e8" : "#f5f5f5",
+    backgroundColor: isHovered
+      ? colors.light.paper.hover
+      : colors.light.paper.base,
     transition: "background-color 0.3s",
     cursor: "pointer",
   };

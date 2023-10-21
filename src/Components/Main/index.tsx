@@ -3,10 +3,11 @@ import { BrowserRouter } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { User, Movie } from "../../db/utils/dummyDataUtils/types";
+import { User, Movie } from "../../utils/dummyDataUtils/types";
 import { ContentContainer } from "..";
 import { useFetch, useDashboard } from "../../hooks";
 import { ResponsiveDrawer } from "..";
+import { colors } from "../../utils";
 
 enum SectionRoutes {
   Dashboard = "/",
@@ -73,7 +74,10 @@ const SimpleBackdrop = () => {
   return (
     <div>
       <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          color: colors.base.white,
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
         open={true}
       >
         <CircularProgress color="inherit" />

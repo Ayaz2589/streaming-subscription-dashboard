@@ -2,7 +2,8 @@ import { Box } from "@mui/material";
 import { useDashboard } from "../../hooks";
 import { ActiveUserDisplay, PieChart, HoverPaper } from "..";
 import { ActiveUsersBarChart } from "..";
-import { User } from "../../db/utils/dummyDataUtils/types";
+import { User } from "../../utils/dummyDataUtils/types";
+import { colors } from "../../utils";
 
 const Dashboard = ({
   handleSectionChange,
@@ -35,7 +36,7 @@ const Dashboard = ({
               width: 400,
               padding: "50px",
               borderRadius: "1rem",
-              backgroundColor: "#eee",
+              backgroundColor: colors.base.lightGray,
             }}
             onClick={() => handleSectionChange(1)}
           >

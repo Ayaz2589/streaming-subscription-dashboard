@@ -1,6 +1,7 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import { colors } from "../../utils";
 
 interface BasicPieProps {
   mostWatchedMovies: [
@@ -15,7 +16,7 @@ enum MOVIE_COUNT {
 }
 
 const BasicPie = ({ mostWatchedMovies }: BasicPieProps) => {
-  console.log(mostWatchedMovies)
+  console.log(mostWatchedMovies);
   const moviesToRender = mostWatchedMovies
     ?.slice(0, MOVIE_COUNT.FIVE)
     .map((movie) => {
@@ -27,7 +28,7 @@ const BasicPie = ({ mostWatchedMovies }: BasicPieProps) => {
         width: 400,
         padding: "50px",
         borderRadius: "1rem",
-        backgroundColor: "#eee",
+        backgroundColor: colors.base.lightGray,
       }}
       elevation={0}
     >

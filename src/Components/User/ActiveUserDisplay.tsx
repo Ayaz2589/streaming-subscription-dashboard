@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { HoverPaper } from "..";
+import { colors } from "../../utils";
 
 const ActiveUserDisplay = ({
   count,
@@ -17,7 +18,7 @@ const ActiveUserDisplay = ({
         width: 400,
         padding: "50px",
         borderRadius: "1rem",
-        backgroundColor: "#eee",
+        backgroundColor: colors.base.lightGray,
         height: 135,
         display: "flex",
         justifyContent: "center",

@@ -1,6 +1,7 @@
 import { PieChart as MUIPieChart } from "@mui/x-charts/PieChart";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { colors } from "../../utils";
 
 interface PieProps {
   data: { id: number; value: number; label: string }[];
@@ -12,7 +13,7 @@ const PieChart = ({ data, title }: PieProps) => {
     <Box>
       <Typography sx={{ textAlign: "center" }}>{title}</Typography>
       <MUIPieChart
-        colors={["#6f6af8", "#4946a8"]}
+        colors={colors.light.pieChart.colors}
         series={[
           {
             data,

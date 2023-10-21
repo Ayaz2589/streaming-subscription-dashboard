@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import { Header } from "..";
+import { colors } from "../../utils";
 // import TheatersIcon from "@mui/icons-material/Theaters";
 
 const drawerWidth = 240;
@@ -39,7 +40,7 @@ const ResponsiveDrawer = (props: Props) => {
   };
 
   const drawer = (
-    <Box sx={{ backgroundColor: "#6f6af8", height: "100vh" }}>
+    <Box sx={{ backgroundColor: colors.light.primary, height: "100vh" }}>
       <Toolbar />
       <List>
         {[SideNavItems.Dashboard, SideNavItems.User].map(
@@ -53,14 +54,18 @@ const ResponsiveDrawer = (props: Props) => {
               >
                 <ListItemIcon>
                   {index === 0 ? (
-                    <DashboardIcon sx={{ color: "#fff", fontSize: "2rem" }} />
+                    <DashboardIcon
+                      sx={{ color: colors.base.white, fontSize: "2rem" }}
+                    />
                   ) : null}
                   {index === 1 ? (
-                    <PersonIcon sx={{ color: "#fff", fontSize: "2rem" }} />
+                    <PersonIcon
+                      sx={{ color: colors.base.white, fontSize: "2rem" }}
+                    />
                   ) : null}
                   {/* {index === 2 ? <TheatersIcon /> : null} */}
                 </ListItemIcon>
-                <Typography variant="h5" sx={{ color: "white" }}>
+                <Typography variant="h5" sx={{ color: colors.base.white }}>
                   {text}
                 </Typography>
               </ListItemButton>
@@ -83,7 +88,7 @@ const ResponsiveDrawer = (props: Props) => {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "#fff",
+          backgroundColor: colors.base.white,
           marginTop: "1rem",
         }}
       >

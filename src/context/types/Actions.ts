@@ -1,4 +1,4 @@
-import { User, Movie } from "../../db/utils/dummyDataUtils/types";
+import { User, Movie } from "../../utils/dummyDataUtils/types";
 
 export enum ActionType {
   SET_DATA = "SET_DATA",

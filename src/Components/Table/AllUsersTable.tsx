@@ -1,6 +1,7 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
-import { UserTable } from "../../db/utils/dashboardUtils/types";
+import { UserTable } from "../../utils/dashboardUtils/types";
+import { colors } from "../../utils";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -22,7 +23,7 @@ const AllUsersTable = ({
       sx={{
         height: 650,
         width: "100%",
-        backgroundColor: "#eee",
+        backgroundColor: colors.base.lightGray,
         cursor: "pointer",
       }}
     >
