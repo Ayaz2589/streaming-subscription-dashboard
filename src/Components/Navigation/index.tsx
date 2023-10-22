@@ -31,7 +31,7 @@ interface Props {
   handleSectionChange: (index: number) => void;
 }
 
-const ResponsiveDrawer = (props: Props) => {
+const Navigation = (props: Props) => {
   const { window, handleSectionChange, currentSection } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -160,4 +160,4 @@ const ResponsiveDrawer = (props: Props) => {
   );
 };
 
-export default ResponsiveDrawer;
+export default Navigation;

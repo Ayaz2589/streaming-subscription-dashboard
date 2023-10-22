@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import { User, Movie } from "../../utils/dummyDataUtils/types";
 import { ContentContainer } from "..";
 import { useFetch, useDashboard } from "../../hooks";
-import { ResponsiveDrawer } from "..";
+import { Navigation } from "..";
 import { colors } from "../../utils";
 
 enum SectionRoutes {
@@ -53,7 +53,7 @@ const Main = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <ResponsiveDrawer
+      <Navigation
         handleSectionChange={handleSectionChange}
         currentSection={currentSection}
       />
