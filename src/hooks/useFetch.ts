@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { createDummyDataJSON } from "../utils";
 import { User, Movie } from "../utils/dummyDataUtils/types";
+import secrets from "../../secrets";
 
 interface UseFetch {
   data: Data;
@@ -17,9 +18,10 @@ const useFetch = (): UseFetch => {
   const [data, setData] = useState<Data>({ users: [], movies: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [useAPI] = useState(true);
 
   useEffect(() => {
-    const getData = async () => {
+    const frontendFetch = async () => {
       setLoading(true);
       try {
         const response = await createDummyDataJSON();
@@ -32,7 +34,22 @@ const useFetch = (): UseFetch => {
         setLoading(false);
       }
     };
-    getData();
+
+    const backendFetch = async () => {
+      const { baseUrl } = secrets.backend;
+      setLoading(true);
+      try {
+        const response = await fetch(`${baseUrl}/api/dashboard/get-dummy-data`);
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    useAPI ? backendFetch() : frontendFetch();
   }, []);
 
   return { data, loading, error };
