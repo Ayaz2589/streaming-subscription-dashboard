@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Dashboard, User, Movies, SingleUser } from "../";
+import { Dashboard, User, Movies, SingleUser } from "..";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 

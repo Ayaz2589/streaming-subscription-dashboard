@@ -18,7 +18,7 @@ const useFetch = (): UseFetch => {
   const [data, setData] = useState<Data>({ users: [], movies: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [useAPI] = useState(true);
+  const [useAPI] = useState(false);
 
   useEffect(() => {
     const frontendFetch = async () => {

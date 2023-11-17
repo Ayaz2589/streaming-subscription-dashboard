@@ -1,33 +1,34 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
-import { UserMovieTable } from "../../utils/dashboardUtils/types";
-import { colors } from "../../utils";
+import { UserTable } from "../../../utils/dashboardUtils/types";
+import { colors } from "../../../utils";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 250 },
-  { field: "title", headerName: "Title", width: 200 },
-  { field: "isFavorite", headerName: "Favorite", width: 100 },
-  { field: "hasEnded", headerName: "Finished", width: 130 },
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "name", headerName: "Name", width: 130 },
+  { field: "email", headerName: "Email", width: 130 },
+  { field: "username", headerName: "User Name", width: 130 },
+  { field: "active", headerName: "Is Active", width: 130 },
 ];
 
-const UserMovies = ({
-  formatedMovies,
-  handleUserClick = () => {},
+const AllUsersTable = ({
+  formatedUsers,
+  handleUserClick,
 }: {
-  formatedMovies: UserMovieTable[];
+  formatedUsers: UserTable[];
   handleUserClick: (id: number) => void;
 }) => {
   return (
     <Box
       sx={{
-        height: 400,
+        height: 650,
         width: "100%",
         backgroundColor: colors.base.lightGray,
         cursor: "pointer",
       }}
     >
       <DataGrid
-        rows={formatedMovies}
+        rows={formatedUsers}
         onRowClick={(e) => handleUserClick(e.row.id)}
         columns={columns}
         initialState={{
@@ -41,4 +42,4 @@ const UserMovies = ({
   );
 };
 
-export default UserMovies;
+export default AllUsersTable;

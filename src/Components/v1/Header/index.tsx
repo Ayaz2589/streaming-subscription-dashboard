@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { colors } from "../../utils";
+import { colors } from "../../../utils";
 
 const Header = ({ text }: { text: string }) => {
   return (

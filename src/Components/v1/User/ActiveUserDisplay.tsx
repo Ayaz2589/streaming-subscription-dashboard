@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { HoverPaper } from "..";
-import { colors } from "../../utils";
+import { colors } from "../../../utils";
 
 const ActiveUserDisplay = ({
   count,
