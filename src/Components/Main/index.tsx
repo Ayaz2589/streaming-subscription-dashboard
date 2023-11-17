@@ -4,7 +4,6 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { User, Movie } from "../../utils/dummyDataUtils/types";
-import { ContentContainer } from "..";
 import { useFetch, useDashboard } from "../../hooks";
 import { Navigation } from "..";
 import { colors } from "../../utils";
@@ -58,10 +57,10 @@ const Main = () => {
         currentSection={currentSection}
       />
       <BrowserRouter>
-        <ContentContainer
+        {/* <ContentContainer
           currentSection={currentSection}
           handleSectionChange={handleSectionChange}
-        />
+        /> */}
       </BrowserRouter>
     </Box>
   );

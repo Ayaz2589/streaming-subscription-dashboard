@@ -1,7 +1,7 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { colors } from "../../utils";
+import { colors } from "../../../utils";
 
 interface BasicPieProps {
   mostWatchedMovies: [
