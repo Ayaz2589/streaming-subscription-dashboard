@@ -9,6 +9,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
+import Button from "@mui/material";
+
+import { UserSettings } from "..";
 
 const drawerWidth = 240;
 
@@ -36,43 +39,62 @@ const DashboardDrawer = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   const drawer = (
-    <Box sx={{ height: "100vh", backgroundColor: "white" }}>
+    <Box
+      sx={{
+        height: "100vh",
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Toolbar />
-      <Typography
-        variant="h5"
-        sx={{ textAlign: "center", marginTop: "-0.9rem" }}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: "100%",
+        }}
       >
-        User Dashboard
-      </Typography>
-      <List sx={{ marginTop: "3rem" }}>
-        {[SideNavItems.Dashboard, SideNavItems.User].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton
-              onClick={() => {
-                handleSectionChange(index);
-              }}
-              selected={index === 0}
-            >
-              <ListItemIcon>
-                {index === 0 ? (
-                  <DashboardIcon sx={{ fontSize: "1.7rem" }} />
-                ) : null}
-                {index === 1 ? (
-                  <PersonIcon sx={{ fontSize: "1.7rem" }} />
-                ) : null}
-              </ListItemIcon>
-              <Typography variant="button">{text}</Typography>
-            </ListItemButton>
-            <Box
-              sx={{
-                width: "0.5rem",
-                backgroundColor: index === 0 ? "primary.main" : "",
-                height: "2.7rem",
-              }}
-            ></Box>
-          </ListItem>
-        ))}
-      </List>
+        <Box>
+          <Typography
+            variant="h5"
+            sx={{ textAlign: "center", marginTop: "-0.9rem" }}
+          >
+            User Dashboard
+          </Typography>
+          <List sx={{ marginTop: "3rem" }}>
+            {[SideNavItems.Dashboard, SideNavItems.User].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton
+                  onClick={() => {
+                    handleSectionChange(index);
+                  }}
+                  selected={index === 0}
+                >
+                  <ListItemIcon>
+                    {index === 0 ? (
+                      <DashboardIcon sx={{ fontSize: "1.7rem" }} />
+                    ) : null}
+                    {index === 1 ? (
+                      <PersonIcon sx={{ fontSize: "1.7rem" }} />
+                    ) : null}
+                  </ListItemIcon>
+                  <Typography variant="button">{text}</Typography>
+                </ListItemButton>
+                <Box
+                  sx={{
+                    width: "0.5rem",
+                    backgroundColor: index === 0 ? "primary.main" : "",
+                    height: "2.7rem",
+                  }}
+                ></Box>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <UserSettings />
+      </Box>
     </Box>
   );
 
