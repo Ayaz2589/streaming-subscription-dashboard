@@ -5,7 +5,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { User, Movie } from "../../utils/dummyDataUtils/types";
 import { useFetch, useDashboard } from "../../hooks";
-import { Navigation } from "..";
+import { Navigation } from "../v2/";
 import { colors } from "../../utils";
 
 enum SectionRoutes {
@@ -52,10 +52,7 @@ const Main = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Navigation
-        handleSectionChange={handleSectionChange}
-        currentSection={currentSection}
-      />
+      <Navigation handleSectionChange={handleSectionChange} />
       <BrowserRouter>
         {/* <ContentContainer
           currentSection={currentSection}
