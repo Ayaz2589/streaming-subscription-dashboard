@@ -1,7 +1,8 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import Typography from "@mui/material/Typography";
+
+import { SearchBar } from "..";
 
 const drawerWidth = 240;
 
@@ -13,20 +14,15 @@ const DashboardAppBar = () => {
       sx={{
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         ml: { sm: `${drawerWidth}px` },
-        backgroundColor: "red",
-        marginTop: "1rem",
+        backgroundColor: "primary.light",
+        paddingTop: "2rem",
       }}
     >
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={() => {}}
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <MenuIcon />
-        </IconButton>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h4" color="neutral.dark" fontWeight="bold">
+          Dashboard
+        </Typography>
+        <SearchBar />
       </Toolbar>
     </AppBar>
   );

@@ -51,7 +51,13 @@ const Main = () => {
   if (loading) return <SimpleBackdrop />;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+        backgroundColor: "primary.light",
+        height: "100vh",
+      }}
+    >
       <Navigation handleSectionChange={handleSectionChange} />
       <BrowserRouter>
         {/* <ContentContainer

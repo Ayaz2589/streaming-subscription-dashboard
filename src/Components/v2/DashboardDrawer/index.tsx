@@ -36,7 +36,7 @@ const DashboardDrawer = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   const drawer = (
-    <Box sx={{ backgroundColor: "red", height: "100vh" }}>
+    <Box sx={{ height: "100vh", backgroundColor: "white" }}>
       <Toolbar />
       <List>
         {[SideNavItems.Dashboard, SideNavItems.User].map((text, index) => (
@@ -48,15 +48,11 @@ const DashboardDrawer = (props: Props) => {
             >
               <ListItemIcon>
                 {index === 0 ? (
-                  <DashboardIcon sx={{ color: "red", fontSize: "2rem" }} />
+                  <DashboardIcon sx={{ fontSize: "2rem" }} />
                 ) : null}
-                {index === 1 ? (
-                  <PersonIcon sx={{ color: "red", fontSize: "2rem" }} />
-                ) : null}
+                {index === 1 ? <PersonIcon sx={{ fontSize: "2rem" }} /> : null}
               </ListItemIcon>
-              <Typography variant="h5" sx={{ color: "red" }}>
-                {text}
-              </Typography>
+              <Typography variant="h5">{text}</Typography>
             </ListItemButton>
           </ListItem>
         ))}
@@ -95,6 +91,7 @@ const DashboardDrawer = (props: Props) => {
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
+            border: "none",
           },
         }}
         open
