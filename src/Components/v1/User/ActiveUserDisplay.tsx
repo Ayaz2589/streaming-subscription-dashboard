@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import { HoverPaper } from "../..";
+import { HoverPaper } from "..";
 import { colors } from "../../../utils";
 
 const ActiveUserDisplay = ({

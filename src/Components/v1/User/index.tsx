@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AllUsersTable, PieChart } from "../..";
+import { AllUsersTable, PieChart } from "..";
 import { useDashboard } from "../../../hooks";
 import { formatUsersForTable } from "../../../utils";
 import { User } from "../../../utils/dummyDataUtils/types";

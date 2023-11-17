@@ -2,7 +2,7 @@ import {
   initialState,
   DashboardContextProvider,
 } from "./context/DashboardContext";
-import { Main } from "./Components";
+import { Main } from "./Components/v1";
 
 function App() {
   return (

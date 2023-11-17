@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { formatUserMoviesForTable } from "../../../utils";
-import { UserMoviesTable } from "../..";
+import { UserMoviesTable } from "..";
 import { colors } from "../../../utils";
 
 const SingleUser = () => {

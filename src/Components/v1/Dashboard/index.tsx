@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { useDashboard } from "../../../hooks";
-import { ActiveUserDisplay, PieChart, HoverPaper } from "../..";
-import { ActiveUsersBarChart } from "../..";
+import { ActiveUserDisplay, PieChart, HoverPaper } from "..";
+import { ActiveUsersBarChart } from "..";
 import { User } from "../../../utils/dummyDataUtils/types";
 import { colors } from "../../../utils";
 

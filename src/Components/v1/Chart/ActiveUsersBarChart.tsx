@@ -1,6 +1,6 @@
 import { BarChart } from "@mui/x-charts/BarChart";
 import { User } from "../../../utils/dummyDataUtils/types";
-import { HoverPaper } from "../..";
+import { HoverPaper } from "..";
 import { colors } from "../../../utils";
 
 const chartSetting = {
