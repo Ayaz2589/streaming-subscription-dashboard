@@ -3,7 +3,12 @@ import {
   DashboardContextProvider,
 } from "./context/DashboardContext";
 import { Main } from "./Components/v1";
-import { createTheme, colors, ThemeProvider } from "@mui/material";
+import {
+  createTheme,
+  colors,
+  ThemeProvider,
+  responsiveFontSizes,
+} from "@mui/material";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -15,7 +20,7 @@ declare module "@mui/material/styles" {
   }
 }
 
-const theme = createTheme({
+let theme = createTheme({
   components: {
     MuiTextField: {
       styleOverrides: {
@@ -26,6 +31,11 @@ const theme = createTheme({
             },
           },
         },
+      },
+    },
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
       },
     },
   },
@@ -48,6 +58,8 @@ const theme = createTheme({
     borderRadius: 16,
   },
 });
+
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (

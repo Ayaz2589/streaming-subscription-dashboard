@@ -38,22 +38,38 @@ const DashboardDrawer = (props: Props) => {
   const drawer = (
     <Box sx={{ height: "100vh", backgroundColor: "white" }}>
       <Toolbar />
-      <List>
+      <Typography
+        variant="h5"
+        sx={{ textAlign: "center", marginTop: "-0.9rem" }}
+      >
+        User Dashboard
+      </Typography>
+      <List sx={{ marginTop: "3rem" }}>
         {[SideNavItems.Dashboard, SideNavItems.User].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton
               onClick={() => {
                 handleSectionChange(index);
               }}
+              selected={index === 0}
             >
               <ListItemIcon>
                 {index === 0 ? (
-                  <DashboardIcon sx={{ fontSize: "2rem" }} />
+                  <DashboardIcon sx={{ fontSize: "1.7rem" }} />
                 ) : null}
-                {index === 1 ? <PersonIcon sx={{ fontSize: "2rem" }} /> : null}
+                {index === 1 ? (
+                  <PersonIcon sx={{ fontSize: "1.7rem" }} />
+                ) : null}
               </ListItemIcon>
-              <Typography variant="h5">{text}</Typography>
+              <Typography variant="button">{text}</Typography>
             </ListItemButton>
+            <Box
+              sx={{
+                width: "0.5rem",
+                backgroundColor: index === 0 ? "primary.main" : "",
+                height: "2.7rem",
+              }}
+            ></Box>
           </ListItem>
         ))}
       </List>
