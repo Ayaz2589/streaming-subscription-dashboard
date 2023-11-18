@@ -73,7 +73,9 @@ const DashboardDrawer = (props: Props) => {
                 >
                   <ListItemIcon>
                     {index === 0 ? (
-                      <DashboardIcon sx={{ fontSize: "1.7rem", color: "primary.main" }} />
+                      <DashboardIcon
+                        sx={{ fontSize: "1.7rem", color: "primary.main" }}
+                      />
                     ) : null}
                     {index === 1 ? (
                       <PersonIcon sx={{ fontSize: "1.7rem" }} />
