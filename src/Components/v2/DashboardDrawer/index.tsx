@@ -9,7 +9,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
-import Button from "@mui/material";
 
 import { UserSettings } from "..";
 
@@ -74,7 +73,7 @@ const DashboardDrawer = (props: Props) => {
                 >
                   <ListItemIcon>
                     {index === 0 ? (
-                      <DashboardIcon sx={{ fontSize: "1.7rem" }} />
+                      <DashboardIcon sx={{ fontSize: "1.7rem", color: "primary.main" }} />
                     ) : null}
                     {index === 1 ? (
                       <PersonIcon sx={{ fontSize: "1.7rem" }} />
