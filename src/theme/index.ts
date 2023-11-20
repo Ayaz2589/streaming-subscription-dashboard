@@ -40,14 +40,19 @@ let theme = createTheme({
   },
   palette: {
     primary: {
-      main: colors.deepPurple[500],
-      light: colors.deepPurple[50],
-      dark: colors.deepPurple[900],
+      main: "#673ab7",
+      light: "#ede7f6",
+      dark: "#311b92",
+    },
+    secondary: {
+      main: "#ffeb3b",
+      light: "#fffde7",
+      dark: "#f57f17",
     },
     neutral: {
-      main: colors.blueGrey[500],
-      light: colors.blueGrey[200],
-      dark: colors.blueGrey[900],
+      main: "#607d8b",
+      light: "#b0bec5",
+      dark: "#263238",
     },
   },
   typography: {

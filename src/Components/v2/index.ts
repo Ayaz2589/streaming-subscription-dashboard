@@ -6,3 +6,4 @@ export { default as UserSettings } from "./DashboardDrawer/UserSettings";
 export { default as Dashboard } from "./Dashboard";
 export { default as ContentContainer } from "./ContentContainer";
 export { default as TotalsCard } from "./TotalsCard";
+export { default as LineChart } from "./LineChart";
