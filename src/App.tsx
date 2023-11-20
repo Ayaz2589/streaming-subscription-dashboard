@@ -21,6 +21,15 @@ declare module "@mui/material/styles" {
 }
 
 let theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 950,
+      lg: 2150,
+      xl: 2500,
+    },
+  },
   components: {
     MuiTextField: {
       styleOverrides: {

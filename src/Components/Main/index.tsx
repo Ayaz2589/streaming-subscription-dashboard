@@ -5,7 +5,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { User, Movie } from "../../utils/dummyDataUtils/types";
 import { useFetch, useDashboard } from "../../hooks";
-import { Navigation } from "../v2/";
+import { Navigation, ContentContainer } from "../v2/";
 import { colors } from "../../utils";
 
 enum SectionRoutes {
@@ -17,7 +17,7 @@ enum SectionRoutes {
 const Main = () => {
   const { data, loading, error } = useFetch();
   const { setData } = useDashboard();
-  const [currentSection, setCurrentSection] = useState("/");
+  const [, setCurrentSection] = useState("/");
 
   const cachedSetData = useCallback(
     (data: { users: User[]; movies: Movie[] }) => setData(data),
@@ -60,10 +60,9 @@ const Main = () => {
     >
       <Navigation handleSectionChange={handleSectionChange} />
       <BrowserRouter>
-        {/* <ContentContainer
-          currentSection={currentSection}
+        <ContentContainer
           handleSectionChange={handleSectionChange}
-        /> */}
+        />
       </BrowserRouter>
     </Box>
   );
