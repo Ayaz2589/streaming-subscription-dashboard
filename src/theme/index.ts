@@ -46,7 +46,7 @@ let theme = createTheme({
     },
     neutral: {
       main: colors.blueGrey[500],
-      light: colors.blueGrey[50],
+      light: colors.blueGrey[200],
       dark: colors.blueGrey[900],
     },
   },
