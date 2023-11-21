@@ -18,7 +18,7 @@ export enum SectionRoutes {
 const Main = () => {
   const { data, loading, error } = useFetch();
   const { setData } = useDashboard();
-  const [, setCurrentSection] = useState("/");
+  const [currentSection, setCurrentSection] = useState("/");
 
   const cachedSetData = useCallback(
     (data: { users: User[]; movies: Movie[] }) => setData(data),
@@ -64,7 +64,10 @@ const Main = () => {
     >
       <Navigation handleSectionChange={handleSectionChange} />
       <BrowserRouter>
-        <ContentContainer handleSectionChange={handleSectionChange} />
+        <ContentContainer
+          handleSectionChange={handleSectionChange}
+          currentSection={currentSection}
+        />
       </BrowserRouter>
     </Box>
   );

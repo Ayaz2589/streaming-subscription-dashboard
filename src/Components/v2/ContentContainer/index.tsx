@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Dashboard, Project } from "..";
 import { SectionRoutes } from "../../Main";
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -5,13 +6,13 @@ import Box from "@mui/material/Box";
 
 const ContentContainer = ({
   handleSectionChange,
-  // currentSection,
+  currentSection,
 }: {
-  currentSection?: string;
+  currentSection: string;
   handleSectionChange: (index: number) => void;
 }) => {
   const navigate = useNavigate();
-  // useEffect(() => navigate(currentSection), [currentSection]);
+  useEffect(() => navigate(currentSection), [currentSection]);
   return (
     <Box
       sx={{
