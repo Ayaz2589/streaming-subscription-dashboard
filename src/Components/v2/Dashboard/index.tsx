@@ -56,15 +56,6 @@ const Dashboard = ({
         <Grid item xs={12} md={6} lg={2}>
           <LineChart />
         </Grid>
-        <Grid item xs={12} md={6} lg={2}>
-          <LineChart />
-        </Grid>
-        <Grid item xs={12} md={6} lg={2}>
-          <LineChart />
-        </Grid>
-        <Grid item xs={12} md={6} lg={2}>
-          <LineChart />
-        </Grid>
       </Grid>
     </Box>
   );

@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
+import theme from "../../../theme";
 
 const Card = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -74,26 +75,33 @@ const LineChart = () => {
               bottom: 5,
             }}
           >
-            <XAxis dataKey="name" tick={{ fill: "neutral.light" }} />
-            {/* <YAxis tick={{ fill: "#fff" }} /> */}
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tickSize={0}
+              tick={{ fill: theme.palette.neutral.light }}
+            />
             <Tooltip
               contentStyle={{
-                backgroundColor: "#8884d8",
-                color: "#fff",
+                backgroundColor: theme.palette.primary.light,
+                color: theme.palette.neutral.dark,
                 borderRadius: "0.5rem",
+                border: "none",
+                fontWeight: "bold",
               }}
-              itemStyle={{ color: "#fff" }}
+              itemStyle={{ color: theme.palette.neutral.dark }}
               cursor={true}
+              formatter={(value: string) => `$${value}`}
             />
             <Line
               type="monotone"
               dataKey="sales"
-              stroke="#673ab7"
+              stroke={theme.palette.primary.main}
               strokeWidth="5"
-              dot={{ fill: "#2e4355", stroke: "#ede7f6", strokeWidth: 2, r: 0 }}
+              dot={{ r: 0 }}
               activeDot={{
-                fill: "#2e4355",
-                stroke: "#311b92",
+                fill: theme.palette.primary.main,
+                stroke: theme.palette.primary.main,
                 strokeWidth: 5,
                 r: 6,
               }}
@@ -101,12 +109,12 @@ const LineChart = () => {
             <Line
               type="monotone"
               dataKey="earnings"
-              stroke="#ffeb3b"
+              stroke={theme.palette.secondary.main}
               strokeWidth="5"
-              dot={{ fill: "#f57f17", stroke: "#ffeb3b", strokeWidth: 2, r: 0 }}
+              dot={{ r: 0 }}
               activeDot={{
-                fill: "#f57f17",
-                stroke: "#ffeb3b",
+                fill: theme.palette.secondary.main,
+                stroke: theme.palette.secondary.main,
                 strokeWidth: 5,
                 r: 6,
               }}
