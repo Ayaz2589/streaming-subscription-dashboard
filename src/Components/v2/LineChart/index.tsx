@@ -22,6 +22,7 @@ const Card = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
   minHeight: "8rem",
+  boxShadow: theme.shadows[1],
 }));
 
 const data = [
@@ -196,7 +197,13 @@ const Chart = () => (
 
 const LineChart = () => {
   return (
-    <Card elevation={0} sx={{ display: "flex", flexDirection: "column" }}>
+    <Card
+      elevation={0}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Header />
       <Box sx={{ display: "flex" }}>
         <Legend />

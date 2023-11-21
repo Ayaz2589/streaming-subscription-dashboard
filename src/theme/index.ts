@@ -1,4 +1,4 @@
-import { createTheme, colors, responsiveFontSizes } from "@mui/material";
+import { createTheme, responsiveFontSizes, Shadows } from "@mui/material";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -61,6 +61,11 @@ let theme = createTheme({
   shape: {
     borderRadius: 16,
   },
+  shadows: [
+    "none",
+    "0px 3px 5px 1px rgba(0,0,0,0.15)",
+    ...Array(23).fill("none"),
+  ] as Shadows,
 });
 
 theme = responsiveFontSizes(theme);
