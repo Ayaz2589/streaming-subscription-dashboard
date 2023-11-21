@@ -7,8 +7,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PersonIcon from "@mui/icons-material/Person";
+import {
+  DashboardIconSelected,
+  ProjectIconNotSelected,
+  ClientIconNotSelected,
+  FinanceIconNotSelected,
+} from "../../../svg";
 
 import { UserSettings } from "..";
 
@@ -21,9 +25,21 @@ interface Props {
 
 enum SideNavItems {
   Dashboard = "Dashboard",
-  User = "User",
-  Movies = "Movies",
+  Project = "Project",
+  Client = "Client",
+  Finance = "Finance",
 }
+
+const SideNavItemsArray = [
+  {
+    section: SideNavItems.Dashboard,
+    index: 0,
+    icon: <DashboardIconSelected />,
+  },
+  { section: SideNavItems.Project, index: 1, icon: <ProjectIconNotSelected /> },
+  { section: SideNavItems.Client, index: 2, icon: <ClientIconNotSelected /> },
+  { section: SideNavItems.Finance, index: 3, icon: <FinanceIconNotSelected /> },
+];
 
 const DashboardDrawer = (props: Props) => {
   const { window, handleSectionChange } = props;
@@ -63,35 +79,31 @@ const DashboardDrawer = (props: Props) => {
             User Dashboard
           </Typography>
           <List sx={{ marginTop: "3rem" }}>
-            {[SideNavItems.Dashboard, SideNavItems.User].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton
-                  onClick={() => {
-                    handleSectionChange(index);
-                  }}
-                  selected={index === 0}
-                >
-                  <ListItemIcon>
-                    {index === 0 ? (
-                      <DashboardIcon
-                        sx={{ fontSize: "1.7rem", color: "primary.main" }}
-                      />
-                    ) : null}
-                    {index === 1 ? (
-                      <PersonIcon sx={{ fontSize: "1.7rem" }} />
-                    ) : null}
-                  </ListItemIcon>
-                  <Typography variant="button">{text}</Typography>
-                </ListItemButton>
-                <Box
-                  sx={{
-                    width: "0.5rem",
-                    backgroundColor: index === 0 ? "primary.main" : "",
-                    height: "2.7rem",
-                  }}
-                ></Box>
-              </ListItem>
-            ))}
+            {SideNavItemsArray.map((item) => {
+              const { index, icon, section } = item;
+              return (
+                <ListItem key={index} disablePadding>
+                  <ListItemButton
+                    onClick={() => {
+                      handleSectionChange(item.index);
+                    }}
+                    selected={index === 0}
+                  >
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <Typography variant="h6" color={index === 0 ? "primary.main" : "neutral.main"}>
+                      {section}
+                    </Typography>
+                  </ListItemButton>
+                  <Box
+                    sx={{
+                      width: "0.5rem",
+                      backgroundColor: index === 0 ? "primary.main" : "",
+                      height: "3rem",
+                    }}
+                  ></Box>
+                </ListItem>
+              );
+            })}
           </List>
         </Box>
         <UserSettings />
@@ -111,7 +123,7 @@ const DashboardDrawer = (props: Props) => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", sm: "none" },
