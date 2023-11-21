@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
-import { TotalsCard } from "..";
+import { TotalsCard, LineChart } from "..";
 
 const dummyData = [
   {
@@ -36,7 +36,13 @@ const Dashboard = ({
   handleSectionChange: (index: number) => void;
 }) => {
   return (
-    <Box sx={{ flexGrow: 1, padding: "7rem 1rem 1rem 1rem" }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        padding: "7rem 1rem 1rem 1rem",
+        backgroundColor: "primary.light",
+      }}
+    >
       <Grid container spacing={2}>
         {dummyData.map((item, index) => (
           <Grid item xs={12} md={4} lg={2} key={index}>
@@ -47,6 +53,9 @@ const Dashboard = ({
             />
           </Grid>
         ))}
+        <Grid item xs={12} md={6} lg={2}>
+          <LineChart />
+        </Grid>
       </Grid>
     </Box>
   );
