@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   LineChart as LineChartRecharts,
   XAxis,
@@ -9,11 +8,8 @@ import {
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import theme from "../../../theme";
+import { Legend, Header } from "..";
 
 const Card = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -47,92 +43,6 @@ const data = [
     earnings: 74.75,
   },
 ];
-
-const Legend = () => (
-  <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-    <Box sx={{ display: "flex" }}>
-      <Box
-        sx={{
-          width: "20px",
-          height: "20px",
-          borderRadius: "50%",
-          marginRight: "1rem",
-          backgroundColor: theme.palette.primary.main,
-        }}
-      ></Box>
-      <Typography variant="body2">Sales</Typography>
-    </Box>
-    <Box sx={{ display: "flex" }}>
-      <Box
-        sx={{
-          width: "20px",
-          height: "20px",
-          borderRadius: "50%",
-          marginRight: "1rem",
-          backgroundColor: theme.palette.secondary.main,
-        }}
-      ></Box>
-      <Typography variant="body2">Earnings</Typography>
-    </Box>
-  </Box>
-);
-
-const Header = () => (
-  <Box
-    sx={{
-      display: "flex",
-      justifyContent: "space-between",
-      padding: "1rem",
-    }}
-  >
-    <Typography variant="h6">Sales vs Earnings</Typography>
-    <ControlledOpenSelect />
-  </Box>
-);
-
-const ControlledOpenSelect = () => {
-  const [age, setAge] = useState<string | number>("quarterly");
-  const [open, setOpen] = useState(false);
-
-  const handleChange = (event: SelectChangeEvent<typeof age>) => {
-    setAge(event.target.value);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <Select
-          size="small"
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-          open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          defaultValue={age}
-          onChange={handleChange}
-        >
-          <MenuItem value={"monthly"} disabled>
-            Monthly
-          </MenuItem>
-          <MenuItem value={"quarterly"} selected={true}>
-            Quarterly
-          </MenuItem>
-          <MenuItem value={"yearly"} disabled>
-            Yearly
-          </MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-  );
-};
 
 const Chart = () => (
   <ResponsiveContainer width="100%" aspect={1.5}>
