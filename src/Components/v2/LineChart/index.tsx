@@ -90,7 +90,7 @@ const Header = () => (
 );
 
 const ControlledOpenSelect = () => {
-  const [age, setAge] = useState<string | number>("Quarterly");
+  const [age, setAge] = useState<string | number>("quarterly");
   const [open, setOpen] = useState(false);
 
   const handleChange = (event: SelectChangeEvent<typeof age>) => {
