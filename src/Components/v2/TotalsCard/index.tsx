@@ -11,6 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
   minHeight: "5rem",
+  boxShadow: theme.shadows[1],
 }));
 
 interface Props {
