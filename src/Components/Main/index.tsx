@@ -8,7 +8,7 @@ import { useFetch, useDashboard } from "../../hooks";
 import { Navigation, ContentContainer } from "../v2/";
 import { colors } from "../../utils";
 
-enum SectionRoutes {
+export enum SectionRoutes {
   Dashboard = "/",
   Project = "/project",
   Client = "/client",
@@ -26,7 +26,6 @@ const Main = () => {
   );
 
   const handleSectionChange = (index: number) => {
-    console.log(index);
     switch (index) {
       case 0:
         setCurrentSection(SectionRoutes.Dashboard);
