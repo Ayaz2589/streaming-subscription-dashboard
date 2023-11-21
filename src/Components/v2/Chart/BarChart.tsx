@@ -1,8 +1,8 @@
 import {
-  LineChart as LineChartRecharts,
+  BarChart as BarChartRecharts,
   XAxis,
   Tooltip,
-  Line,
+  Bar,
   ResponsiveContainer,
 } from "recharts";
 import Box from "@mui/material/Box";
@@ -12,29 +12,29 @@ import { Legend, Header, Card } from "..";
 const data = [
   {
     name: "Q1",
-    sales: 75.25,
-    earnings: 30.25,
+    project: 800.0,
+    client: 1000.0,
   },
   {
     name: "Q2",
-    sales: 100.12,
-    earnings: 40.25,
+    project: 1000.0,
+    client: 1200.0,
   },
   {
     name: "Q3",
-    sales: 275.8,
-    earnings: 150.25,
+    project: 1200.0,
+    client: 1500.0,
   },
   {
     name: "Q4",
-    sales: 334.83,
-    earnings: 74.75,
+    project: 786.45,
+    client: 886.25,
   },
 ];
 
 const Chart = () => (
-  <ResponsiveContainer width="100%" aspect={1.5}>
-    <LineChartRecharts
+  <ResponsiveContainer width="100%" aspect={1.525}>
+    <BarChartRecharts
       width={500}
       height={500}
       data={data}
@@ -44,12 +44,15 @@ const Chart = () => (
         left: 20,
         bottom: 5,
       }}
+      barGap={0}
+      barCategoryGap={20}
     >
       <XAxis
         dataKey="name"
         axisLine={false}
         tickSize={0}
         tick={{ fill: theme.palette.neutral.light }}
+        tickMargin={10}
       />
       <Tooltip
         contentStyle={{
@@ -63,37 +66,13 @@ const Chart = () => (
         cursor={true}
         formatter={(value: string) => `$${value}`}
       />
-      <Line
-        type="monotone"
-        dataKey="sales"
-        stroke={theme.palette.primary.main}
-        strokeWidth="5"
-        dot={{ r: 0 }}
-        activeDot={{
-          fill: theme.palette.primary.main,
-          stroke: theme.palette.primary.main,
-          strokeWidth: 5,
-          r: 6,
-        }}
-      />
-      <Line
-        type="monotone"
-        dataKey="earnings"
-        stroke={theme.palette.secondary.main}
-        strokeWidth="5"
-        dot={{ r: 0 }}
-        activeDot={{
-          fill: theme.palette.secondary.main,
-          stroke: theme.palette.secondary.main,
-          strokeWidth: 5,
-          r: 6,
-        }}
-      />
-    </LineChartRecharts>
+      <Bar dataKey="project" fill={theme.palette.primary.main} />
+      <Bar dataKey="client" fill={theme.palette.secondary.main} />
+    </BarChartRecharts>
   </ResponsiveContainer>
 );
 
-const LineChart = () => {
+const BarChart = () => {
   return (
     <Card
       elevation={0}
@@ -102,13 +81,13 @@ const LineChart = () => {
         flexDirection: "column",
       }}
     >
-      <Header title="Sales vs Earnings" />
+      <Header title="Project vs Client" />
       <Box sx={{ display: "flex" }}>
-        <Legend item1="Sales" item2="Earnings" />
+        <Legend item1="Project" item2="Client" />
         <Chart />
       </Box>
     </Card>
   );
 };
 
-export default LineChart;
+export default BarChart;

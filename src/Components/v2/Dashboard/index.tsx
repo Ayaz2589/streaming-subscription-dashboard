@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
-import { TotalsCard, LineChart } from "..";
+import { TotalsCard, LineChart, BarChart } from "..";
 
 const dummyData = [
   {
@@ -21,11 +21,11 @@ const dummyData = [
     value: "$1,000.00",
   },
   {
-    title: "New Tasks",
-    value: "102",
+    title: "Client Total",
+    value: "$4,586.25",
   },
   {
-    title: "Project(s) Total",
+    title: "Project Total",
     value: "$3,786.45",
   },
 ];
@@ -55,6 +55,9 @@ const Dashboard = ({
         ))}
         <Grid item xs={12} md={6} lg={2}>
           <LineChart />
+        </Grid>
+        <Grid item xs={12} md={6} lg={2}>
+          <BarChart />
         </Grid>
       </Grid>
     </Box>
