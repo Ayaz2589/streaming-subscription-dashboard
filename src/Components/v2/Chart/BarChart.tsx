@@ -12,23 +12,23 @@ import { Legend, Header, Card } from "..";
 const data = [
   {
     name: "Q1",
-    sales: 75.25,
-    earnings: 30.25,
+    project: 800.0,
+    client: 1000.0,
   },
   {
     name: "Q2",
-    sales: 100.12,
-    earnings: 40.25,
+    project: 1000.0,
+    client: 1200.0,
   },
   {
     name: "Q3",
-    sales: 275.8,
-    earnings: 150.25,
+    project: 1200.0,
+    client: 1500.0,
   },
   {
     name: "Q4",
-    sales: 334.83,
-    earnings: 74.75,
+    project: 786.45,
+    client: 886.25,
   },
 ];
 
@@ -44,12 +44,15 @@ const Chart = () => (
         left: 20,
         bottom: 5,
       }}
+      barGap={0}
+      barCategoryGap={20}
     >
       <XAxis
         dataKey="name"
         axisLine={false}
         tickSize={0}
         tick={{ fill: theme.palette.neutral.light }}
+        tickMargin={10}
       />
       <Tooltip
         contentStyle={{
@@ -63,8 +66,8 @@ const Chart = () => (
         cursor={true}
         formatter={(value: string) => `$${value}`}
       />
-      <Bar dataKey="sales" fill={theme.palette.primary.main} />
-      <Bar dataKey="earnings" fill={theme.palette.secondary.main} />
+      <Bar dataKey="project" fill={theme.palette.primary.main} />
+      <Bar dataKey="client" fill={theme.palette.secondary.main} />
     </BarChartRecharts>
   </ResponsiveContainer>
 );
