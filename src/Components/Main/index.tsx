@@ -10,8 +10,9 @@ import { colors } from "../../utils";
 
 enum SectionRoutes {
   Dashboard = "/",
-  Users = "/users",
-  Movies = "/movies",
+  Project = "/project",
+  Client = "/client",
+  Finance = "/finance",
 }
 
 const Main = () => {
@@ -25,15 +26,19 @@ const Main = () => {
   );
 
   const handleSectionChange = (index: number) => {
+    console.log(index);
     switch (index) {
       case 0:
         setCurrentSection(SectionRoutes.Dashboard);
         break;
       case 1:
-        setCurrentSection(SectionRoutes.Users);
+        setCurrentSection(SectionRoutes.Project);
         break;
       case 2:
-        setCurrentSection(SectionRoutes.Movies);
+        setCurrentSection(SectionRoutes.Client);
+        break;
+      case 3:
+        setCurrentSection(SectionRoutes.Finance);
         break;
       default:
         setCurrentSection("/");
@@ -60,9 +65,7 @@ const Main = () => {
     >
       <Navigation handleSectionChange={handleSectionChange} />
       <BrowserRouter>
-        <ContentContainer
-          handleSectionChange={handleSectionChange}
-        />
+        <ContentContainer handleSectionChange={handleSectionChange} />
       </BrowserRouter>
     </Box>
   );
