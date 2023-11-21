@@ -1,8 +1,8 @@
 import {
-  LineChart as LineChartRecharts,
+  BarChart as BarChartRecharts,
   XAxis,
   Tooltip,
-  Line,
+  Bar,
   ResponsiveContainer,
 } from "recharts";
 import Box from "@mui/material/Box";
@@ -33,8 +33,8 @@ const data = [
 ];
 
 const Chart = () => (
-  <ResponsiveContainer width="100%" aspect={1.5}>
-    <LineChartRecharts
+  <ResponsiveContainer width="100%" aspect={1.525}>
+    <BarChartRecharts
       width={500}
       height={500}
       data={data}
@@ -63,33 +63,9 @@ const Chart = () => (
         cursor={true}
         formatter={(value: string) => `$${value}`}
       />
-      <Line
-        type="monotone"
-        dataKey="sales"
-        stroke={theme.palette.primary.main}
-        strokeWidth="5"
-        dot={{ r: 0 }}
-        activeDot={{
-          fill: theme.palette.primary.main,
-          stroke: theme.palette.primary.main,
-          strokeWidth: 5,
-          r: 6,
-        }}
-      />
-      <Line
-        type="monotone"
-        dataKey="earnings"
-        stroke={theme.palette.secondary.main}
-        strokeWidth="5"
-        dot={{ r: 0 }}
-        activeDot={{
-          fill: theme.palette.secondary.main,
-          stroke: theme.palette.secondary.main,
-          strokeWidth: 5,
-          r: 6,
-        }}
-      />
-    </LineChartRecharts>
+      <Bar dataKey="sales" fill={theme.palette.primary.main} />
+      <Bar dataKey="earnings" fill={theme.palette.secondary.main} />
+    </BarChartRecharts>
   </ResponsiveContainer>
 );
 
