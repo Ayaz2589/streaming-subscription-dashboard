@@ -1,18 +1,7 @@
 import { Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import BarChartIcon from "@mui/icons-material/BarChart";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  minHeight: "5rem",
-  boxShadow: theme.shadows[1],
-}));
+import { Card } from "..";
 
 interface Props {
   title: string;
@@ -22,7 +11,7 @@ interface Props {
 
 const TotalsCard = ({ title, value }: Props) => {
   return (
-    <Item elevation={0}>
+    <Card elevation={0}>
       <Box
         sx={{
           display: "flex",
@@ -62,7 +51,7 @@ const TotalsCard = ({ title, value }: Props) => {
           </Typography>
         </Box>
       </Box>
-    </Item>
+    </Card>
   );
 };
 

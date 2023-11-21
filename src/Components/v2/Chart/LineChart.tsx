@@ -5,21 +5,9 @@ import {
   Line,
   ResponsiveContainer,
 } from "recharts";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import theme from "../../../theme";
-import { Legend, Header } from "..";
-
-const Card = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  minHeight: "8rem",
-  boxShadow: theme.shadows[1],
-}));
+import { Legend, Header, Card } from "..";
 
 const data = [
   {
