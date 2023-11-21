@@ -62,7 +62,10 @@ const Main = () => {
         height: "100vh",
       }}
     >
-      <Navigation handleSectionChange={handleSectionChange} />
+      <Navigation
+        handleSectionChange={handleSectionChange}
+        currentSection={currentSection}
+      />
       <BrowserRouter>
         <ContentContainer
           handleSectionChange={handleSectionChange}

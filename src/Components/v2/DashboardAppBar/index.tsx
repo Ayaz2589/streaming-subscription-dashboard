@@ -6,7 +6,23 @@ import { SearchBar } from "..";
 
 const drawerWidth = 240;
 
-const DashboardAppBar = () => {
+const sectionToDisplay = (currentSection: string) => {
+  switch (currentSection) {
+    case "/":
+      return "Dashboard";
+    case "/project":
+      return "Project";
+    case "/client":
+      return "Client";
+    case "/finance":
+      return "Finance";
+    default:
+      return "Dashboard";
+  }
+};
+
+const DashboardAppBar = ({ currentSection }: { currentSection: string }) => {
+  const sectiontoDisplay = sectionToDisplay(currentSection);
   return (
     <AppBar
       position="fixed"
@@ -20,7 +36,7 @@ const DashboardAppBar = () => {
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography variant="h4" color="neutral.dark" fontWeight="bold">
-          Dashboard
+          {sectiontoDisplay}
         </Typography>
         <SearchBar />
       </Toolbar>
