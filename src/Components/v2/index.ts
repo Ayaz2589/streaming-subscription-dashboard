@@ -7,6 +7,7 @@ export { default as Dashboard } from "./Dashboard";
 export { default as ContentContainer } from "./ContentContainer";
 export { default as TotalsCard } from "./TotalsCard";
 export { default as LineChart } from "./Chart/LineChart";
+export { default as BarChart } from "./Chart/BarChart";
 export { default as Legend } from "./Chart/Legend";
 export { default as Header } from "./Chart/Header";
 export { default as ControlledOpenSelect } from "./Chart/ControlledOpenSelect";

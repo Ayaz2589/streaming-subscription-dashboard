@@ -93,7 +93,7 @@ const Chart = () => (
   </ResponsiveContainer>
 );
 
-const LineChart = () => {
+const BarChart = () => {
   return (
     <Card
       elevation={0}
@@ -102,13 +102,13 @@ const LineChart = () => {
         flexDirection: "column",
       }}
     >
-      <Header title="Sales vs Earnings" />
+      <Header title="Project vs Client" />
       <Box sx={{ display: "flex" }}>
-        <Legend item1="Sales" item2="Earnings" />
+        <Legend item1="Project" item2="Client" />
         <Chart />
       </Box>
     </Card>
   );
 };
 
-export default LineChart;
+export default BarChart;
