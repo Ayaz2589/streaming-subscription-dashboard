@@ -36,14 +36,12 @@ const SideNavItemsArray = [
     index: 0,
     icon: <DashboardIconSelected />,
   },
-  { section: SideNavItems.Project, index: 1, icon: <ProjectIconNotSelected /> },
+  { section: SideNavItems.Project, index: 1, selected: <ProjectIconNotSelected /> },
   { section: SideNavItems.Client, index: 2, icon: <ClientIconNotSelected /> },
   { section: SideNavItems.Finance, index: 3, icon: <FinanceIconNotSelected /> },
 ];
 
-const DashboardDrawer = (props: Props) => {
-  const { window, handleSectionChange } = props;
-
+const DashboardDrawer = ({ window, handleSectionChange }: Props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -81,6 +79,7 @@ const DashboardDrawer = (props: Props) => {
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, icon, section } = item;
+              console.log(section);
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
@@ -90,7 +89,10 @@ const DashboardDrawer = (props: Props) => {
                     selected={index === 0}
                   >
                     <ListItemIcon>{icon}</ListItemIcon>
-                    <Typography variant="h6" color={index === 0 ? "primary.main" : "neutral.main"}>
+                    <Typography
+                      variant="h6"
+                      color={index === 0 ? "primary.main" : "neutral.main"}
+                    >
                       {section}
                     </Typography>
                   </ListItemButton>
