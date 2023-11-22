@@ -8,18 +8,21 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import {
-  DashboardIconSelected,
-  ProjectIconNotSelected,
-  ClientIconNotSelected,
-  FinanceIconNotSelected,
+  DashboardIcon,
+  ProjectIcon,
+  ClientIcon,
+  FinanceIcon,
 } from "../../../svg";
 
 import { UserSettings } from "..";
+import { sectionToDisplay } from "../../../utils/v2";
+import theme from "../../../theme";
 
 const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
+  currentSection: string;
   handleSectionChange: (index: number) => void;
 }
 
@@ -34,14 +37,35 @@ const SideNavItemsArray = [
   {
     section: SideNavItems.Dashboard,
     index: 0,
-    icon: <DashboardIconSelected />,
+    selected: <DashboardIcon fill={theme.palette.primary.main} />,
+    notSelected: <DashboardIcon fill={theme.palette.neutral.main} />,
   },
-  { section: SideNavItems.Project, index: 1, selected: <ProjectIconNotSelected /> },
-  { section: SideNavItems.Client, index: 2, icon: <ClientIconNotSelected /> },
-  { section: SideNavItems.Finance, index: 3, icon: <FinanceIconNotSelected /> },
+  {
+    section: SideNavItems.Project,
+    index: 1,
+    selected: <ProjectIcon fill={theme.palette.primary.main} />,
+    notSelected: <ProjectIcon fill={theme.palette.neutral.main} />,
+  },
+  {
+    section: SideNavItems.Client,
+    index: 2,
+    selected: <ClientIcon fill={theme.palette.primary.main} />,
+    notSelected: <ClientIcon fill={theme.palette.neutral.main} />,
+  },
+  {
+    section: SideNavItems.Finance,
+    index: 3,
+    selected: <FinanceIcon fill={theme.palette.primary.main} />,
+    notSelected: <FinanceIcon fill={theme.palette.neutral.main} />,
+  },
 ];
 
-const DashboardDrawer = ({ window, handleSectionChange }: Props) => {
+const DashboardDrawer = ({
+  window,
+  handleSectionChange,
+  currentSection,
+}: Props) => {
+  console.log(currentSection);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -78,20 +102,23 @@ const DashboardDrawer = ({ window, handleSectionChange }: Props) => {
           </Typography>
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
-              const { index, icon, section } = item;
-              console.log(section);
+              const { index, selected, notSelected, section } = item;
+              const isSelected =
+                sectionToDisplay(currentSection) === section ?? false;
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
                     onClick={() => {
                       handleSectionChange(item.index);
                     }}
-                    selected={index === 0}
+                    selected={isSelected}
                   >
-                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemIcon>
+                      {isSelected ? selected : notSelected}
+                    </ListItemIcon>
                     <Typography
                       variant="h6"
-                      color={index === 0 ? "primary.main" : "neutral.main"}
+                      color={isSelected ? "primary.main" : "neutral.main"}
                     >
                       {section}
                     </Typography>
@@ -99,7 +126,9 @@ const DashboardDrawer = ({ window, handleSectionChange }: Props) => {
                   <Box
                     sx={{
                       width: "0.5rem",
-                      backgroundColor: index === 0 ? "primary.main" : "",
+                      backgroundColor: isSelected
+                        ? "primary.main"
+                        : "neutral.light",
                       height: "3rem",
                     }}
                   ></Box>

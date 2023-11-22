@@ -6,7 +6,7 @@ import {
   UseDashboardContextType,
   DashboardContextChildren,
 } from "./types";
-import { User, Movie } from "../utils/dummyDataUtils/types";
+import { User, Movie } from "../utils/v1/dummyDataUtils/types";
 
 export const initialState: InitialState = {
   data: { users: [], movies: [] },

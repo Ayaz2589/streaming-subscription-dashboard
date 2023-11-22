@@ -1,6 +1,5 @@
-export { default as DashboardIconSelected } from "./DashboardIconSelected";
-export { default as ProjectIconNotSelected } from "./ProjectIconNotSelected";
-export { default as ClientIconNotSelected } from "./ClientIconNotSelected";
-export { default as FinanceIconNotSelected } from "./FinanceIconNotSelected";
-
+export { default as DashboardIcon } from "./DashboardIcon";
+export { default as ProjectIcon } from "./ProjectIcon";
+export { default as ClientIcon } from "./ClientIcon";
+export { default as FinanceIcon } from "./FinanceIcon";
 export { default as UserIcon } from "./UserIcon";

@@ -3,10 +3,10 @@ import { BrowserRouter } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { User, Movie } from "../../utils/dummyDataUtils/types";
+import { User, Movie } from "../../utils/v1/dummyDataUtils/types";
 import { useFetch, useDashboard } from "../../hooks";
 import { Navigation, ContentContainer } from "../v2/";
-import { colors } from "../../utils";
+import { colors } from "../../utils/v1";
 
 export enum SectionRoutes {
   Dashboard = "/",

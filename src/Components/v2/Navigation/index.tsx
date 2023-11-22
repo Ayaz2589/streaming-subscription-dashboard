@@ -10,7 +10,10 @@ const Navigation = ({ handleSectionChange, currentSection }: Props) => {
   return (
     <Box>
       <DashboardAppBar currentSection={currentSection} />
-      <DashboardDrawer handleSectionChange={handleSectionChange} />
+      <DashboardDrawer
+        handleSectionChange={handleSectionChange}
+        currentSection={currentSection}
+      />
     </Box>
   );
 };

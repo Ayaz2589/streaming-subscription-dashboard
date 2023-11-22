@@ -1,7 +1,7 @@
 import { BarChart } from "@mui/x-charts/BarChart";
-import { User } from "../../../utils/dummyDataUtils/types";
+import { User } from "../../../utils/v1/dummyDataUtils/types";
 import { HoverPaper } from "..";
-import { colors } from "../../../utils";
+import { colors } from "../../../utils/v1";
 
 const chartSetting = {
   yAxis: [
