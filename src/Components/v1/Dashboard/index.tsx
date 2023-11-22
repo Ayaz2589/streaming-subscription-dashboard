@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import { useDashboard } from "../../../hooks";
 import { ActiveUserDisplay, PieChart, HoverPaper } from "..";
 import { ActiveUsersBarChart } from "..";
-import { User } from "../../../utils/dummyDataUtils/types";
-import { colors } from "../../../utils";
+import { User } from "../../../utils/v1/dummyDataUtils/types";
+import { colors } from "../../../utils/v1";
 
 const Dashboard = ({
   handleSectionChange,

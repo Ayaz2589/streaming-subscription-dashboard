@@ -1,4 +1,4 @@
-import secrets from "../../../secrets";
+import secrets from "../../../../secrets";
 import { MovieAPIRequest, Movie } from "./types";
 
 const urlList = `list=top_rated_lowest_100`;

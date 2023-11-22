@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { AllUsersTable, PieChart } from "..";
 import { useDashboard } from "../../../hooks";
-import { formatUsersForTable } from "../../../utils";
-import { User } from "../../../utils/dummyDataUtils/types";
+import { formatUsersForTable } from "../../../utils/v1";
+import { User } from "../../../utils/v1/dummyDataUtils/types";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 

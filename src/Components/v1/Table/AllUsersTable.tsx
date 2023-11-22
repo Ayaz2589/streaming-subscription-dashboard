@@ -1,7 +1,7 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
-import { UserTable } from "../../../utils/dashboardUtils/types";
-import { colors } from "../../../utils";
+import { UserTable } from "../../../utils/v1/dashboardUtils/types";
+import { colors } from "../../../utils/v1";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },

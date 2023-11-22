@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import { Header } from "..";
-import { colors } from "../../../utils";
+import { colors } from "../../../utils/v1";
 // import TheatersIcon from "@mui/icons-material/Theaters";
 
 const drawerWidth = 240;

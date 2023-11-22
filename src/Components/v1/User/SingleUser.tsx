@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { formatUserMoviesForTable } from "../../../utils";
+import { formatUserMoviesForTable } from "../../../utils/v1";
 import { UserMoviesTable } from "..";
-import { colors } from "../../../utils";
+import { colors } from "../../../utils/v1";
 
 const SingleUser = () => {
   const location = useLocation();

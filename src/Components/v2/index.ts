@@ -12,3 +12,4 @@ export { default as Legend } from "./Chart/Legend";
 export { default as Header } from "./Chart/Header";
 export { default as ControlledOpenSelect } from "./Chart/ControlledOpenSelect";
 export { default as Card } from "./Card";
+export { default as Project } from "./Project"

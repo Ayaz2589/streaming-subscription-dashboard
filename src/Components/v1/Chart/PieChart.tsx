@@ -1,7 +1,7 @@
 import { PieChart as MUIPieChart } from "@mui/x-charts/PieChart";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { colors } from "../../../utils";
+import { colors } from "../../../utils/v1";
 
 interface PieProps {
   data: { id: number; value: number; label: string }[];

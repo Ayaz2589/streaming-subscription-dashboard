@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import Paper from "@mui/material/Paper";
-import { colors } from "../../../utils";
+import { colors } from "../../../utils/v1";
 
 const HoverPaper = ({
   children,

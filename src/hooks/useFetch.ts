@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { createDummyDataJSON } from "../utils";
-import { User, Movie } from "../utils/dummyDataUtils/types";
+import { createDummyDataJSON } from "../utils/v1";
+import { User, Movie } from "../utils/v1/dummyDataUtils/types";
 import secrets from "../../secrets";
 
 interface UseFetch {

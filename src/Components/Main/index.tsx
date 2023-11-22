@@ -3,12 +3,12 @@ import { BrowserRouter } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { User, Movie } from "../../utils/dummyDataUtils/types";
+import { User, Movie } from "../../utils/v1/dummyDataUtils/types";
 import { useFetch, useDashboard } from "../../hooks";
 import { Navigation, ContentContainer } from "../v2/";
-import { colors } from "../../utils";
+import { colors } from "../../utils/v1";
 
-enum SectionRoutes {
+export enum SectionRoutes {
   Dashboard = "/",
   Project = "/project",
   Client = "/client",
@@ -18,7 +18,7 @@ enum SectionRoutes {
 const Main = () => {
   const { data, loading, error } = useFetch();
   const { setData } = useDashboard();
-  const [, setCurrentSection] = useState("/");
+  const [currentSection, setCurrentSection] = useState("/");
 
   const cachedSetData = useCallback(
     (data: { users: User[]; movies: Movie[] }) => setData(data),
@@ -26,7 +26,6 @@ const Main = () => {
   );
 
   const handleSectionChange = (index: number) => {
-    console.log(index);
     switch (index) {
       case 0:
         setCurrentSection(SectionRoutes.Dashboard);
@@ -63,9 +62,15 @@ const Main = () => {
         height: "100vh",
       }}
     >
-      <Navigation handleSectionChange={handleSectionChange} />
+      <Navigation
+        handleSectionChange={handleSectionChange}
+        currentSection={currentSection}
+      />
       <BrowserRouter>
-        <ContentContainer handleSectionChange={handleSectionChange} />
+        <ContentContainer
+          handleSectionChange={handleSectionChange}
+          currentSection={currentSection}
+        />
       </BrowserRouter>
     </Box>
   );
