@@ -1,6 +1,7 @@
 import { Task } from "../../../types";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
+import { useTableResponsiveSize } from "../../../hooks";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -27,8 +28,9 @@ const columns: GridColDef[] = [
 ];
 
 const TaskList = ({ rows }: { rows: Task[] }) => {
+  const tableHeight = useTableResponsiveSize();
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: tableHeight }}>
       <DataGrid
         sx={{ border: "none" }}
         rows={rows}
