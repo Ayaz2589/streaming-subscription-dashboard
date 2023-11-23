@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Box from "@mui/material/Box";
-import theme from "../../../theme";
+import { monotone as theme } from "../../../theme";
 import { Legend, Header, Card } from "..";
 import { barChartDummyData as data } from "../../../utils/v2/dummyData";
 

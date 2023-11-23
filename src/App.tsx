@@ -4,7 +4,9 @@ import {
 } from "./context/DashboardContext";
 import { Main } from "./Components/v1";
 import { ThemeProvider } from "@mui/material";
-import theme from "./theme";
+// import { highSchoolMascot as theme } from "./theme";
+import { monotone as theme } from "./theme";
+
 import Box from "@mui/material/Box";
 
 function App() {

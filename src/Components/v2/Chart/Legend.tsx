@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import theme from "../../../theme";
+import { monotone as theme } from "../../../theme";
 
 const Legend = ({ item1, item2 }: { item1: string; item2: string }) => (
   <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
