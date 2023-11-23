@@ -1,6 +1,7 @@
 import { Task } from "../../../types";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
+import { useResponsiveTableSizes } from "../../../hooks";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -27,10 +28,12 @@ const columns: GridColDef[] = [
 ];
 
 const TaskList = ({ rows }: { rows: Task[] }) => {
+  const rowHeight = useResponsiveTableSizes();
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box>
       <DataGrid
         sx={{ border: "none" }}
+        rowHeight={rowHeight}
         rows={rows}
         columns={columns}
         initialState={{
@@ -41,6 +44,7 @@ const TaskList = ({ rows }: { rows: Task[] }) => {
           },
         }}
         pageSizeOptions={[5]}
+        autoHeight={true}
         checkboxSelection
         disableRowSelectionOnClick
       />

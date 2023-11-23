@@ -5,16 +5,17 @@ import {
 import { Main } from "./Components/v1";
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
+import Box from "@mui/material/Box";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div style={{ margin: 0 }}>
+    <Box sx={{ backgroundColor: theme.palette.primary.light }}>
+      <ThemeProvider theme={theme}>
         <DashboardContextProvider data={initialState.data}>
           <Main />
         </DashboardContextProvider>
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Box>
   );
 }
 
