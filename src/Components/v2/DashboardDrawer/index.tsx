@@ -17,6 +17,7 @@ import {
 import { UserSettings } from "..";
 import { sectionToDisplay } from "../../../utils/v2";
 import theme from "../../../theme";
+import { SideNavItems } from "../../../enums";
 
 const drawerWidth = 240;
 
@@ -24,13 +25,6 @@ interface Props {
   window?: () => Window;
   currentSection: string;
   handleSectionChange: (index: number) => void;
-}
-
-enum SideNavItems {
-  Dashboard = "Dashboard",
-  Project = "Project",
-  Client = "Client",
-  Finance = "Finance",
 }
 
 const SideNavItemsArray = [

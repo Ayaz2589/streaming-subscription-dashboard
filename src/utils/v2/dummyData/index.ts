@@ -1,4 +1,31 @@
-import { LineItem, BarItem } from "../../../types";
+import { LineItem, BarItem, DashboardItem } from "../../../types";
+
+export const dashboardDummyData: DashboardItem[] = [
+  {
+    title: "Earnings",
+    value: "$340.50",
+  },
+  {
+    title: "Spend this month",
+    value: "$645.89",
+  },
+  {
+    title: "Sales",
+    value: "$786.00",
+  },
+  {
+    title: "Your Balance",
+    value: "$1,000.00",
+  },
+  {
+    title: "Client Total",
+    value: "$4,586.25",
+  },
+  {
+    title: "Project Total",
+    value: "$3,786.45",
+  },
+];
 
 export const lineChartDummyData: LineItem[] = [
   {
