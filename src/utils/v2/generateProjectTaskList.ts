@@ -1,8 +1,4 @@
-export interface Task {
-  task: string;
-  admin: string;
-  status: string;
-}
+import { Task } from "../../types";
 
 const generateProjectTaskList = (numberOfItems = 10): Task[] => {
   const taskArray = [];
