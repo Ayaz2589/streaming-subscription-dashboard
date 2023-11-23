@@ -1,28 +1,28 @@
 import { useWidth } from ".";
 
-const useTableResponsiveSize = () => {
+const useResponsiveTableSizes = () => {
   const breakpoint = useWidth();
   if (breakpoint === "xs") {
-    return 540;
+    return 40;
   }
 
   if (breakpoint === "sm") {
-    return 475;
+    return 40;
   }
 
   if (breakpoint === "md") {
-    return 520;
+    return 40;
   }
 
   if (breakpoint === "lg") {
-    return 700;
+    return 70;
   }
 
   if (breakpoint === "xl") {
-    return 1020;
+    return 85;
   }
 
-  return 375;
+  return 40;
 };
 
-export default useTableResponsiveSize;
+export default useResponsiveTableSizes;

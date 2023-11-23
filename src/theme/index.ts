@@ -63,7 +63,7 @@ let theme = createTheme({
   },
   shadows: [
     "none",
-    "0px 3px 5px 1px rgba(0,0,0,0.15)",
+    "0px 1px 10px -5px rgba(0,0,0,0.75)",
     ...Array(23).fill("none"),
   ] as Shadows,
 });
