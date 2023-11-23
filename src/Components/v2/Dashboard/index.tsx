@@ -1,34 +1,7 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-
 import { TotalsCard, LineChart, BarChart } from "..";
-
-const dummyData = [
-  {
-    title: "Earnings",
-    value: "$340.50",
-  },
-  {
-    title: "Spend this month",
-    value: "$645.89",
-  },
-  {
-    title: "Sales",
-    value: "$786.00",
-  },
-  {
-    title: "Your Balance",
-    value: "$1,000.00",
-  },
-  {
-    title: "Client Total",
-    value: "$4,586.25",
-  },
-  {
-    title: "Project Total",
-    value: "$3,786.45",
-  },
-];
+import { dashboardDummyData as data } from "../../../utils/v2/dummyData";
 
 const Dashboard = ({
   handleSectionChange,
@@ -44,7 +17,7 @@ const Dashboard = ({
       }}
     >
       <Grid container spacing={2}>
-        {dummyData.map((item, index) => (
+        {data.map((item, index) => (
           <Grid item xs={12} md={4} lg={2} key={index}>
             <TotalsCard
               title={item.title}

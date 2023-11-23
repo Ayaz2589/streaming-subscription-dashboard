@@ -8,29 +8,7 @@ import {
 import Box from "@mui/material/Box";
 import theme from "../../../theme";
 import { Legend, Header, Card } from "..";
-
-const data = [
-  {
-    name: "Q1",
-    project: 800.0,
-    client: 1000.0,
-  },
-  {
-    name: "Q2",
-    project: 1000.0,
-    client: 1200.0,
-  },
-  {
-    name: "Q3",
-    project: 1200.0,
-    client: 1500.0,
-  },
-  {
-    name: "Q4",
-    project: 786.45,
-    client: 886.25,
-  },
-];
+import { barChartDummyData as data } from "../../../utils/v2/dummyData";
 
 const Chart = () => (
   <ResponsiveContainer width="100%" aspect={1.525}>

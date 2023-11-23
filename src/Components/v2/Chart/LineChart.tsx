@@ -8,29 +8,7 @@ import {
 import Box from "@mui/material/Box";
 import theme from "../../../theme";
 import { Legend, Header, Card } from "..";
-
-const data = [
-  {
-    name: "Q1",
-    sales: 75.25,
-    earnings: 30.25,
-  },
-  {
-    name: "Q2",
-    sales: 100.12,
-    earnings: 40.25,
-  },
-  {
-    name: "Q3",
-    sales: 275.8,
-    earnings: 150.25,
-  },
-  {
-    name: "Q4",
-    sales: 334.83,
-    earnings: 74.75,
-  },
-];
+import { lineChartDummyData as data } from "../../../utils/v2/dummyData";
 
 const Chart = () => (
   <ResponsiveContainer width="100%" aspect={1.5}>

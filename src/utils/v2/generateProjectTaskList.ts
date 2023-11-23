@@ -1,4 +1,6 @@
-const generateProjectTaskList = (numberOfItems = 10) => {
+import { Task } from "../../types";
+
+const generateProjectTaskList = (numberOfItems = 10): Task[] => {
   const taskArray = [];
 
   const taskDescriptions = [
@@ -40,7 +42,7 @@ const generateProjectTaskList = (numberOfItems = 10) => {
     taskArray.push(taskObject);
   }
 
-  return taskArray
+  return taskArray;
 };
 
 export default generateProjectTaskList;
