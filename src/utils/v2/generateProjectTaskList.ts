@@ -1,4 +1,5 @@
 import { Task } from "../../types";
+import { generateRandomID, generateRandomDate } from ".";
 
 const generateProjectTaskList = (numberOfItems = 10): Task[] => {
   const taskArray = [];
@@ -34,6 +35,8 @@ const generateProjectTaskList = (numberOfItems = 10): Task[] => {
       statuses[Math.floor(Math.random() * statuses.length)];
 
     const taskObject = {
+      id: generateRandomID(),
+      started: generateRandomDate(),
       task: randomDescription,
       admin: randomAdmin,
       status: randomStatus,
