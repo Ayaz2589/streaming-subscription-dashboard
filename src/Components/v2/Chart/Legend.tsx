@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import theme from "../../../theme";
 
 const Legend = ({ item1, item2 }: { item1: string; item2: string }) => (
   <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -11,7 +10,7 @@ const Legend = ({ item1, item2 }: { item1: string; item2: string }) => (
           height: "20px",
           borderRadius: "50%",
           marginRight: "1rem",
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor: "primary.main",
         }}
       ></Box>
       <Typography variant="body2">{item1}</Typography>
@@ -23,7 +22,7 @@ const Legend = ({ item1, item2 }: { item1: string; item2: string }) => (
           height: "20px",
           borderRadius: "50%",
           marginRight: "1rem",
-          backgroundColor: theme.palette.secondary.main,
+          backgroundColor: "secondary.main",
         }}
       ></Box>
       <Typography variant="body2">{item2}</Typography>

@@ -4,10 +4,12 @@ import {
 } from "./context/DashboardContext";
 import { Main } from "./Components/v1";
 import { ThemeProvider } from "@mui/material";
-import theme from "./theme";
 import Box from "@mui/material/Box";
 
+import { useSetTheme } from "./hooks";
+
 function App() {
+  const { theme } = useSetTheme();
   return (
     <Box sx={{ backgroundColor: theme.palette.primary.light }}>
       <ThemeProvider theme={theme}>
