@@ -1,57 +1,67 @@
 import {
   AreaChart as AreaChartRecharts,
-  CartesianGrid,
   XAxis,
-  YAxis,
   Tooltip,
-  Bar,
   Area,
   ResponsiveContainer,
 } from "recharts";
-import { Card } from "..";
+import { Card, Header } from "..";
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    month: "Jan",
+    expense: 4000,
+    project_expense: 2400,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    month: "Feb",
+    expense: 3000,
+    project_expense: 1398,
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    month: "March",
+    expense: 2000,
+    project_expense: 9800,
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    month: "Apr",
+    expense: 2780,
+    project_expense: 3908,
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    month: "May",
+    expense: 1890,
+    project_expense: 4800,
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    month: "June",
+    expense: 2390,
+    project_expense: 3800,
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    month: "July",
+    expense: 3490,
+    project_expense: 4300,
+  },
+  {
+    month: "Sept",
+    expense: 2090,
+    project_expense: 4300,
+  },
+  {
+    month: "Oct",
+    expense: 1290,
+    project_expense: 4300,
+  },
+  {
+    month: "Nov",
+    expense: 890,
+    project_expense: 3300,
+  },
+  {
+    month: "Dec",
+    expense: 290,
+    project_expense: 1300,
   },
 ];
 
@@ -64,13 +74,9 @@ const AreaChart = () => {
         flexDirection: "column",
       }}
     >
-      <ResponsiveContainer width="100%" aspect={2.7}>
-        <AreaChartRecharts
-          width={730}
-          height={250}
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
+      <Header title="Expense" />
+      <ResponsiveContainer width="100%" aspect={3.5}>
+        <AreaChartRecharts width={730} height={250} data={data}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -81,20 +87,24 @@ const AreaChart = () => {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
             </linearGradient>
           </defs>
-          {/* <XAxis dataKey="name" />
-          <YAxis /> */}
-          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="month"
+            axisLine={false}
+            tickSize={0}
+            // tick={{ fill: theme.palette.neutral.light }}
+            tickMargin={10}
+          />
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey="expense"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#colorUv)"
           />
           <Area
             type="monotone"
-            dataKey="pv"
+            dataKey="project_expense"
             stroke="#82ca9d"
             fillOpacity={1}
             fill="url(#colorPv)"
