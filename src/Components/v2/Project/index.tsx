@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { TaskList, AreaChart } from "..";
+import { TaskList, AreaChart, PieChart } from "..";
 
 import { generateProjectTaskList } from "../../../utils/v2";
 
@@ -21,6 +21,9 @@ const Project = ({
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <AreaChart />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <PieChart />
         </Grid>
         <Grid item xs={12}>
           <TaskList rows={taskList} />
