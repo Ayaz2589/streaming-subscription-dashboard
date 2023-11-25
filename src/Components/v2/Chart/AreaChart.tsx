@@ -51,12 +51,28 @@ const AreaChart = () => {
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              <stop
+                offset="5%"
+                stopColor={theme.palette.primary.main}
+                stopOpacity={0.8}
+              />
+              <stop
+                offset="95%"
+                stopColor={theme.palette.primary.main}
+                stopOpacity={0}
+              />
             </linearGradient>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+              <stop
+                offset="5%"
+                stopColor={theme.palette.secondary.main}
+                stopOpacity={0.8}
+              />
+              <stop
+                offset="95%"
+                stopColor={theme.palette.secondary.main}
+                stopOpacity={0}
+              />
             </linearGradient>
           </defs>
           <XAxis
@@ -80,14 +96,14 @@ const AreaChart = () => {
           <Area
             type="monotone"
             dataKey="company"
-            stroke="#8884d8"
+            stroke={theme.palette.primary.main}
             fillOpacity={1}
             fill="url(#colorUv)"
           />
           <Area
             type="monotone"
             dataKey="project"
-            stroke="#82ca9d"
+            stroke={theme.palette.secondary.main}
             fillOpacity={1}
             fill="url(#colorPv)"
           />
