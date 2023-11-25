@@ -15,3 +15,4 @@ export { default as Card } from "./Card";
 export { default as Project } from "./Project";
 export { default as TaskList } from "./TaskList";
 export { default as AreaChart } from "./Chart/AreaChart";
+export { default as PieChart } from "./Chart/PieChart";
