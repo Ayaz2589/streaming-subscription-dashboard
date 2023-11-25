@@ -74,7 +74,7 @@ const AreaChart = () => {
         flexDirection: "column",
       }}
     >
-      <Header title="Expense" />
+      <Header title="Company vs Project Expense" />
       <ResponsiveContainer width="100%" aspect={3.5}>
         <AreaChartRecharts width={730} height={250} data={data}>
           <defs>
