@@ -5,67 +5,34 @@ import {
   Area,
   ResponsiveContainer,
 } from "recharts";
+import { useTheme } from "@mui/material";
 import { Card, Header } from "..";
 
 const data = [
   {
-    month: "Jan",
-    expense: 4000,
-    project_expense: 2400,
+    quarter: "Q1",
+    company: 1500,
+    project: 500,
   },
   {
-    month: "Feb",
-    expense: 3000,
-    project_expense: 1398,
+    quarter: "Q2",
+    company: 1190,
+    project: 3300,
   },
   {
-    month: "March",
-    expense: 2000,
-    project_expense: 9800,
+    quarter: "Q3",
+    company: 590,
+    project: 1300,
   },
   {
-    month: "Apr",
-    expense: 2780,
-    project_expense: 3908,
-  },
-  {
-    month: "May",
-    expense: 1890,
-    project_expense: 4800,
-  },
-  {
-    month: "June",
-    expense: 2390,
-    project_expense: 3800,
-  },
-  {
-    month: "July",
-    expense: 3490,
-    project_expense: 4300,
-  },
-  {
-    month: "Sept",
-    expense: 2090,
-    project_expense: 4300,
-  },
-  {
-    month: "Oct",
-    expense: 1290,
-    project_expense: 4300,
-  },
-  {
-    month: "Nov",
-    expense: 890,
-    project_expense: 3300,
-  },
-  {
-    month: "Dec",
-    expense: 290,
-    project_expense: 1300,
+    quarter: "Q4",
+    company: 20,
+    project: 100,
   },
 ];
 
 const AreaChart = () => {
+  const theme = useTheme();
   return (
     <Card
       elevation={0}
@@ -76,7 +43,12 @@ const AreaChart = () => {
     >
       <Header title="Company vs Project Expense" />
       <ResponsiveContainer width="100%" aspect={3.5}>
-        <AreaChartRecharts width={730} height={250} data={data}>
+        <AreaChartRecharts
+          width={730}
+          height={250}
+          data={data}
+          margin={{ top: 10, right: 15, left: 15, bottom: 0 }}
+        >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -88,23 +60,33 @@ const AreaChart = () => {
             </linearGradient>
           </defs>
           <XAxis
-            dataKey="month"
+            dataKey="quarter"
             axisLine={false}
             tickSize={0}
-            // tick={{ fill: theme.palette.neutral.light }}
             tickMargin={10}
           />
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: theme.palette.primary.light,
+              color: theme.palette.neutral.dark,
+              borderRadius: "0.5rem",
+              border: "none",
+              fontWeight: "bold",
+            }}
+            itemStyle={{ color: theme.palette.neutral.dark }}
+            cursor={true}
+            formatter={(value: string) => `$${value}`}
+          />
           <Area
             type="monotone"
-            dataKey="expense"
+            dataKey="company"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#colorUv)"
           />
           <Area
             type="monotone"
-            dataKey="project_expense"
+            dataKey="project"
             stroke="#82ca9d"
             fillOpacity={1}
             fill="url(#colorPv)"
