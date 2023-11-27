@@ -3,11 +3,7 @@ import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart } from "..";
 import { dashboardDummyData as data } from "../../../utils/v2/dummyData";
 
-const Dashboard = ({
-  handleSectionChange,
-}: {
-  handleSectionChange: (index: number) => void;
-}) => {
+const Dashboard = () => {
   return (
     <Box
       sx={{
@@ -19,11 +15,7 @@ const Dashboard = ({
       <Grid container spacing={2}>
         {data.map((item, index) => (
           <Grid item xs={12} md={4} lg={2} key={index}>
-            <TotalsCard
-              title={item.title}
-              value={item.value}
-              onClick={() => handleSectionChange(index)}
-            />
+            <TotalsCard title={item.title} value={item.value} />
           </Grid>
         ))}
         <Grid item xs={12} md={6} lg={2}>
