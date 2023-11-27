@@ -10,8 +10,8 @@ import Typography from "@mui/material/Typography";
 import {
   DashboardIcon,
   ProjectIcon,
-  ClientIcon,
-  FinanceIcon,
+  // ClientIcon,
+  // FinanceIcon,
 } from "../../../svg";
 
 import { UserSettings } from "..";
@@ -48,18 +48,18 @@ const DashboardDrawer = ({
       selected: <ProjectIcon fill={theme.palette.primary.main} />,
       notSelected: <ProjectIcon fill={theme.palette.neutral.main} />,
     },
-    {
-      section: SideNavItems.Client,
-      index: 2,
-      selected: <ClientIcon fill={theme.palette.primary.main} />,
-      notSelected: <ClientIcon fill={theme.palette.neutral.main} />,
-    },
-    {
-      section: SideNavItems.Finance,
-      index: 3,
-      selected: <FinanceIcon fill={theme.palette.primary.main} />,
-      notSelected: <FinanceIcon fill={theme.palette.neutral.main} />,
-    },
+    // {
+    //   section: SideNavItems.Client,
+    //   index: 2,
+    //   selected: <ClientIcon fill={theme.palette.primary.main} />,
+    //   notSelected: <ClientIcon fill={theme.palette.neutral.main} />,
+    // },
+    // {
+    //   section: SideNavItems.Finance,
+    //   index: 3,
+    //   selected: <FinanceIcon fill={theme.palette.primary.main} />,
+    //   notSelected: <FinanceIcon fill={theme.palette.neutral.main} />,
+    // },
   ];
 
   const handleDrawerToggle = () => {
