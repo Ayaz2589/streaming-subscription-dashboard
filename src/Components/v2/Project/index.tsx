@@ -4,11 +4,7 @@ import { TaskList, AreaChart, PieChart } from "..";
 
 import { generateProjectTaskList } from "../../../utils/v2";
 
-const Project = ({
-  handleSectionChange,
-}: {
-  handleSectionChange: (index: number) => void;
-}) => {
+const Project = () => {
   const taskList = generateProjectTaskList(100);
   return (
     <Box

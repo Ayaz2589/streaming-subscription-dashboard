@@ -4,13 +4,7 @@ import { SectionRoutes } from "../../Main";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 
-const ContentContainer = ({
-  handleSectionChange,
-  currentSection,
-}: {
-  currentSection: string;
-  handleSectionChange: (index: number) => void;
-}) => {
+const ContentContainer = ({ currentSection }: { currentSection: string }) => {
   const navigate = useNavigate();
   useEffect(() => navigate(currentSection), [currentSection]);
   return (
@@ -21,14 +15,8 @@ const ContentContainer = ({
       }}
     >
       <Routes>
-        <Route
-          path={SectionRoutes.Dashboard}
-          element={<Dashboard handleSectionChange={handleSectionChange} />}
-        />
-        <Route
-          path={SectionRoutes.Project}
-          element={<Project handleSectionChange={handleSectionChange} />}
-        />
+        <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
+        <Route path={SectionRoutes.Project} element={<Project />} />
       </Routes>
     </Box>
   );
