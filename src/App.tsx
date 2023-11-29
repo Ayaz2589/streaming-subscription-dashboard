@@ -6,7 +6,7 @@ import {
 import Main from "./Components/Main";
 import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
-import { Authentication } from "./Components/v2";
+import { BrowserRouter } from "react-router-dom";
 import { useSetTheme } from "./hooks";
 
 function App() {
@@ -25,9 +25,11 @@ function App() {
   return (
     <Box sx={{ backgroundColor: theme.palette.primary.light }}>
       <ThemeProvider theme={theme}>
-        <DashboardContextProvider data={initialState.data}>
-          <Authentication />
-        </DashboardContextProvider>
+        <BrowserRouter>
+          <DashboardContextProvider data={initialState.data}>
+            <Main />
+          </DashboardContextProvider>
+        </BrowserRouter>
       </ThemeProvider>
     </Box>
   );

@@ -1,11 +1,11 @@
 import { useEffect, useCallback, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { User, Movie } from "../../utils/v1/dummyDataUtils/types";
 import { useFetch, useDashboard } from "../../hooks";
-import { Navigation, ContentContainer } from "../v2/";
+import { Navigation, Dashboard, Project, Login, Signup } from "../v2/";
 import { colors } from "../../utils/v1";
 
 export enum SectionRoutes {
@@ -13,17 +13,19 @@ export enum SectionRoutes {
   Project = "/project",
   Client = "/client",
   Finance = "/finance",
+  Auth = "/auth",
 }
 
 const Main = () => {
-  const { data, loading, error } = useFetch();
+  // const { data, loading, error } = useFetch();
   const { setData } = useDashboard();
-  const [currentSection, setCurrentSection] = useState("/");
+  const location = useLocation();
+  const [currentSection, setCurrentSection] = useState(location.pathname);
 
-  const cachedSetData = useCallback(
-    (data: { users: User[]; movies: Movie[] }) => setData(data),
-    [setData]
-  );
+  useEffect(() => {
+    console.log(currentSection);
+    // navigate(currentSection);
+  }, [currentSection]);
 
   const handleSectionChange = (index: number) => {
     switch (index) {
@@ -40,19 +42,13 @@ const Main = () => {
         setCurrentSection(SectionRoutes.Finance);
         break;
       default:
-        setCurrentSection("/");
+        setCurrentSection(location.pathname);
     }
   };
 
-  useEffect(() => {
-    if (data) {
-      cachedSetData(data);
-    }
-  }, [data, cachedSetData]);
+  // if (error) return <div>Something went wrong...</div>; // Make better error handling
 
-  if (error) return <div>Something went wrong...</div>; // Make better error handling
-
-  if (loading) return <SimpleBackdrop />;
+  // if (loading) return <SimpleBackdrop />;
 
   return (
     <Box
@@ -62,15 +58,20 @@ const Main = () => {
         height: "100vh",
       }}
     >
-      <Navigation
-        handleSectionChange={handleSectionChange}
-        currentSection={currentSection}
-      />
-      <BrowserRouter>
-        <ContentContainer
+      {location.pathname.includes(SectionRoutes.Auth) ? null : (
+        <Navigation
+          handleSectionChange={handleSectionChange}
           currentSection={currentSection}
         />
-      </BrowserRouter>
+      )}
+      <Routes>
+        <Route path={SectionRoutes.Auth}>
+          <Route path={`${SectionRoutes.Auth}/login`} element={<Login />} />
+          <Route path={`${SectionRoutes.Auth}/signup`} element={<Signup />} />
+        </Route>
+        <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
+        <Route path={SectionRoutes.Project} element={<Project />} />
+      </Routes>
     </Box>
   );
 };
