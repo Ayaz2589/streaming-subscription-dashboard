@@ -3,10 +3,10 @@ import {
   initialState,
   DashboardContextProvider,
 } from "./context/DashboardContext";
-import { Main } from "./Components/v1";
+import Main from "./Components/Main";
 import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
-
+import { Authentication } from "./Components/v2";
 import { useSetTheme } from "./hooks";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
     <Box sx={{ backgroundColor: theme.palette.primary.light }}>
       <ThemeProvider theme={theme}>
         <DashboardContextProvider data={initialState.data}>
-          <Main />
+          <Authentication />
         </DashboardContextProvider>
       </ThemeProvider>
     </Box>
