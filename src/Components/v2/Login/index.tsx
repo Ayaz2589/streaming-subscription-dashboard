@@ -1,9 +1,9 @@
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useForm } from "react-hook-form";
+import axios from "../../../api/axios";
 
 interface FormValues {
   email: string;
@@ -14,10 +14,19 @@ const Login = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
 
-  const handleSubmitForm = (data: FormValues) => {
+  const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
     if (email && password && Object.keys(errors).length === 0) {
       console.log("Login", JSON.stringify(data));
+      try {
+        const response = await axios.post(
+          "/api/dashboardv2/auth/login",
+          JSON.stringify(data)
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
