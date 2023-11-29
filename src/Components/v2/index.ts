@@ -19,3 +19,4 @@ export { default as PieChart } from "./Chart/PieChart";
 export { default as Authentication } from "./Authentication";
 export { default as Login } from "./Login";
 export { default as Signup } from "./Signup";
+export { default as Router } from "./Router";

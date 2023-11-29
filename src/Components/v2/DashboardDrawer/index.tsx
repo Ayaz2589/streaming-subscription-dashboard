@@ -23,15 +23,10 @@ const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
-  currentSection: string;
-  handleSectionChange: (index: number) => void;
 }
 
-const DashboardDrawer = ({
-  window,
-  handleSectionChange,
-  currentSection,
-}: Props) => {
+const DashboardDrawer = ({ window }: Props) => {
+  const currentSection = "Dashboard";
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
 
@@ -48,18 +43,6 @@ const DashboardDrawer = ({
       selected: <ProjectIcon fill={theme.palette.primary.main} />,
       notSelected: <ProjectIcon fill={theme.palette.neutral.main} />,
     },
-    // {
-    //   section: SideNavItems.Client,
-    //   index: 2,
-    //   selected: <ClientIcon fill={theme.palette.primary.main} />,
-    //   notSelected: <ClientIcon fill={theme.palette.neutral.main} />,
-    // },
-    // {
-    //   section: SideNavItems.Finance,
-    //   index: 3,
-    //   selected: <FinanceIcon fill={theme.palette.primary.main} />,
-    //   notSelected: <FinanceIcon fill={theme.palette.neutral.main} />,
-    // },
   ];
 
   const handleDrawerToggle = () => {
@@ -101,12 +84,7 @@ const DashboardDrawer = ({
                 sectionToDisplay(currentSection) === section ?? false;
               return (
                 <ListItem key={index} disablePadding>
-                  <ListItemButton
-                    onClick={() => {
-                      handleSectionChange(item.index);
-                    }}
-                    selected={isSelected}
-                  >
+                  <ListItemButton onClick={() => {}}>
                     <ListItemIcon>
                       {isSelected ? selected : notSelected}
                     </ListItemIcon>

@@ -1,19 +1,16 @@
 import { DashboardAppBar, DashboardDrawer } from "..";
 import Box from "@mui/material/Box";
 
-interface Props {
-  currentSection: string;
-  handleSectionChange: (index: number) => void;
-}
+// interface Props {
+//   currentSection: string;
+//   handleSectionChange: (index: number) => void;
+// }
 
-const Navigation = ({ handleSectionChange, currentSection }: Props) => {
+const Navigation = () => {
   return (
     <Box>
-      <DashboardAppBar currentSection={currentSection} />
-      <DashboardDrawer
-        handleSectionChange={handleSectionChange}
-        currentSection={currentSection}
-      />
+      <DashboardAppBar />
+      <DashboardDrawer />
     </Box>
   );
 };
