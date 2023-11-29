@@ -15,20 +15,21 @@ import {
 } from "../../../svg";
 
 import { UserSettings } from "..";
-import { sectionToDisplay } from "../../../utils/v2";
 import { SideNavItems } from "../../../enums";
 import { useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
+  currentSection: string;
 }
 
-const DashboardDrawer = ({ window }: Props) => {
-  const currentSection = "Dashboard";
+const DashboardDrawer = ({ window, currentSection }: Props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const SideNavItemsArray = [
     {
@@ -36,12 +37,14 @@ const DashboardDrawer = ({ window }: Props) => {
       index: 0,
       selected: <DashboardIcon fill={theme.palette.primary.main} />,
       notSelected: <DashboardIcon fill={theme.palette.neutral.main} />,
+      path: "/",
     },
     {
       section: SideNavItems.Project,
       index: 1,
       selected: <ProjectIcon fill={theme.palette.primary.main} />,
       notSelected: <ProjectIcon fill={theme.palette.neutral.main} />,
+      path: "/project",
     },
   ];
 
@@ -80,11 +83,13 @@ const DashboardDrawer = ({ window }: Props) => {
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
-              const isSelected =
-                sectionToDisplay(currentSection) === section ?? false;
+              const isSelected = currentSection === section ?? false;
               return (
                 <ListItem key={index} disablePadding>
-                  <ListItemButton onClick={() => {}}>
+                  <ListItemButton
+                    onClick={() => navigate(item.path)}
+                    selected={isSelected}
+                  >
                     <ListItemIcon>
                       {isSelected ? selected : notSelected}
                     </ListItemIcon>

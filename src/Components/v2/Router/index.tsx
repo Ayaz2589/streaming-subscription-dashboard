@@ -18,7 +18,9 @@ const Router = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      {currentSection !== "Authentication" ? <Navigation /> : null}
+      {currentSection !== "Authentication" ? (
+        <Navigation currentSection={currentSection} />
+      ) : null}
       <Routes>
         <Route
           path="/auth/login"
