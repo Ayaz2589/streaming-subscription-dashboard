@@ -1,10 +1,8 @@
-import { useEffect, useCallback, useState } from "react";
+import { useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { User, Movie } from "../../utils/v1/dummyDataUtils/types";
-import { useFetch, useDashboard } from "../../hooks";
 import { Navigation, Dashboard, Project, Login, Signup } from "../v2/";
 import { colors } from "../../utils/v1";
 
@@ -17,16 +15,9 @@ export enum SectionRoutes {
 }
 
 const Main = () => {
-  // const { data, loading, error } = useFetch();
-  const { setData } = useDashboard();
   const location = useLocation();
   const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState(location.pathname);
-
-  useEffect(() => {
-    console.log(currentSection);
-    // navigate(currentSection);
-  }, [currentSection]);
 
   const handleSectionChange = (index: number) => {
     switch (index) {
@@ -37,12 +28,6 @@ const Main = () => {
       case 1:
         setCurrentSection(SectionRoutes.Project);
         navigate(SectionRoutes.Project);
-        break;
-      case 2:
-        setCurrentSection(SectionRoutes.Client);
-        break;
-      case 3:
-        setCurrentSection(SectionRoutes.Finance);
         break;
       default:
         setCurrentSection(location.pathname);
