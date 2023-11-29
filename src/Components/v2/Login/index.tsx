@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
       <Stack>
-        <Typography variant="h1">Authentication</Typography>
+        <Typography variant="h1">Login</Typography>
         <TextField
           label="Email"
           variant="outlined"

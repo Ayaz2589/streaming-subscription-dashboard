@@ -4,7 +4,7 @@ import { Login, Signup } from "..";
 const Authentication = () => {
   return (
     <Box>
-      <Login />
+      <Signup />
     </Box>
   );
 };
