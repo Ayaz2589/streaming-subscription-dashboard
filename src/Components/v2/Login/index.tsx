@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -10,7 +11,12 @@ interface FormValues {
   password: string;
 }
 
-const Login = () => {
+const Login = ({
+  updateCurrentSection,
+}: {
+  updateCurrentSection: (value: string) => void;
+}) => {
+  useEffect(() => updateCurrentSection("Authentication"), []);
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
 

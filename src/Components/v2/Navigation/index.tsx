@@ -3,17 +3,13 @@ import Box from "@mui/material/Box";
 
 interface Props {
   currentSection: string;
-  handleSectionChange: (index: number) => void;
 }
 
-const Navigation = ({ handleSectionChange, currentSection }: Props) => {
+const Navigation = ({ currentSection }: Props) => {
   return (
     <Box>
       <DashboardAppBar currentSection={currentSection} />
-      <DashboardDrawer
-        handleSectionChange={handleSectionChange}
-        currentSection={currentSection}
-      />
+      <DashboardDrawer currentSection={currentSection} />
     </Box>
   );
 };

@@ -3,12 +3,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
 import { SearchBar } from "..";
-import { sectionToDisplay } from "../../../utils/v2";
 
 const drawerWidth = 240;
 
 const DashboardAppBar = ({ currentSection }: { currentSection: string }) => {
-  const sectiontoDisplay = sectionToDisplay(currentSection);
   return (
     <AppBar
       position="fixed"
@@ -21,8 +19,8 @@ const DashboardAppBar = ({ currentSection }: { currentSection: string }) => {
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h4" color="neutral.dark" fontWeight="bold">
-          {sectiontoDisplay}
+        <Typography variant="h4" color="neutral.main">
+          {currentSection}
         </Typography>
         <SearchBar />
       </Toolbar>

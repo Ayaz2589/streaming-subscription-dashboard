@@ -15,25 +15,21 @@ import {
 } from "../../../svg";
 
 import { UserSettings } from "..";
-import { sectionToDisplay } from "../../../utils/v2";
 import { SideNavItems } from "../../../enums";
 import { useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
   currentSection: string;
-  handleSectionChange: (index: number) => void;
 }
 
-const DashboardDrawer = ({
-  window,
-  handleSectionChange,
-  currentSection,
-}: Props) => {
+const DashboardDrawer = ({ window, currentSection }: Props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const SideNavItemsArray = [
     {
@@ -41,25 +37,15 @@ const DashboardDrawer = ({
       index: 0,
       selected: <DashboardIcon fill={theme.palette.primary.main} />,
       notSelected: <DashboardIcon fill={theme.palette.neutral.main} />,
+      path: "/",
     },
     {
       section: SideNavItems.Project,
       index: 1,
       selected: <ProjectIcon fill={theme.palette.primary.main} />,
       notSelected: <ProjectIcon fill={theme.palette.neutral.main} />,
+      path: "/project",
     },
-    // {
-    //   section: SideNavItems.Client,
-    //   index: 2,
-    //   selected: <ClientIcon fill={theme.palette.primary.main} />,
-    //   notSelected: <ClientIcon fill={theme.palette.neutral.main} />,
-    // },
-    // {
-    //   section: SideNavItems.Finance,
-    //   index: 3,
-    //   selected: <FinanceIcon fill={theme.palette.primary.main} />,
-    //   notSelected: <FinanceIcon fill={theme.palette.neutral.main} />,
-    // },
   ];
 
   const handleDrawerToggle = () => {
@@ -97,14 +83,11 @@ const DashboardDrawer = ({
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
-              const isSelected =
-                sectionToDisplay(currentSection) === section ?? false;
+              const isSelected = currentSection === section ?? false;
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
-                    onClick={() => {
-                      handleSectionChange(item.index);
-                    }}
+                    onClick={() => navigate(item.path)}
                     selected={isSelected}
                   >
                     <ListItemIcon>

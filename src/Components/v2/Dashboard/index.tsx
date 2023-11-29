@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart } from "..";
 import { dashboardDummyData as data } from "../../../utils/v2/dummyData";
 
-const Dashboard = () => {
+const Dashboard = ({
+  updateCurrentSection,
+}: {
+  updateCurrentSection: (value: string) => void;
+}) => {
+  useEffect(() => updateCurrentSection("Dashboard"), []);
   return (
     <Box
       sx={{

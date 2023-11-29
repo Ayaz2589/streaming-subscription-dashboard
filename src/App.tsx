@@ -3,11 +3,24 @@ import {
   initialState,
   DashboardContextProvider,
 } from "./context/DashboardContext";
-import Main from "./Components/Main";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
-import { Authentication } from "./Components/v2";
+import {
+  Authentication,
+  Navigation,
+  Dashboard,
+  Project,
+  Router,
+} from "./Components/v2";
 import { useSetTheme } from "./hooks";
+
+export enum SectionRoutes {
+  Dashboard = "/",
+  Project = "/project",
+  Client = "/client",
+  Finance = "/finance",
+}
 
 function App() {
   const { theme, setHighSchoolMascot, setMonotone } = useSetTheme();
@@ -26,7 +39,9 @@ function App() {
     <Box sx={{ backgroundColor: theme.palette.primary.light }}>
       <ThemeProvider theme={theme}>
         <DashboardContextProvider data={initialState.data}>
-          <Authentication />
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
         </DashboardContextProvider>
       </ThemeProvider>
     </Box>

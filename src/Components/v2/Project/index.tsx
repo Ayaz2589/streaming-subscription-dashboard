@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { TaskList, AreaChart, PieChart } from "..";
 
 import { generateProjectTaskList } from "../../../utils/v2";
 
-const Project = () => {
+const Project = ({
+  updateCurrentSection,
+}: {
+  updateCurrentSection: (value: string) => void;
+}) => {
+  useEffect(() => updateCurrentSection("Project"), []);
   const taskList = generateProjectTaskList(100);
   return (
     <Box
