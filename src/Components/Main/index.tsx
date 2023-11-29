@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -20,6 +20,7 @@ const Main = () => {
   // const { data, loading, error } = useFetch();
   const { setData } = useDashboard();
   const location = useLocation();
+  const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState(location.pathname);
 
   useEffect(() => {
@@ -31,9 +32,11 @@ const Main = () => {
     switch (index) {
       case 0:
         setCurrentSection(SectionRoutes.Dashboard);
+        navigate(SectionRoutes.Dashboard);
         break;
       case 1:
         setCurrentSection(SectionRoutes.Project);
+        navigate(SectionRoutes.Project);
         break;
       case 2:
         setCurrentSection(SectionRoutes.Client);
