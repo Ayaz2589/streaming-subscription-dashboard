@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Login, Signup } from "..";
+import { Signup } from "..";
 
 const Authentication = () => {
   return (
