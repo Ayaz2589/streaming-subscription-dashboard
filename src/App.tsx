@@ -25,9 +25,6 @@ export enum SectionRoutes {
 function App() {
   const { theme, setHighSchoolMascot, setMonotone } = useSetTheme();
   const [themeState] = useState("monotone");
-  const [currentSection, updateCurrentSection] = useState("");
-
-  console.log(currentSection);
 
   useEffect(() => {
     if (themeState === "monotone") {
@@ -43,7 +40,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <DashboardContextProvider data={initialState.data}>
           <BrowserRouter>
-            <Router updateCurrentSection={updateCurrentSection} />
+            <Router />
           </BrowserRouter>
         </DashboardContextProvider>
       </ThemeProvider>
