@@ -2,6 +2,7 @@ import { React } from "react";
 import { AgGridReact } from "ag-grid-react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material";
 import { Card } from "..";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -16,6 +17,7 @@ interface Row {
 }
 
 const Table = ({ rows }: { rows: Row[] }) => {
+  const theme = useTheme();
   const taskCompleted = rows.filter((task) => task.status === "completed");
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
@@ -31,13 +33,25 @@ const Table = ({ rows }: { rows: Row[] }) => {
       cellStyle: (params) => {
         const value = params.value;
         if (value === "completed") {
-          return { color: "green", textAlign: "left" };
+          return {
+            backgroundColor: theme.palette.tableStatusCellComplete.main,
+            color: "#fff",
+            textAlign: "left",
+          };
         } else if (value === "pending") {
-          return { color: "orange", textAlign: "left" };
+          return {
+            textAlign: "left",
+            backgroundColor: theme.palette.tableStatusCellPending.main,
+            color: "#fff",
+          };
         } else if (value === "in-progress") {
-          return { backgroundColor: "blue", textAlign: "left" };
+          return {
+            textAlign: "left",
+            backgroundColor: theme.palette.tableStatusCellInProgress.main,
+            color: "#fff",
+          };
         } else {
-          return { color: "black", textAlign: "left" };
+          return { textAlign: "left" };
         }
       },
     },
