@@ -3,14 +3,10 @@ import {
   initialState,
   DashboardContextProvider,
 } from "./context/DashboardContext";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 import {
-  Authentication,
-  Navigation,
-  Dashboard,
-  Project,
   Router,
 } from "./Components/v2";
 import { useSetTheme } from "./hooks";

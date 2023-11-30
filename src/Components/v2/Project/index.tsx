@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { TaskList, AreaChart, PieChart } from "..";
+import { AreaChart, PieChart, Table } from "..";
 
 import { generateProjectTaskList } from "../../../utils/v2";
 
@@ -18,6 +18,7 @@ const Project = ({
         flexGrow: 1,
         padding: "7rem 1rem 1rem 1rem",
         backgroundColor: "primary.light",
+        display: "flex",
       }}
     >
       <Grid container spacing={2}>
@@ -28,8 +29,7 @@ const Project = ({
           <PieChart />
         </Grid>
         <Grid item xs={12}>
-          <TaskList rows={taskList} />
-          <Grid />
+          <Table rows={taskList} />
         </Grid>
       </Grid>
     </Box>

@@ -2,7 +2,6 @@ import Typography from "@mui/material/Typography";
 import { Task } from "../../../types";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
-import { useResponsiveTableSizes } from "../../../hooks";
 import { Card } from "..";
 
 const columns: GridColDef[] = [
@@ -30,7 +29,7 @@ const columns: GridColDef[] = [
 ];
 
 const TaskList = ({ rows }: { rows: Task[] }) => {
-  const rowHeight = useResponsiveTableSizes();
+  // const rowHeight = useResponsiveTableSizes();
   const taskCompleted = rows.filter((task) => task.status === "completed");
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
@@ -73,23 +72,25 @@ const TaskList = ({ rows }: { rows: Task[] }) => {
           </Box>
         </Box>
       </Box>
-      <DataGrid
-        sx={{ border: "none" }}
-        rowHeight={rowHeight}
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 10,
+      <Box sx={{ width: "100%" }}>
+        <DataGrid
+          sx={{ border: "none", overflowX: "scroll" }}
+          // rowHeight={rowHeight}
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 10,
+              },
             },
-          },
-        }}
-        pageSizeOptions={[5]}
-        autoHeight={true}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
+          }}
+          pageSizeOptions={[5]}
+          autoHeight={true}
+          checkboxSelection
+          disableRowSelectionOnClick
+        />
+      </Box>
     </Card>
   );
 };

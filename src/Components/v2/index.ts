@@ -16,7 +16,7 @@ export { default as Project } from "./Project";
 export { default as TaskList } from "./TaskList";
 export { default as AreaChart } from "./Chart/AreaChart";
 export { default as PieChart } from "./Chart/PieChart";
-export { default as Authentication } from "./Authentication";
 export { default as Login } from "./Login";
 export { default as Signup } from "./Signup";
 export { default as Router } from "./Router";
+export { default as Table } from "./Table";
