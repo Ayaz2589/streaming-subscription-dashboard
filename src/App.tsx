@@ -32,7 +32,7 @@ function App() {
   }, [themeState]);
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.primary.light }}>
+    <Box>
       <ThemeProvider theme={theme}>
         <DashboardContextProvider data={initialState.data}>
           <BrowserRouter>

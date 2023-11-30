@@ -17,7 +17,6 @@ const Project = ({
       sx={{
         flexGrow: 1,
         padding: "7rem 1rem 1rem 1rem",
-        backgroundColor: "primary.light",
         display: "flex",
       }}
     >
