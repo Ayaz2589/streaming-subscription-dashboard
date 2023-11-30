@@ -1,22 +1,21 @@
 import { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
+import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
 import axios from "../../../api/axios";
+import { Card } from "..";
 
 interface FormValues {
   email: string;
   password: string;
 }
 
-const Login = ({
-  updateCurrentSection,
-}: {
-  updateCurrentSection: (value: string) => void;
-}) => {
-  useEffect(() => updateCurrentSection("Authentication"), []);
+const LoginInput = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
 
@@ -38,39 +37,99 @@ const Login = ({
 
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
-      <Stack>
-        <Typography variant="h1">Login</Typography>
-        <TextField
-          label="Email"
-          variant="outlined"
-          type="email"
-          {...register("email", {
-            pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            required: "Email is required",
-            minLength: 4,
-          })}
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
-        <TextField
-          label="Password"
-          variant="outlined"
-          type="password"
-          {...register("password", {
-            required: "Password is required",
-            minLength: {
-              value: 8,
-              message: "Password must be atleast 8 charcters",
-            },
-          })}
-          error={!!errors.password}
-          helperText={errors.password?.message}
-        />
-        <Button variant="contained" type="submit" disabled={false}>
-          Login
-        </Button>
-      </Stack>
+      <Box sx={{ height: "94vh" }}>
+        <Card sx={{ margin: "1rem", height: "inherit", display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "6rem",
+              width: "100%",
+              marginTop: "5rem",
+            }}
+          >
+            <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
+              Welcome Back!
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <TextField
+                  sx={{ width: "80%", alignSelf: "center" }}
+                  label="Email"
+                  type="email"
+                  {...register("email", {
+                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    required: "Email is required",
+                    minLength: 4,
+                  })}
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                />
+                <TextField
+                  sx={{ width: "80%", alignSelf: "center" }}
+                  label="Password"
+                  type="password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be atleast 8 charcters",
+                    },
+                  })}
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                />
+                <Box
+                  sx={{ display: "flex", width: "80%", alignSelf: "center" }}
+                >
+                  <Checkbox />
+                  <Typography variant="body1" sx={{ alignSelf: "center" }}>
+                    Remember me
+                  </Typography>
+                </Box>
+              </Box>
+              <Button
+                variant="contained"
+                type="submit"
+                size="large"
+                disabled={false}
+                sx={{ width: "50%", alignSelf: "center" }}
+              >
+                Login
+              </Button>
+              <Link href="/auth/signup" underline="hover">
+                Don't have an account? Signup
+              </Link>
+              <Link href="" underline="hover">
+                Forgot your password?
+              </Link>
+            </Box>
+          </Box>
+        </Card>
+      </Box>
     </form>
+  );
+};
+
+const Login = ({
+  updateCurrentSection,
+}: {
+  updateCurrentSection: (value: string) => void;
+}) => {
+  useEffect(() => updateCurrentSection("Authentication"), []);
+  return (
+    <Box
+      sx={{
+        width: "100%",
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid item xs={0} sm={4} md={8} lg={10}></Grid>
+        <Grid item xs={12} sm={8} md={4} lg={2}>
+          <LoginInput />
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

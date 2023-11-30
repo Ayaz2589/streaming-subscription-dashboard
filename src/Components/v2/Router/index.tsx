@@ -44,7 +44,8 @@ const Router = () => {
         />
         <Route
           path={SectionRoutes.Dashboard}
-          element={<Dashboard updateCurrentSection={updateCurrentSection} />}
+          // element={<Dashboard updateCurrentSection={updateCurrentSection} />}
+          element={<Login updateCurrentSection={updateCurrentSection} />}
         />
         <Route
           path={SectionRoutes.Project}
