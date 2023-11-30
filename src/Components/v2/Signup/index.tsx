@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
 import axios from "../../../api/axios";
 import { Card } from "..";
+import { AppLogo } from "../../../svg";
 
 interface FormValues {
   email: string;
@@ -130,10 +131,21 @@ const Signup = ({
     <Box
       sx={{
         width: "100%",
+        backgroundImage: "url(../../../public/images/login-image.png)",
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={0} sm={4} md={8} lg={10}></Grid>
+        <Grid item xs={0} sm={4} md={8} lg={10}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              height: "100vh",
+            }}
+          >
+            <AppLogo />
+          </Box>
+        </Grid>
         <Grid item xs={12} sm={8} md={4} lg={2}>
           <SignupInput />
         </Grid>
