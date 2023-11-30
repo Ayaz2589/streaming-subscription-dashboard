@@ -18,31 +18,12 @@ export enum SectionRoutes {
 const Main = () => {
   const { data, loading, error } = useFetch();
   const { setData } = useDashboard();
-  const [currentSection, setCurrentSection] = useState("/");
+  const [currentSection] = useState("/");
 
   const cachedSetData = useCallback(
     (data: { users: User[]; movies: Movie[] }) => setData(data),
     [setData]
   );
-
-  const handleSectionChange = (index: number) => {
-    switch (index) {
-      case 0:
-        setCurrentSection(SectionRoutes.Dashboard);
-        break;
-      case 1:
-        setCurrentSection(SectionRoutes.Project);
-        break;
-      case 2:
-        setCurrentSection(SectionRoutes.Client);
-        break;
-      case 3:
-        setCurrentSection(SectionRoutes.Finance);
-        break;
-      default:
-        setCurrentSection("/");
-    }
-  };
 
   useEffect(() => {
     if (data) {
