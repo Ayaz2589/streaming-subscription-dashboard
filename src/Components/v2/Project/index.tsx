@@ -28,7 +28,7 @@ const Project = ({
         <Grid item xs={12} md={4}>
           <PieChart />
         </Grid>
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12}>
           <Table rows={taskList} />
         </Grid>
       </Grid>

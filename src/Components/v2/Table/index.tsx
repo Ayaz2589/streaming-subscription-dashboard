@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Card } from "..";
 import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
+import "ag-grid-community/styles/ag-theme-material.css";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 
@@ -23,10 +23,29 @@ const Table = ({ rows }: { rows: Row[] }) => {
   const gridRef = useRef<AgGridReact<Row>>(null);
 
   const columnDefs: col[] = [
-    { headerName: "Task", field: "task" },
-    { headerName: "Admin", field: "admin" },
-    { headerName: "Status", field: "status" },
-    { headerName: "Date Started", field: "started" },
+    { headerName: "Task", field: "task", cellStyle: { textAlign: "left" } },
+    { headerName: "Admin", field: "admin", cellStyle: { textAlign: "left" } },
+    {
+      headerName: "Status",
+      field: "status",
+      cellStyle: (params) => {
+        const value = params.value;
+        if (value === "completed") {
+          return { color: "green", textAlign: "left" };
+        } else if (value === "pending") {
+          return { color: "orange", textAlign: "left" };
+        } else if (value === "in-progress") {
+          return { backgroundColor: "blue", textAlign: "left" };
+        } else {
+          return { color: "black", textAlign: "left" };
+        }
+      },
+    },
+    {
+      headerName: "Date Started",
+      field: "started",
+      cellStyle: { textAlign: "left" },
+    },
   ];
   const [sortable] = useState(true);
   const [filter] = useState(true);
@@ -82,15 +101,29 @@ const Table = ({ rows }: { rows: Row[] }) => {
         </Box>
       </Box>
       {/* <button onClick={buttonListener}>Push Me</button> */}
-      <Box className="ag-theme-alpine" style={{ height: 300 }}>
+      <Box className="ag-theme-material" style={{ height: 600 }}>
         <AgGridReact
           ref={gridRef}
           rowData={rows}
-          columnDefs={columnDefs}
+          gridOptions={{
+            rowHeight: 40,
+            columnDefs,
+            autoSizeStrategy: {
+              type: "fitGridWidth",
+              defaultMinWidth: 100,
+              columnLimits: [
+                {
+                  colId: "country",
+                  minWidth: 900,
+                },
+              ],
+            },
+          }}
           animateRows={true}
           rowSelection="multiple"
           onCellClicked={cellClickedListener}
           defaultColDef={{ sortable, filter }}
+          pagination={true}
         />
       </Box>
     </Card>
