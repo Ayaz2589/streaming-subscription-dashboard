@@ -1,4 +1,3 @@
-import { React } from "react";
 import { AgGridReact } from "ag-grid-react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -7,13 +6,21 @@ import { Card } from "..";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 
-import { useState, useRef, useEffect, useCallback } from "react";
-
 interface Row {
   task: string;
   admin: string;
   status: string;
   started: string;
+}
+
+interface ColumnDef {
+  headerName: string;
+  field: string;
+  cellStyle?: {
+    textAlign?: string;
+    backgroundColor?: string;
+    color?: string;
+  };
 }
 
 const Table = ({ rows }: { rows: Row[] }) => {
@@ -22,15 +29,15 @@ const Table = ({ rows }: { rows: Row[] }) => {
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
 
-  const gridRef = useRef<AgGridReact<Row>>(null);
-
-  const columnDefs: col[] = [
+  const columnDefs: ColumnDef[] = [
     { headerName: "Task", field: "task", cellStyle: { textAlign: "left" } },
     { headerName: "Admin", field: "admin", cellStyle: { textAlign: "left" } },
     {
       headerName: "Status",
       field: "status",
+      // @ts-expect-error cannot find type
       cellStyle: (params) => {
+        console.log(params);
         const value = params.value;
         if (value === "completed") {
           return {
@@ -61,19 +68,6 @@ const Table = ({ rows }: { rows: Row[] }) => {
       cellStyle: { textAlign: "left" },
     },
   ];
-  const [sortable] = useState(true);
-  const [filter] = useState(true);
-
-  const cellClickedListener = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      console.log("cellClicked", event);
-    },
-    []
-  );
-
-  const buttonListener = useCallback((e) => {
-    if (gridRef) gridRef?.current?.api.deselectAll();
-  }, []);
 
   return (
     <Card>
@@ -114,13 +108,12 @@ const Table = ({ rows }: { rows: Row[] }) => {
           </Box>
         </Box>
       </Box>
-      {/* <button onClick={buttonListener}>Push Me</button> */}
       <Box className="ag-theme-material" style={{ height: 600 }}>
         <AgGridReact
-          ref={gridRef}
           rowData={rows}
           gridOptions={{
             rowHeight: 40,
+            // @ts-expect-error cannot find type
             columnDefs,
             autoSizeStrategy: {
               type: "fitGridWidth",
@@ -135,8 +128,8 @@ const Table = ({ rows }: { rows: Row[] }) => {
           }}
           animateRows={true}
           rowSelection="multiple"
-          onCellClicked={cellClickedListener}
-          defaultColDef={{ sortable, filter }}
+          defaultColDef={{ sortable: true, filter: true }}
+          paginationAutoPageSize={true}
           pagination={true}
         />
       </Box>
