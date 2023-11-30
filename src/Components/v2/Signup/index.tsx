@@ -55,7 +55,7 @@ const SignupInput = () => {
             }}
           >
             <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
-              Welcome Back!
+              Sign up
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
