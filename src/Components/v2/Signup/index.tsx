@@ -5,7 +5,6 @@ import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
 import axios from "../../../api/axios";
 import { Card } from "..";
