@@ -1,39 +1,47 @@
-import Typography from "@mui/material/Typography";
-import { Task } from "../../../types";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { React } from "react";
+import { AgGridReact } from "ag-grid-react";
 import Box from "@mui/material/Box";
-import { useResponsiveTableSizes } from "../../../hooks";
+import Typography from "@mui/material/Typography";
 import { Card } from "..";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
 
-const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 90 },
-  {
-    field: "task",
-    headerName: "Task",
-    width: 550,
-  },
-  {
-    field: "admin",
-    headerName: "Admin",
-    width: 160,
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 110,
-  },
-  {
-    field: "started",
-    headerName: "Date Started",
-    width: 110,
-  },
-];
+import { useState, useRef, useEffect, useCallback } from "react";
 
-const TaskList = ({ rows }: { rows: Task[] }) => {
-  // const rowHeight = useResponsiveTableSizes();
+interface Row {
+  task: string;
+  admin: string;
+  status: string;
+  started: string;
+}
+
+const Table = ({ rows }: { rows: Row[] }) => {
   const taskCompleted = rows.filter((task) => task.status === "completed");
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
+
+  const gridRef = useRef<AgGridReact<Row>>(null);
+
+  const columnDefs: col[] = [
+    { headerName: "Task", field: "task" },
+    { headerName: "Admin", field: "admin" },
+    { headerName: "Status", field: "status" },
+    { headerName: "Date Started", field: "started" },
+  ];
+  const [sortable] = useState(true);
+  const [filter] = useState(true);
+
+  const cellClickedListener = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      console.log("cellClicked", event);
+    },
+    []
+  );
+
+  const buttonListener = useCallback((e) => {
+    if (gridRef) gridRef?.current?.api.deselectAll();
+  }, []);
+
   return (
     <Card>
       <Box
@@ -73,27 +81,20 @@ const TaskList = ({ rows }: { rows: Task[] }) => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ width: "100%" }}>
-        <DataGrid
-          sx={{ border: "none", overflowX: "scroll" }}
-          // rowHeight={rowHeight}
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
-              },
-            },
-          }}
-          pageSizeOptions={[5]}
-          autoHeight={true}
-          checkboxSelection
-          disableRowSelectionOnClick
+      {/* <button onClick={buttonListener}>Push Me</button> */}
+      <Box className="ag-theme-alpine" style={{ height: 300 }}>
+        <AgGridReact
+          ref={gridRef}
+          rowData={rows}
+          columnDefs={columnDefs}
+          animateRows={true}
+          rowSelection="multiple"
+          onCellClicked={cellClickedListener}
+          defaultColDef={{ sortable, filter }}
         />
       </Box>
     </Card>
   );
 };
 
-export default TaskList;
+export default Table;
