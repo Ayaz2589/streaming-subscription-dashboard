@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { TaskList, AreaChart, PieChart, Table } from "..";
+import { AreaChart, PieChart, Table } from "..";
 
 import { generateProjectTaskList } from "../../../utils/v2";
 

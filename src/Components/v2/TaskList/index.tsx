@@ -2,7 +2,6 @@ import Typography from "@mui/material/Typography";
 import { Task } from "../../../types";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
-import { useResponsiveTableSizes } from "../../../hooks";
 import { Card } from "..";
 
 const columns: GridColDef[] = [
