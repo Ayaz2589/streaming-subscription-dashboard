@@ -1,7 +1,7 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material";
 import { Login, Navigation, Dashboard, Project, Signup } from "..";
 
 export enum SectionRoutes {
@@ -13,6 +13,20 @@ export enum SectionRoutes {
 
 const Router = () => {
   const [currentSection, updateCurrentSection] = useState("");
+  const theme = useTheme();
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (body) {
+      body.style.backgroundColor = theme.palette.primary.light;
+    }
+
+    return () => {
+      if (body) {
+        body.style.backgroundColor = "";
+      }
+    };
+  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>

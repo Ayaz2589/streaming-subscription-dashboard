@@ -6,9 +6,7 @@ import {
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
-import {
-  Router,
-} from "./Components/v2";
+import { Router } from "./Components/v2";
 import { useSetTheme } from "./hooks";
 
 export enum SectionRoutes {
@@ -32,7 +30,7 @@ function App() {
   }, [themeState]);
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.primary.light }}>
+    <Box>
       <ThemeProvider theme={theme}>
         <DashboardContextProvider data={initialState.data}>
           <BrowserRouter>
