@@ -12,9 +12,9 @@ const Dashboard = ({
 }) => {
   useEffect(() => updateCurrentSection("Dashboard"), []);
 
-  const { auth, setAuth } = useAuth();
+  const { auth } = useAuth();
   console.log(auth);
-  
+
   return (
     <Box
       sx={{
