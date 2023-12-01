@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import axios from "../../../api/axios";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
-import { AuthContext } from "../../../context";
+import { useAuth } from "../../../context";
 
 interface FormValues {
   email: string;
@@ -20,7 +20,7 @@ interface FormValues {
 const LoginInput = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useAuth();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -39,7 +39,7 @@ const LoginInput = () => {
     }
   };
 
-  console.log({ auth });
+  console.log(auth);
 
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
