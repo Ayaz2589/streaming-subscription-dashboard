@@ -20,12 +20,11 @@ interface FormValues {
 const LoginInput = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
     if (email && password && Object.keys(errors).length === 0) {
-      console.log("Login", JSON.stringify(data));
       try {
         const response = await axios.post(
           "/api/dashboardv2/auth/login",
@@ -38,8 +37,6 @@ const LoginInput = () => {
       }
     }
   };
-
-  console.log(auth);
 
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
