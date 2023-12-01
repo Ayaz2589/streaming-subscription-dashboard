@@ -29,11 +29,11 @@ const Router = () => {
     };
   }, []);
 
+  const isAuthScreens = currentSection !== "Authentication";
+
   return (
-    <Box sx={{ display: "flex" }}>
-      {currentSection !== "Authentication" ? (
-        <Navigation currentSection={currentSection} />
-      ) : null}
+    <Box sx={{ display: isAuthScreens ? "flex" : "block" }}>
+      {isAuthScreens ? <Navigation currentSection={currentSection} /> : null}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
