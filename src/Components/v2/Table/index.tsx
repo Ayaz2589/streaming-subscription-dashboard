@@ -37,7 +37,6 @@ const Table = ({ rows }: { rows: Row[] }) => {
       field: "status",
       // @ts-expect-error cannot find type
       cellStyle: (params) => {
-        console.log(params);
         const value = params.value;
         if (value === "completed") {
           return {
