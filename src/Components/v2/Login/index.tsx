@@ -11,6 +11,7 @@ import axios from "../../../api/axios";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
 import { useAuth } from "../../../context";
+import { useNavigate } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -21,6 +22,7 @@ const LoginInput = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
   const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -32,6 +34,7 @@ const LoginInput = () => {
         );
         const { accessToken, refreshToken } = response.data;
         setAuth({ accessToken, refreshToken, email, password });
+        navigate("/dashboard");
       } catch (error) {
         console.log(error);
       }

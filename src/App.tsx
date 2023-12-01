@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  initialState,
-  DashboardContextProvider,
-} from "./context/DashboardContext";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Router } from "./Components/v2";
 import { useSetTheme } from "./hooks";
+import { AuthProvider } from "./context";
 
 export enum SectionRoutes {
   Dashboard = "/",
@@ -32,11 +29,11 @@ function App() {
   return (
     <Box>
       <ThemeProvider theme={theme}>
-        <DashboardContextProvider data={initialState.data}>
+        <AuthProvider>
           <BrowserRouter>
             <Router />
           </BrowserRouter>
-        </DashboardContextProvider>
+        </AuthProvider>
       </ThemeProvider>
     </Box>
   );

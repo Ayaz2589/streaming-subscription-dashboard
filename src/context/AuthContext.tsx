@@ -1,4 +1,10 @@
-import { createContext, ReactElement, useReducer, useCallback } from "react";
+import {
+  createContext,
+  ReactElement,
+  useReducer,
+  useCallback,
+  useContext,
+} from "react";
 
 interface InitialState {
   accessToken?: string;
@@ -21,7 +27,11 @@ enum ActionType {
   REMOVE_AUTH = "REMOVE_AUTH",
 }
 
-type UseAuthContext = ReturnType<typeof useAuth>;
+interface UseAuthContext {
+  auth: InitialState;
+  setAuth: (data: InitialState) => void;
+  removeAuth: () => void;
+}
 
 const authReducer = (state: InitialState, action: Actions) => {
   switch (action.type) {
@@ -34,7 +44,17 @@ const authReducer = (state: InitialState, action: Actions) => {
   }
 };
 
-export const useAuth = () => {
+const initialAuthContext: UseAuthContext = {
+  auth: {},
+  setAuth: () => {},
+  removeAuth: () => {},
+};
+
+export const AuthContext = createContext<UseAuthContext>(initialAuthContext);
+
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }: AuthContextChildren) => {
   const [state, dispatch] = useReducer(authReducer, {});
 
   const setAuth = useCallback(
@@ -48,19 +68,9 @@ export const useAuth = () => {
     dispatch({ type: ActionType.REMOVE_AUTH, payload: {} });
   }, [dispatch]);
 
-  return { auth: state, setAuth, removeAuth };
-};
-
-const initialAuthContext: UseAuthContext = {
-  auth: {},
-  setAuth: () => {},
-  removeAuth: () => {},
-};
-
-export const AuthContext = createContext<UseAuthContext>(initialAuthContext);
-
-export const AuthProvider = ({ children }: AuthContextChildren) => {
   return (
-    <AuthContext.Provider value={useAuth()}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ auth: state, setAuth, removeAuth }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

@@ -37,7 +37,7 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
       index: 0,
       selected: <DashboardIcon fill={theme.palette.primary.main} />,
       notSelected: <DashboardIcon fill={theme.palette.neutral.main} />,
-      path: "/",
+      path: "/dashboard",
     },
     {
       section: SideNavItems.Project,
