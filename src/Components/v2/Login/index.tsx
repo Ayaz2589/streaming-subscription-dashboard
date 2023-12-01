@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import axios from "../../../api/axios";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
+import { useAuth } from "../../../context";
 
 interface FormValues {
   email: string;
@@ -19,17 +20,18 @@ interface FormValues {
 const LoginInput = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
+  const { setAuth } = useAuth();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
     if (email && password && Object.keys(errors).length === 0) {
-      console.log("Login", JSON.stringify(data));
       try {
         const response = await axios.post(
           "/api/dashboardv2/auth/login",
           JSON.stringify(data)
         );
-        console.log(response);
+        const { accessToken, refreshToken } = response.data;
+        setAuth({ accessToken, refreshToken, email, password });
       } catch (error) {
         console.log(error);
       }
