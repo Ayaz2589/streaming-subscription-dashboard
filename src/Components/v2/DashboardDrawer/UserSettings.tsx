@@ -1,22 +1,27 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { UserIcon } from "../../../svg";
+import { useAuth } from "../../../context";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import { useAxios } from "../../../hooks";
 
 const UserSettings = () => {
+  const { removeAuth } = useAuth();
+  const navigate = useNavigate();
+  const axios = useAxios();
+
+  const handleLogout = async () => {
+    try {
+      await axios.delete("/api/dashboardv2/auth/logout");
+      removeAuth();
+      navigate("/auth/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <Box sx={{ display: "flex" }}>
-      <Box
-        sx={{
-          width: "3.5rem",
-          height: "3.5rem",
-          borderRadius: "50%",
-          margin: "1rem",
-        }}
-      >
-        <UserIcon />
-      </Box>
-      <Typography sx={{ alignSelf: "center" }}>Ayaz Uddin</Typography>
-    </Box>
+    <Button sx={{ marginBottom: "1rem" }} onClick={handleLogout}>
+      Logout
+    </Button>
   );
 };
 
