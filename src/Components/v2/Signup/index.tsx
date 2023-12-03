@@ -6,10 +6,11 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
-import axios from "../../../api/axios";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
 import { useAuth } from "../../../context";
+import { useAxios } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -21,6 +22,8 @@ const SignupInput = () => {
   const { handleSubmit, register, formState } = useForm<FormValues>();
   const { errors } = formState;
   const { setAuth } = useAuth();
+  const axios = useAxios();
+  const navigate = useNavigate();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password, passwordMatch } = data;
@@ -37,6 +40,7 @@ const SignupInput = () => {
         );
         const { accessToken, refreshToken } = response.data;
         setAuth({ accessToken, refreshToken, email, password });
+        navigate("/dashboard");
       } catch (error) {
         console.log(error);
       }
