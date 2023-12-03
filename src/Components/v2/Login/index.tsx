@@ -1,5 +1,5 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -13,6 +13,7 @@ import { AppLogo } from "../../../svg";
 import { useAuth } from "../../../context";
 import { useNavigate } from "react-router-dom";
 import { useAxios } from "../../../hooks";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 interface FormValues {
   email: string;
@@ -25,10 +26,12 @@ const LoginInput = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const axios = useAxios();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
     if (email && password && Object.keys(errors).length === 0) {
+      setIsLoading(true);
       try {
         const response = await axios.post(
           "/api/dashboardv2/auth/login",
@@ -36,6 +39,7 @@ const LoginInput = () => {
         );
         const { accessToken, refreshToken } = response.data;
         setAuth({ accessToken, refreshToken, email, password });
+        setIsLoading(false);
         navigate("/dashboard");
       } catch (error) {
         console.log(error);
@@ -106,7 +110,8 @@ const LoginInput = () => {
               gap: "2rem",
             }}
           >
-            <Button
+            <LoadingButton
+              loading={isLoading}
               variant="contained"
               type="submit"
               size="large"
@@ -114,7 +119,7 @@ const LoginInput = () => {
               sx={{ width: "50%", alignSelf: "center" }}
             >
               Login
-            </Button>
+            </LoadingButton>
             <Link href="/auth/signup" underline="hover">
               Don't have an account? Signup
             </Link>
