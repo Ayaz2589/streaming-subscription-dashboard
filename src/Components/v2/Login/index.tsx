@@ -44,76 +44,85 @@ const LoginInput = () => {
 
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
-      <Box sx={{ height: "94vh" }}>
-        <Card sx={{ margin: "1rem", height: "inherit", display: "flex" }}>
+      <Card
+        sx={{
+          margin: "1rem",
+          height: "94vh",
+          display: "flex",
+          minHeight: "700px",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "6rem",
+            width: "100%",
+            margin: "auto 0",
+          }}
+        >
+          <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
+            Welcome Back!
+          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <TextField
+              sx={{ width: "80%", alignSelf: "center" }}
+              label="Email"
+              type="email"
+              {...register("email", {
+                pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                required: "Email is required",
+                minLength: 4,
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+            />
+            <TextField
+              sx={{ width: "80%", alignSelf: "center" }}
+              label="Password"
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must be atleast 8 charcters",
+                },
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+            <Box sx={{ display: "flex", width: "80%", alignSelf: "center" }}>
+              <Checkbox />
+              <Typography variant="body1" sx={{ alignSelf: "center" }}>
+                Remember me
+              </Typography>
+            </Box>
+          </Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "6rem",
-              width: "100%",
-              marginTop: "5rem",
+              gap: "2rem",
             }}
           >
-            <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
-              Welcome Back!
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                <TextField
-                  sx={{ width: "80%", alignSelf: "center" }}
-                  label="Email"
-                  type="email"
-                  {...register("email", {
-                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    required: "Email is required",
-                    minLength: 4,
-                  })}
-                  error={!!errors.email}
-                  helperText={errors.email?.message}
-                />
-                <TextField
-                  sx={{ width: "80%", alignSelf: "center" }}
-                  label="Password"
-                  type="password"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 8,
-                      message: "Password must be atleast 8 charcters",
-                    },
-                  })}
-                  error={!!errors.password}
-                  helperText={errors.password?.message}
-                />
-                <Box
-                  sx={{ display: "flex", width: "80%", alignSelf: "center" }}
-                >
-                  <Checkbox />
-                  <Typography variant="body1" sx={{ alignSelf: "center" }}>
-                    Remember me
-                  </Typography>
-                </Box>
-              </Box>
-              <Button
-                variant="contained"
-                type="submit"
-                size="large"
-                disabled={false}
-                sx={{ width: "50%", alignSelf: "center" }}
-              >
-                Login
-              </Button>
-              <Link href="/auth/signup" underline="hover">
-                Don't have an account? Signup
-              </Link>
-              <Link href="" underline="hover">
-                Forgot your password?
-              </Link>
-            </Box>
+            <Button
+              variant="contained"
+              type="submit"
+              size="large"
+              disabled={false}
+              sx={{ width: "50%", alignSelf: "center" }}
+            >
+              Login
+            </Button>
+            <Link href="/auth/signup" underline="hover">
+              Don't have an account? Signup
+            </Link>
+            <Link href="" underline="hover">
+              Forgot your password?
+            </Link>
           </Box>
-        </Card>
-      </Box>
+        </Box>
+      </Card>
     </form>
   );
 };
@@ -137,7 +146,7 @@ const Login = ({
             sx={{
               display: "flex",
               justifyContent: "center",
-              height: "100vh",
+              minHeight: "100vh",
             }}
           >
             <AppLogo />
