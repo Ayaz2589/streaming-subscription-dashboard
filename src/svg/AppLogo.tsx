@@ -7,7 +7,15 @@ const AppLogo = ({
   width?: string;
 }) => {
   return (
-    <Box sx={{ margin: "auto 0" }}>
+    <Box
+      sx={{
+        display: "flex",
+        // backgroundColor: "red",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <svg
         width={width}
         height={height}

@@ -1,8 +1,8 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -133,11 +133,9 @@ const Login = ({
 }: {
   updateCurrentSection: (value: string) => void;
 }) => {
-  const theme = useTheme();
-  const [showLogo, setShowLogo] = useState(
-    useMediaQuery(`(min-width:${theme.breakpoints.values.md})`)
-  );
+  const matches = useMediaQuery("(min-width:950px)");
   useEffect(() => updateCurrentSection("Authentication"), []);
+  console.log(matches);
   return (
     <Box
       sx={{
@@ -146,18 +144,8 @@ const Login = ({
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={0} sm={4} md={8} lg={10}>
-          {!showLogo ? (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                minHeight: "100vh",
-              }}
-            >
-              <AppLogo />
-            </Box>
-          ) : null}
+        <Grid item xs={0} md={8} lg={10}>
+          {matches ? <AppLogo /> : null}
         </Grid>
         <Grid item xs={12} md={4} lg={2}>
           <LoginInput />
