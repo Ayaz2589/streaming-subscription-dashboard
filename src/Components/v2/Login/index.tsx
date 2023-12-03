@@ -7,11 +7,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
-import axios from "../../../api/axios";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
 import { useAuth } from "../../../context";
 import { useNavigate } from "react-router-dom";
+import { useAxios } from "../../../hooks";
 
 interface FormValues {
   email: string;
@@ -23,6 +23,7 @@ const LoginInput = () => {
   const { errors } = formState;
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const axios = useAxios();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
