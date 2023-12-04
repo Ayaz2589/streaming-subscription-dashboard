@@ -26,6 +26,7 @@ const LoginInput = () => {
   const navigate = useNavigate();
   const axios = useAxios();
   const [isLoading, setIsLoading] = useState(false);
+  const useLargerHeight = useMediaQuery("(min-width:2000px)");
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -51,7 +52,7 @@ const LoginInput = () => {
       <Card
         sx={{
           margin: "1rem",
-          height: "94vh",
+          height: useLargerHeight ? "96vh" : "94vh",
           display: "flex",
           minHeight: "700px",
         }}
@@ -138,12 +139,16 @@ const Login = ({
   updateCurrentSection: (value: string) => void;
 }) => {
   const matches = useMediaQuery("(min-width:950px)");
+  const useUltraWideImage = useMediaQuery("(min-width:2000px)");
+
   useEffect(() => updateCurrentSection("Authentication"), []);
   return (
     <Box
       sx={{
         width: "100%",
-        backgroundImage: "url(../../../public/images/login-image.png)",
+        backgroundImage: useUltraWideImage
+          ? "url(../../../public/images/login-image-ultra-wide.png)"
+          : "url(../../../public/images/login-image.png)",
       }}
     >
       <Grid container spacing={2}>
