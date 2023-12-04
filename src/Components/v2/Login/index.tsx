@@ -20,7 +20,7 @@ interface FormValues {
 }
 
 const LoginInput = () => {
-  const { handleSubmit, register, formState } = useForm<FormValues>();
+  const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -43,10 +43,17 @@ const LoginInput = () => {
         const auth: Auth = { accessToken, email, password, refreshToken };
         setPersistantLogin(auth);
         setAuth(auth);
-        setIsLoading(false);
         navigate("/dashboard");
-      } catch (error) {
-        console.log(error);
+      } catch (error: unknown) {
+        //@ts-expect-error AxiosError
+        if (error?.response?.data?.error === "User doesn't exists") {
+          setError("email", {
+            type: "manual",
+            message: "User doesn't exists",
+          });
+        }
+      } finally {
+        setIsLoading(false);
       }
     }
   };
