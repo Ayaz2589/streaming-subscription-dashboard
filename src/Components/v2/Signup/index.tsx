@@ -19,7 +19,7 @@ interface FormValues {
 }
 
 const SignupInput = () => {
-  const { handleSubmit, register, formState } = useForm<FormValues>();
+  const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
   const axios = useAxios();
   const { setPersistantLogin } = usePersistantLogin();
@@ -44,7 +44,14 @@ const SignupInput = () => {
         setPersistantLogin(auth);
         setAuth(auth);
         navigate("/dashboard");
-      } catch (error) {
+      } catch (error: unknown) {
+        //@ts-expect-error AxiosError
+        if (error?.response?.data?.error === "User already exists") {
+          setError("email", {
+            type: "manual",
+            message: "User already exists",
+          });
+        }
         console.log(error);
       }
     }
