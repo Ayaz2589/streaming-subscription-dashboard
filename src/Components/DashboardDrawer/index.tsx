@@ -16,9 +16,11 @@ import {
 
 import { UserSettings } from "..";
 import { SideNavItems } from "../../enums";
-import { useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
+const mobileDrawerWidth = "100%";
 const drawerWidth = 240;
 
 interface Props {
@@ -27,7 +29,7 @@ interface Props {
 }
 
 const DashboardDrawer = ({ window, currentSection }: Props) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(true);
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -74,12 +76,15 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
         }}
       >
         <Box>
-          <Typography
-            variant="h5"
-            sx={{ textAlign: "center", marginTop: "-0.9rem" }}
-          >
-            User Dashboard
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="h5" sx={{ textAlign: "center", width: "80%" }}>
+              User Dashboard
+            </Typography>
+            <CloseRoundedIcon
+              sx={{ width: "20%", alignSelf: "center" }}
+              onClick={handleDrawerToggle}
+            />
+          </Box>
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
@@ -137,7 +142,7 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
           display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
-            width: drawerWidth,
+            width: mobileDrawerWidth,
           },
         }}
       >
