@@ -11,7 +11,7 @@ import { Card } from "..";
 import { AppLogo } from "../../svg";
 import { useAuth, Auth } from "../../context";
 import { useNavigate } from "react-router-dom";
-import { useAxios, usePersistantLogin } from "../../hooks";
+import { useAxios, usePersistantLogin, useWindowSize } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 interface FormValues {
@@ -26,8 +26,10 @@ const LoginInput = () => {
   const navigate = useNavigate();
   const axios = useAxios();
   const [isLoading, setIsLoading] = useState(false);
-  const useLargerHeight = useMediaQuery("(min-width:2000px)");
   const { setPersistantLogin } = usePersistantLogin();
+  const windowHeight = useWindowSize();
+
+  console.log(windowHeight);
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -62,8 +64,8 @@ const LoginInput = () => {
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
       <Card
         sx={{
-          margin: "1rem",
-          height: useLargerHeight ? "96vh" : "94vh",
+          padding: "0rem",
+          height: "100vh",
           display: "flex",
           minHeight: "700px",
         }}
@@ -160,6 +162,8 @@ const Login = ({
         backgroundImage: useUltraWideImage
           ? "url(../../../public/images/login-image-ultra-wide.png)"
           : "url(../../../public/images/login-image.png)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
       <Grid container spacing={2}>
@@ -167,7 +171,9 @@ const Login = ({
           {matches ? <AppLogo /> : null}
         </Grid>
         <Grid item xs={12} md={4} lg={2}>
-          <LoginInput />
+          <Box sx={{ height: "100vh" }}>
+            <LoginInput />
+          </Box>
         </Grid>
       </Grid>
     </Box>

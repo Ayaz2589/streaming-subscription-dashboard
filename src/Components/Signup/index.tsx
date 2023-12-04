@@ -66,8 +66,8 @@ const SignupInput = () => {
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
       <Card
         sx={{
-          margin: "1rem",
-          height: useLargerHeight ? "96vh" : "94vh",
+          padding: "0rem",
+          height: "100vh",
           display: "flex",
           minHeight: "700px",
         }}
@@ -227,6 +227,8 @@ const Signup = ({
         backgroundImage: useUltraWideImage
           ? "url(../../../public/images/login-image-ultra-wide.png)"
           : "url(../../../public/images/login-image.png)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
       <Grid container spacing={2}>
@@ -234,7 +236,9 @@ const Signup = ({
           {matches ? <AppLogo /> : null}
         </Grid>
         <Grid item xs={12} md={4} lg={2}>
-          <SignupInput />
+          <Box sx={{ height: "100vh" }}>
+            <SignupInput />
+          </Box>
         </Grid>
       </Grid>
     </Box>
