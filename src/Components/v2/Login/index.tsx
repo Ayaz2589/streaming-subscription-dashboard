@@ -9,9 +9,9 @@ import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
-import { useAuth } from "../../../context";
+import { useAuth, Auth } from "../../../context";
 import { useNavigate } from "react-router-dom";
-import { useAxios } from "../../../hooks";
+import { useAxios, usePersistantLogin } from "../../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 interface FormValues {
@@ -24,9 +24,10 @@ const LoginInput = () => {
   const { errors } = formState;
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const axios = useAxios();
+  const { axios, setRefreshTokenToAxiosHeader } = useAxios();
   const [isLoading, setIsLoading] = useState(false);
   const useLargerHeight = useMediaQuery("(min-width:2000px)");
+  const { setPersistantLogin } = usePersistantLogin();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -38,7 +39,11 @@ const LoginInput = () => {
           JSON.stringify(data)
         );
         const { accessToken, refreshToken } = response.data;
-        setAuth({ accessToken, refreshToken, email, password });
+        setRefreshTokenToAxiosHeader(refreshToken);
+
+        const auth: Auth = { accessToken, email, password };
+        setPersistantLogin(auth);
+        setAuth(auth);
         setIsLoading(false);
         navigate("/dashboard");
       } catch (error) {

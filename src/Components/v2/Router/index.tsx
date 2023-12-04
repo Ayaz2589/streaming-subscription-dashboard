@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material";
 import { Login, Navigation, Dashboard, Project, Signup } from "..";
 import { useAuth } from "../../../context";
+import { usePersistantLogin } from "../../../hooks";
 
 export enum SectionRoutes {
   Dashboard = "/dashboard",
@@ -71,10 +72,18 @@ const Layout = () => {
 };
 
 const RequireAuth = () => {
-  const { auth } = useAuth();
+  const { setAuth } = useAuth();
+  const { getPersistantLogin } = usePersistantLogin();
   const location = useLocation();
+  const [persistedUser] = useState(getPersistantLogin());
 
-  return auth?.email ? (
+  useEffect(() => {
+    if (persistedUser) {
+      setAuth(persistedUser);
+    }
+  }, []);
+
+  return persistedUser ? (
     <Outlet />
   ) : (
     <Navigate to="/auth/login" state={{ from: location }} replace />

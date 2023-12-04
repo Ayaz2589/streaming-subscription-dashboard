@@ -6,9 +6,8 @@ import {
   useContext,
 } from "react";
 
-interface InitialState {
+export interface InitialState {
   accessToken?: string;
-  refreshToken?: string;
   email?: string;
   password?: string;
 }
