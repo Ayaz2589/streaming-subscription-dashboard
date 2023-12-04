@@ -4,6 +4,7 @@ import { Auth } from "../context";
 const usePersistantLogin = () => {
   const [auth, setAuth] = useState<Auth>({
     accessToken: "",
+    refreshToken: "",
     email: "",
     password: "",
   });
@@ -27,7 +28,22 @@ const usePersistantLogin = () => {
     }
   };
 
-  return { auth, setPersistantLogin, getPersistantLogin };
+  const removePersistantLogin = () => {
+    localStorage.removeItem("auth");
+    setAuth({
+      accessToken: "",
+      refreshToken: "",
+      email: "",
+      password: "",
+    });
+  };
+
+  return {
+    auth,
+    setPersistantLogin,
+    getPersistantLogin,
+    removePersistantLogin,
+  };
 };
 
 export default usePersistantLogin;

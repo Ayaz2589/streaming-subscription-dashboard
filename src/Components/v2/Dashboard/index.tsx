@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart } from "..";
 import { dashboardDummyData as data } from "../../../utils/v2/dummyData";
-import { useAuth } from "../../../context";
 
 const Dashboard = ({
   updateCurrentSection,
@@ -11,9 +10,6 @@ const Dashboard = ({
   updateCurrentSection: (value: string) => void;
 }) => {
   useEffect(() => updateCurrentSection("Dashboard"), []);
-
-  const { auth } = useAuth();
-  console.log(auth);
 
   return (
     <Box

@@ -8,6 +8,7 @@ import {
 
 export interface InitialState {
   accessToken?: string;
+  refreshToken?: string;
   email?: string;
   password?: string;
 }

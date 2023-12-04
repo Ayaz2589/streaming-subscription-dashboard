@@ -24,7 +24,7 @@ const LoginInput = () => {
   const { errors } = formState;
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const { axios, setRefreshTokenToAxiosHeader } = useAxios();
+  const axios = useAxios();
   const [isLoading, setIsLoading] = useState(false);
   const useLargerHeight = useMediaQuery("(min-width:2000px)");
   const { setPersistantLogin } = usePersistantLogin();
@@ -39,9 +39,8 @@ const LoginInput = () => {
           JSON.stringify(data)
         );
         const { accessToken, refreshToken } = response.data;
-        setRefreshTokenToAxiosHeader(refreshToken);
 
-        const auth: Auth = { accessToken, email, password };
+        const auth: Auth = { accessToken, email, password, refreshToken };
         setPersistantLogin(auth);
         setAuth(auth);
         setIsLoading(false);
