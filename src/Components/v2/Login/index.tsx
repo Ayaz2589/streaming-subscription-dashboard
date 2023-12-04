@@ -139,7 +139,6 @@ const Login = ({
 }) => {
   const matches = useMediaQuery("(min-width:950px)");
   useEffect(() => updateCurrentSection("Authentication"), []);
-  console.log(matches);
   return (
     <Box
       sx={{
