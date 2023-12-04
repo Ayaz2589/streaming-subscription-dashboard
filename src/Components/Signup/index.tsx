@@ -27,7 +27,6 @@ const SignupInput = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const useLargerHeight = useMediaQuery("(min-width:2000px)");
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password, passwordMatch } = data;
