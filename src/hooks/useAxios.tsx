@@ -3,17 +3,18 @@ import { useAuth } from "../context";
 
 const useAxios = () => {
   const { auth } = useAuth();
-  const { refreshToken } = auth;
+
   const api = axios.create({
     baseURL: "http://localhost:8080",
     headers: {
       "Content-type": "application/json",
     },
   });
+
   api.interceptors.request.use(
     (config) => {
-      if (refreshToken) {
-        config.headers.Authorization = `Bearer ${refreshToken}`;
+      if (auth?.refreshToken) {
+        config.headers.Authorization = `Bearer ${auth.refreshToken}`;
       }
       return config;
     },

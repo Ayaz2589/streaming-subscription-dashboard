@@ -9,9 +9,9 @@ import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
 import { Card } from "..";
 import { AppLogo } from "../../../svg";
-import { useAuth } from "../../../context";
+import { useAuth, Auth } from "../../../context";
 import { useNavigate } from "react-router-dom";
-import { useAxios } from "../../../hooks";
+import { useAxios, usePersistantLogin } from "../../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 interface FormValues {
@@ -20,13 +20,14 @@ interface FormValues {
 }
 
 const LoginInput = () => {
-  const { handleSubmit, register, formState } = useForm<FormValues>();
+  const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const axios = useAxios();
   const [isLoading, setIsLoading] = useState(false);
   const useLargerHeight = useMediaQuery("(min-width:2000px)");
+  const { setPersistantLogin } = usePersistantLogin();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -38,11 +39,21 @@ const LoginInput = () => {
           JSON.stringify(data)
         );
         const { accessToken, refreshToken } = response.data;
-        setAuth({ accessToken, refreshToken, email, password });
-        setIsLoading(false);
+
+        const auth: Auth = { accessToken, email, password, refreshToken };
+        setPersistantLogin(auth);
+        setAuth(auth);
         navigate("/dashboard");
-      } catch (error) {
-        console.log(error);
+      } catch (error: unknown) {
+        //@ts-expect-error AxiosError
+        if (error?.response?.data?.error === "User doesn't exists") {
+          setError("email", {
+            type: "manual",
+            message: "User doesn't exists",
+          });
+        }
+      } finally {
+        setIsLoading(false);
       }
     }
   };
