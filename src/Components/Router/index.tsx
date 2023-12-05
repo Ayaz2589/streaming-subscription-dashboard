@@ -36,37 +36,29 @@ const Router = () => {
     <Box sx={{ display: isAuthScreens ? "flex" : "block" }}>
       {isAuthScreens ? <Navigation currentSection={currentSection} /> : null}
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/auth/login"
+          element={<Login updateCurrentSection={updateCurrentSection} />}
+        />
+        <Route
+          path="/auth/signup"
+          element={<Signup updateCurrentSection={updateCurrentSection} />}
+        />
+        <Route element={<RequireAuth />}>
           <Route
-            path="/auth/login"
-            element={<Login updateCurrentSection={updateCurrentSection} />}
+            path={SectionRoutes.Dashboard}
+            element={<Dashboard updateCurrentSection={updateCurrentSection} />}
           />
           <Route
-            path="/auth/signup"
-            element={<Signup updateCurrentSection={updateCurrentSection} />}
+            path={SectionRoutes.Project}
+            element={<Project updateCurrentSection={updateCurrentSection} />}
           />
-          <Route element={<RequireAuth />}>
-            <Route
-              path={SectionRoutes.Dashboard}
-              element={
-                <Dashboard updateCurrentSection={updateCurrentSection} />
-              }
-            />
-            <Route
-              path={SectionRoutes.Project}
-              element={<Project updateCurrentSection={updateCurrentSection} />}
-            />
-          </Route>
+          <Route
+            path="*"
+            element={<Navigate to={SectionRoutes.Dashboard} replace />}
+          />
         </Route>
       </Routes>
-    </Box>
-  );
-};
-
-const Layout = () => {
-  return (
-    <Box>
-      <Outlet />
     </Box>
   );
 };
