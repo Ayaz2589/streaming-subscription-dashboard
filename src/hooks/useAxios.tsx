@@ -5,7 +5,7 @@ const useAxios = () => {
   const { auth } = useAuth();
 
   const api = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: "https://app-backend-62sfwjhbj-ayaz2589.vercel.app",
     headers: {
       "Content-type": "application/json",
     },
