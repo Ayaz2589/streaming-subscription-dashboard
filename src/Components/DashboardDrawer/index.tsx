@@ -16,9 +16,10 @@ import {
 
 import { UserSettings } from "..";
 import { SideNavItems } from "../../enums";
-import { Button, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const mobileDrawerWidth = "100%";
 const drawerWidth = 240;
@@ -26,10 +27,16 @@ const drawerWidth = 240;
 interface Props {
   window?: () => Window;
   currentSection: string;
+  handleDrawerToggle: () => void;
+  mobileOpen: boolean;
 }
 
-const DashboardDrawer = ({ window, currentSection }: Props) => {
-  const [mobileOpen, setMobileOpen] = useState(true);
+const DashboardDrawer = ({
+  window,
+  currentSection,
+  handleDrawerToggle,
+  mobileOpen,
+}: Props) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -50,12 +57,12 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
     },
   ];
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+  const isMobile = useMediaQuery(
+    `(min-width:${theme.breakpoints.values.sm}px)`
+  );
 
   const drawer = (
     <Box
@@ -80,10 +87,12 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
             <Typography variant="h5" sx={{ textAlign: "center", width: "80%" }}>
               User Dashboard
             </Typography>
-            <CloseRoundedIcon
-              sx={{ width: "20%", alignSelf: "center" }}
-              onClick={handleDrawerToggle}
-            />
+            {!isMobile && (
+              <CloseRoundedIcon
+                sx={{ width: "20%", alignSelf: "center", cursor: "pointer" }}
+                onClick={handleDrawerToggle}
+              />
+            )}
           </Box>
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
