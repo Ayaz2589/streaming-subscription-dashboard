@@ -12,6 +12,7 @@ import { Auth, useAuth } from "../../context";
 import { useNavigate } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material";
 
 interface FormValues {
   email: string;
@@ -83,64 +84,6 @@ const SignupInput = () => {
           <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
             Sign up
           </Typography>
-          {/* <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              <TextField
-                sx={{ width: "80%", alignSelf: "center" }}
-                label="Email"
-                type="email"
-                {...register("email", {
-                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  required: "Email is required",
-                  minLength: 4,
-                })}
-                error={!!errors.email}
-                helperText={errors.email?.message}
-              />
-              <TextField
-                sx={{ width: "80%", alignSelf: "center" }}
-                label="Password"
-                type="password"
-                {...register("password", {
-                  required: "Password is required",
-                  minLength: {
-                    value: 8,
-                    message: "Password must be atleast 8 charcters",
-                  },
-                })}
-                error={!!errors.password}
-                helperText={errors.password?.message}
-              />
-              <TextField
-                sx={{ width: "80%", alignSelf: "center" }}
-                label="Password Again"
-                variant="outlined"
-                type="password"
-                {...register("passwordMatch", {
-                  required: "Password is required",
-                  minLength: {
-                    value: 8,
-                    message: "Password must be atleast 8 charcters",
-                  },
-                })}
-                error={!!errors.password}
-                helperText={errors.password?.message}
-              />
-            </Box>
-            <LoadingButton
-              loading={isLoading}
-              variant="contained"
-              type="submit"
-              size="large"
-              disabled={false}
-              sx={{ width: "50%", alignSelf: "center" }}
-            >
-              Sign up
-            </LoadingButton>
-            <Link href="/auth/login" underline="hover">
-              Already have an account? Login
-            </Link>
-          </Box> */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <TextField
               sx={{ width: "80%", alignSelf: "center" }}
@@ -218,6 +161,12 @@ const Signup = ({
 }) => {
   const matches = useMediaQuery("(min-width:950px)");
   const useUltraWideImage = useMediaQuery("(min-width:2000px)");
+
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(
+    `(min-width:${theme.breakpoints.values.sm}px)`
+  );
+
   useEffect(() => updateCurrentSection("Authentication"), []);
   return (
     <Box
@@ -230,16 +179,18 @@ const Signup = ({
         backgroundSize: "cover",
       }}
     >
-      <Grid container spacing={2}>
-        <Grid item xs={0} md={8} lg={10}>
-          {matches ? <AppLogo /> : null}
-        </Grid>
-        <Grid item xs={12} md={4} lg={2}>
-          <Box sx={{ height: "100vh" }}>
+      {isDesktop ? (
+        <Grid container spacing={2}>
+          <Grid item xs={0} md={8} lg={10}>
+            {matches ? <AppLogo /> : null}
+          </Grid>
+          <Grid item xs={12} md={4} lg={2}>
             <SignupInput />
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <SignupInput />
+      )}
     </Box>
   );
 };
