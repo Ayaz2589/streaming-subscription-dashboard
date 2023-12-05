@@ -13,6 +13,7 @@ import { useAuth, Auth } from "../../context";
 import { useNavigate } from "react-router-dom";
 import { useAxios, usePersistantLogin, useWindowSize } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { useTheme } from "@mui/material";
 
 interface FormValues {
   email: string;
@@ -154,6 +155,11 @@ const Login = ({
   const matches = useMediaQuery("(min-width:950px)");
   const useUltraWideImage = useMediaQuery("(min-width:2000px)");
 
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(
+    `(min-width:${theme.breakpoints.values.sm}px)`
+  );
+
   useEffect(() => updateCurrentSection("Authentication"), []);
   return (
     <Box
@@ -166,16 +172,18 @@ const Login = ({
         backgroundSize: "cover",
       }}
     >
-      <Grid container spacing={2}>
-        <Grid item xs={0} md={8} lg={10}>
-          {matches ? <AppLogo /> : null}
-        </Grid>
-        <Grid item xs={12} md={4} lg={2}>
-          <Box sx={{ height: "100vh" }}>
+      {isDesktop ? (
+        <Grid container spacing={2}>
+          <Grid item xs={0} md={8} lg={10}>
+            {matches ? <AppLogo /> : null}
+          </Grid>
+          <Grid item xs={12} md={4} lg={2}>
             <LoginInput />
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <LoginInput />
+      )}
     </Box>
   );
 };
