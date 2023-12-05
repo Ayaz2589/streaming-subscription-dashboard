@@ -63,14 +63,6 @@ const Router = () => {
   );
 };
 
-const Layout = () => {
-  return (
-    <Box>
-      <Outlet />
-    </Box>
-  );
-};
-
 const RequireAuth = () => {
   const { setAuth } = useAuth();
   const { getPersistantLogin } = usePersistantLogin();
