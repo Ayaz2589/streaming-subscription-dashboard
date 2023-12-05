@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -7,6 +6,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Divider from "@mui/material/Divider";
 import {
   DashboardIcon,
   ProjectIcon,
@@ -18,16 +19,25 @@ import { UserSettings } from "..";
 import { SideNavItems } from "../../enums";
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
+const mobileDrawerWidth = "100%";
 const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
   currentSection: string;
+  handleDrawerToggle: () => void;
+  mobileOpen: boolean;
 }
 
-const DashboardDrawer = ({ window, currentSection }: Props) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+const DashboardDrawer = ({
+  window,
+  currentSection,
+  handleDrawerToggle,
+  mobileOpen,
+}: Props) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -48,12 +58,12 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
     },
   ];
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+  const isMobile = useMediaQuery(
+    `(min-width:${theme.breakpoints.values.sm}px)`
+  );
 
   const drawer = (
     <Box
@@ -74,12 +84,33 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
         }}
       >
         <Box>
-          <Typography
-            variant="h5"
-            sx={{ textAlign: "center", marginTop: "-0.9rem" }}
-          >
-            User Dashboard
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              variant="h5"
+              sx={{ textAlign: "left", width: "80%", marginLeft: "1rem" }}
+            >
+              User Dashboard
+            </Typography>
+            {!isMobile && (
+              <CloseRoundedIcon
+                sx={{
+                  width: "20%",
+                  alignSelf: "center",
+                  cursor: "pointer",
+                }}
+                onClick={handleDrawerToggle}
+              />
+            )}
+          </Box>
+          {!isMobile && (
+            <>
+              <Divider sx={{ marginTop: "1rem" }} />
+              <TextField
+                sx={{ margin: "1rem", width: "90%" }}
+                placeholder="Search..."
+              />
+            </>
+          )}
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
@@ -87,7 +118,10 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
-                    onClick={() => navigate(item.path)}
+                    onClick={() => {
+                      navigate(item.path);
+                      handleDrawerToggle();
+                    }}
                     selected={isSelected}
                   >
                     <ListItemIcon>
@@ -137,7 +171,7 @@ const DashboardDrawer = ({ window, currentSection }: Props) => {
           display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
-            width: drawerWidth,
+            width: mobileDrawerWidth,
           },
         }}
       >
