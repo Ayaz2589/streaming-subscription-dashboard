@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -7,6 +6,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Divider from "@mui/material/Divider";
 import {
   DashboardIcon,
   ProjectIcon,
@@ -83,17 +84,33 @@ const DashboardDrawer = ({
         }}
       >
         <Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Typography variant="h5" sx={{ textAlign: "center", width: "80%" }}>
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              variant="h5"
+              sx={{ textAlign: "left", width: "80%", marginLeft: "1rem" }}
+            >
               User Dashboard
             </Typography>
             {!isMobile && (
               <CloseRoundedIcon
-                sx={{ width: "20%", alignSelf: "center", cursor: "pointer" }}
+                sx={{
+                  width: "20%",
+                  alignSelf: "center",
+                  cursor: "pointer",
+                }}
                 onClick={handleDrawerToggle}
               />
             )}
           </Box>
+          {!isMobile && (
+            <>
+              <Divider sx={{ marginTop: "1rem" }} />
+              <TextField
+                sx={{ margin: "1rem", width: "90%" }}
+                placeholder="Search..."
+              />
+            </>
+          )}
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
@@ -101,7 +118,10 @@ const DashboardDrawer = ({
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
-                    onClick={() => navigate(item.path)}
+                    onClick={() => {
+                      navigate(item.path);
+                      handleDrawerToggle();
+                    }}
                     selected={isSelected}
                   >
                     <ListItemIcon>
