@@ -166,8 +166,8 @@ const Login = ({
       sx={{
         width: "100%",
         backgroundImage: useUltraWideImage
-          ? "url(../../../public/images/login-image-ultra-wide.png)"
-          : "url(../../../public/images/login-image.png)",
+          ? "url(/images/login-image-ultra-wide.png)"
+          : "url(/images/login-image.png)",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
