@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Navigation = ({ currentSection }: Props) => {
-  const [mobileOpen, setMobileOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
