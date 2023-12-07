@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -32,14 +33,13 @@ interface Props {
   mobileOpen: boolean;
 }
 
-const DashboardDrawer = ({
-  window,
-  currentSection,
-  handleDrawerToggle,
-  mobileOpen,
-}: Props) => {
+const DashboardDrawer = ({ window, currentSection }: Props) => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   const SideNavItemsArray = [
     {
@@ -162,7 +162,7 @@ const DashboardDrawer = ({
       <Drawer
         container={container}
         variant="temporary"
-        open={mobileOpen}
+        open={isMobile ? false : mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
           keepMounted: true,
