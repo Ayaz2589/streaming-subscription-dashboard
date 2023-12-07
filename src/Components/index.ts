@@ -20,3 +20,5 @@ export { default as Login } from "./Login";
 export { default as Signup } from "./Signup";
 export { default as Router } from "./Router";
 export { default as Table } from "./Table";
+export { default as AnimatedPageContainer } from "./AnimatedPageContainer";
+export { default as AnimatedAuthPageContainer } from "./AnimatedAuthPageContainer";

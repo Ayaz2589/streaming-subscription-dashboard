@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material";
 import { Login, Navigation, Dashboard, Project, Signup } from "..";
 import { useAuth } from "../../context";
 import { usePersistantLogin } from "../../hooks";
+import { AnimatePresence } from "framer-motion";
 
 export enum SectionRoutes {
   Dashboard = "/dashboard",
@@ -16,6 +17,7 @@ export enum SectionRoutes {
 const Router = () => {
   const [currentSection, updateCurrentSection] = useState("");
   const theme = useTheme();
+  const location = useLocation();
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -35,30 +37,34 @@ const Router = () => {
   return (
     <Box sx={{ display: isAuthScreens ? "flex" : "block" }}>
       {isAuthScreens ? <Navigation currentSection={currentSection} /> : null}
-      <Routes>
-        <Route
-          path="/auth/login"
-          element={<Login updateCurrentSection={updateCurrentSection} />}
-        />
-        <Route
-          path="/auth/signup"
-          element={<Signup updateCurrentSection={updateCurrentSection} />}
-        />
-        <Route element={<RequireAuth />}>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
           <Route
-            path={SectionRoutes.Dashboard}
-            element={<Dashboard updateCurrentSection={updateCurrentSection} />}
+            path="/auth/login"
+            element={<Login updateCurrentSection={updateCurrentSection} />}
           />
           <Route
-            path={SectionRoutes.Project}
-            element={<Project updateCurrentSection={updateCurrentSection} />}
+            path="/auth/signup"
+            element={<Signup updateCurrentSection={updateCurrentSection} />}
           />
-          <Route
-            path="*"
-            element={<Navigate to={SectionRoutes.Dashboard} replace />}
-          />
-        </Route>
-      </Routes>
+          <Route element={<RequireAuth />}>
+            <Route
+              path={SectionRoutes.Dashboard}
+              element={
+                <Dashboard updateCurrentSection={updateCurrentSection} />
+              }
+            />
+            <Route
+              path={SectionRoutes.Project}
+              element={<Project updateCurrentSection={updateCurrentSection} />}
+            />
+            <Route
+              path="*"
+              element={<Navigate to={SectionRoutes.Dashboard} replace />}
+            />
+          </Route>
+        </Routes>
+      </AnimatePresence>
     </Box>
   );
 };

@@ -26,14 +26,15 @@ function App() {
     setHighSchoolMascot();
   }, [themeState]);
 
+
   return (
     <Box>
       <ThemeProvider theme={theme}>
-        <AuthProvider>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </AuthProvider>
+          <AuthProvider>
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
+          </AuthProvider>
       </ThemeProvider>
     </Box>
   );

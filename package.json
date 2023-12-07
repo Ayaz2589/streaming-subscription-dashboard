@@ -25,6 +25,7 @@
     "ag-grid-community": "^31.0.0",
     "ag-grid-react": "^31.0.0",
     "axios": "^1.6.2",
+    "framer-motion": "^10.16.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",

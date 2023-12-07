@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
 import { useAxios, usePersistantLogin } from "../../hooks";
-import { Card } from "..";
+import { Card, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
 import { Auth, useAuth } from "../../context";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +59,7 @@ const SignupInput = () => {
       } finally {
         setIsLoading(false);
       }
-      return
+      return;
     }
 
     if (password !== passwordMatch) {
@@ -177,7 +177,7 @@ const Signup = ({
 
   useEffect(() => updateCurrentSection("Authentication"), []);
   return (
-    <Box
+    <AnimatedAuthPageContainer
       sx={{
         width: "100%",
         backgroundImage: useUltraWideImage
@@ -199,7 +199,7 @@ const Signup = ({
       ) : (
         <SignupInput />
       )}
-    </Box>
+    </AnimatedAuthPageContainer>
   );
 };
 
