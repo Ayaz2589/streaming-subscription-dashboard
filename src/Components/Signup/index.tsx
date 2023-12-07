@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
 import { useAxios, usePersistantLogin } from "../../hooks";
-import { Card, AnimatedAuthPageContainer } from "..";
+import { AuthCard, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
 import { Auth, useAuth } from "../../context";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +28,7 @@ const SignupInput = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const theme = useTheme();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password, passwordMatch } = data;
@@ -72,7 +73,7 @@ const SignupInput = () => {
 
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
-      <Card
+      <AuthCard
         sx={{
           padding: "0rem",
           height: "100vh",
@@ -89,7 +90,10 @@ const SignupInput = () => {
             margin: "auto 0",
           }}
         >
-          <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
+          <Typography
+            variant="h3"
+            sx={{ marginBottom: "0rem", color: theme.palette.neutral.main }}
+          >
             Sign up
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -157,7 +161,7 @@ const SignupInput = () => {
             </Link>
           </Box>
         </Box>
-      </Card>
+      </AuthCard>
     </form>
   );
 };

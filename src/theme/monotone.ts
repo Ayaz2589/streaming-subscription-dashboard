@@ -56,7 +56,7 @@ let monotone = createTheme({
       dark: "#f57f17",
     },
     neutral: {
-      main: "#607d8b",
+      main: "#506570",
       light: "#b0bec5",
       dark: "#263238",
     },

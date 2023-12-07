@@ -8,12 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
-import {
-  DashboardIcon,
-  ProjectIcon,
-  // ClientIcon,
-  // FinanceIcon,
-} from "../../svg";
+import { DashboardIcon, ProjectIcon } from "../../svg";
 
 import { UserSettings } from "..";
 import { SideNavItems } from "../../enums";
@@ -21,6 +16,7 @@ import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useDarkMode } from "../../context";
 
 const mobileDrawerWidth = "100%";
 const drawerWidth = 240;
@@ -40,20 +36,49 @@ const DashboardDrawer = ({
 }: Props) => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const { isDarkMode } = useDarkMode();
 
   const SideNavItemsArray = [
     {
       section: SideNavItems.Dashboard,
       index: 0,
-      selected: <DashboardIcon fill={theme.palette.primary.main} />,
-      notSelected: <DashboardIcon fill={theme.palette.neutral.main} />,
+      selected: (
+        <DashboardIcon
+          fill={
+            isDarkMode
+              ? theme.palette.primary.light
+              : theme.palette.primary.main
+          }
+        />
+      ),
+      notSelected: (
+        <DashboardIcon
+          fill={
+            isDarkMode ? theme.palette.primary.dark : theme.palette.primary.main
+          }
+        />
+      ),
       path: "/dashboard",
     },
     {
       section: SideNavItems.Project,
       index: 1,
-      selected: <ProjectIcon fill={theme.palette.primary.main} />,
-      notSelected: <ProjectIcon fill={theme.palette.neutral.main} />,
+      selected: (
+        <ProjectIcon
+          fill={
+            isDarkMode
+              ? theme.palette.primary.light
+              : theme.palette.primary.main
+          }
+        />
+      ),
+      notSelected: (
+        <ProjectIcon
+          fill={
+            isDarkMode ? theme.palette.primary.dark : theme.palette.primary.main
+          }
+        />
+      ),
       path: "/project",
     },
   ];
@@ -69,7 +94,7 @@ const DashboardDrawer = ({
     <Box
       sx={{
         height: "100vh",
-        backgroundColor: "white",
+        backgroundColor: isDarkMode ? theme.palette.neutral.main : "fff",
         display: "flex",
         flexDirection: "column",
       }}
@@ -87,7 +112,14 @@ const DashboardDrawer = ({
           <Box sx={{ display: "flex" }}>
             <Typography
               variant="h5"
-              sx={{ textAlign: "left", width: "80%", marginLeft: "1rem" }}
+              sx={{
+                textAlign: "left",
+                width: "80%",
+                marginLeft: "1rem",
+                color: isDarkMode
+                  ? theme.palette.neutral.light
+                  : theme.palette.neutral.main,
+              }}
             >
               User Dashboard
             </Typography>
@@ -129,7 +161,15 @@ const DashboardDrawer = ({
                     </ListItemIcon>
                     <Typography
                       variant="h6"
-                      color={isSelected ? "primary.main" : "neutral.main"}
+                      color={
+                        isSelected
+                          ? isDarkMode
+                            ? theme.palette.neutral.light
+                            : theme.palette.neutral.main
+                          : isDarkMode
+                          ? theme.palette.neutral.dark
+                          : theme.palette.neutral.main
+                      }
                     >
                       {section}
                     </Typography>
@@ -138,8 +178,12 @@ const DashboardDrawer = ({
                     sx={{
                       width: "0.5rem",
                       backgroundColor: isSelected
-                        ? "primary.main"
-                        : "neutral.light",
+                        ? isDarkMode
+                          ? theme.palette.primary.light
+                          : theme.palette.neutral.main
+                        : isDarkMode
+                        ? theme.palette.neutral.dark
+                        : theme.palette.neutral.light,
                       height: "3rem",
                     }}
                   ></Box>

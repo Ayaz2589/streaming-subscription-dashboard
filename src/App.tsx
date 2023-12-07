@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Router } from "./Components";
 import { useSetTheme } from "./hooks";
-import { AuthProvider } from "./context";
+import { AuthProvider, DarkModeProvider } from "./context";
 
 export enum SectionRoutes {
   Dashboard = "/",
@@ -26,15 +26,16 @@ function App() {
     setHighSchoolMascot();
   }, [themeState]);
 
-
   return (
     <Box>
       <ThemeProvider theme={theme}>
-          <AuthProvider>
+        <AuthProvider>
+          <DarkModeProvider>
             <BrowserRouter>
               <Router />
             </BrowserRouter>
-          </AuthProvider>
+          </DarkModeProvider>
+        </AuthProvider>
       </ThemeProvider>
     </Box>
   );

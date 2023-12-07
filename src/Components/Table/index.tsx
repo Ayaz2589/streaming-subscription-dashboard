@@ -5,6 +5,8 @@ import { useTheme } from "@mui/material";
 import { Card } from "..";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
+import "ag-grid-community/styles/ag-theme-quartz.css";
+import { useDarkMode } from "../../context";
 
 interface Row {
   task: string;
@@ -28,6 +30,7 @@ const Table = ({ rows }: { rows: Row[] }) => {
   const taskCompleted = rows.filter((task) => task.status === "completed");
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
+  const { isDarkMode } = useDarkMode();
 
   const columnDefs: ColumnDef[] = [
     { headerName: "Task", field: "task", cellStyle: { textAlign: "left" } },
@@ -107,7 +110,10 @@ const Table = ({ rows }: { rows: Row[] }) => {
           </Box>
         </Box>
       </Box>
-      <Box className="ag-theme-material" style={{ height: 600 }}>
+      <Box
+        className={isDarkMode ? "ag-theme-quartz-dark" : "ag-theme-material"}
+        style={{ height: 600 }}
+      >
         <AgGridReact
           rowData={rows}
           gridOptions={{
