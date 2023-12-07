@@ -7,15 +7,18 @@ interface AuthContextChildren {
   sx?: object;
 }
 
+const fadeInUpVariant = {
+  hidden: { y: 25, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
+
 const AnimatedPageContainer = ({ children, sx }: AuthContextChildren) => {
+  console.log(window.history);
   return (
     <Box
       sx={sx}
       component={motion.div}
-      variants={{
-        hidden: { x: 25, opacity: 0 },
-        visible: { x: 0, opacity: 1 },
-      }}
+      variants={fadeInUpVariant}
       transition={{ duration: 0.5 }}
       initial="hidden"
       animate="visible"

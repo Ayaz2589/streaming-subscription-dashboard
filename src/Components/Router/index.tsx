@@ -5,7 +5,6 @@ import { useTheme } from "@mui/material";
 import { Login, Navigation, Dashboard, Project, Signup } from "..";
 import { useAuth } from "../../context";
 import { usePersistantLogin } from "../../hooks";
-import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 
 export enum SectionRoutes {
