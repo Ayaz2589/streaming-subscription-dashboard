@@ -54,7 +54,7 @@ export const useDarkMode = () => useContext(DarkModeContext);
 
 export const DarkModeProvider = ({ children }: DarkModeContextChildren) => {
   const [state, dispatch] = useReducer(darkModeReducer, {
-    isDarkMode: true,
+    isDarkMode: false,
   });
 
   const setDarkMode = useCallback(() => {
