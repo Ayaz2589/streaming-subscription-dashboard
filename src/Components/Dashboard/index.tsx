@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { TotalsCard, LineChart, BarChart } from "..";
+import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
 import { dashboardDummyData as data } from "../../utils/dummyData";
 
 const Dashboard = ({
@@ -12,7 +11,7 @@ const Dashboard = ({
   useEffect(() => updateCurrentSection("Dashboard"), []);
 
   return (
-    <Box
+    <AnimatedPageContainer
       sx={{
         flexGrow: 1,
         padding: "7rem 1rem 1rem 1rem",
@@ -31,7 +30,7 @@ const Dashboard = ({
           <BarChart />
         </Grid>
       </Grid>
-    </Box>
+    </AnimatedPageContainer>
   );
 };
 

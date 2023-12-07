@@ -14,11 +14,23 @@ import { useNavigate } from "react-router-dom";
 import { useAxios, usePersistantLogin, useWindowSize } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
+import { motion } from "framer-motion";
 
 interface FormValues {
   email: string;
   password: string;
 }
+
+export const buttonVariants = {
+  hover: {
+    scale: 1.05,
+    transition: { duration: 0.5 },
+  },
+  initial: {
+    scale: 1,
+    transition: { duration: 0.5 },
+  },
+};
 
 const LoginInput = () => {
   const { handleSubmit, register, formState, setError } = useForm<FormValues>();
@@ -125,6 +137,10 @@ const LoginInput = () => {
             }}
           >
             <LoadingButton
+              component={motion.button}
+              variants={buttonVariants}
+              animate="initial"
+              whileHover="hover"
               loading={isLoading}
               variant="contained"
               type="submit"
@@ -171,6 +187,9 @@ const Login = ({
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
+      component={motion.div}
+      transition={{ duration: 3.5 }}
+      exit={{ opacity: 0 }}
     >
       {isDesktop ? (
         <Grid container spacing={2}>

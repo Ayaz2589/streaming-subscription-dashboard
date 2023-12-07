@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { AreaChart, PieChart, Table } from "..";
+import { AreaChart, PieChart, Table, AnimatedPageContainer } from "..";
 
 import { generateProjectTaskList } from "../../utils";
 
@@ -14,7 +14,7 @@ const Project = ({
   const taskList = generateProjectTaskList(100);
 
   return (
-    <Box
+    <AnimatedPageContainer
       sx={{
         flexGrow: 1,
         padding: "7rem 1rem 1rem 1rem",
@@ -32,7 +32,7 @@ const Project = ({
           <Table rows={taskList} />
         </Grid>
       </Grid>
-    </Box>
+    </AnimatedPageContainer>
   );
 };
 
