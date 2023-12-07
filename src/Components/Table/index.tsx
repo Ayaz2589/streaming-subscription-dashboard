@@ -107,7 +107,7 @@ const Table = ({ rows }: { rows: Row[] }) => {
           </Box>
         </Box>
       </Box>
-      <Box className="ag-theme-material" style={{ height: 600 }}>
+      <Box className="ag-theme-material-dark" style={{ height: 600 }}>
         <AgGridReact
           rowData={rows}
           gridOptions={{
