@@ -3,7 +3,7 @@ import { Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material";
 import { Login, Navigation, Dashboard, Project, Signup } from "..";
-import { useAuth } from "../../context";
+import { useAuth, useDarkMode } from "../../context";
 import { usePersistantLogin } from "../../hooks";
 import { AnimatePresence } from "framer-motion";
 
@@ -18,11 +18,16 @@ const Router = () => {
   const [currentSection, updateCurrentSection] = useState("");
   const theme = useTheme();
   const location = useLocation();
+  const { isDarkMode } = useDarkMode();
+
+  console.log(isDarkMode);
 
   useEffect(() => {
     const body = document.querySelector("body");
     if (body) {
-      body.style.backgroundColor = theme.palette.primary.light;
+      body.style.backgroundColor = isDarkMode
+        ? theme.palette.primary.dark
+        : theme.palette.primary.light;
     }
 
     return () => {

@@ -13,7 +13,6 @@ const fadeInUpVariant = {
 };
 
 const AnimatedPageContainer = ({ children, sx }: AuthContextChildren) => {
-  console.log(window.history);
   return (
     <Box
       sx={sx}
