@@ -32,13 +32,11 @@ function App() {
   return (
     <Box>
       <ThemeProvider theme={theme}>
-        <AnimatePresence>
           <AuthProvider>
             <BrowserRouter>
-              <Router key={currentPath} />
+              <Router />
             </BrowserRouter>
           </AuthProvider>
-        </AnimatePresence>
       </ThemeProvider>
     </Box>
   );

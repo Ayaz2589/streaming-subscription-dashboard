@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
-import { Card } from "..";
+import { Card, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
 import { useAuth, Auth } from "../../context";
 import { useNavigate } from "react-router-dom";
@@ -178,7 +178,7 @@ const Login = ({
 
   useEffect(() => updateCurrentSection("Authentication"), []);
   return (
-    <Box
+    <AnimatedAuthPageContainer
       sx={{
         width: "100%",
         backgroundImage: useUltraWideImage
@@ -187,9 +187,6 @@ const Login = ({
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      component={motion.div}
-      transition={{ duration: 3.5 }}
-      exit={{ opacity: 0 }}
     >
       {isDesktop ? (
         <Grid container spacing={2}>
@@ -203,7 +200,7 @@ const Login = ({
       ) : (
         <LoginInput />
       )}
-    </Box>
+    </AnimatedAuthPageContainer>
   );
 };
 

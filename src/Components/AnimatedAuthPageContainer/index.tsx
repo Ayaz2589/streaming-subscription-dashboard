@@ -7,22 +7,22 @@ interface AuthContextChildren {
   sx?: object;
 }
 
-const AnimatedPageContainer = ({ children, sx }: AuthContextChildren) => {
+const AnimatedAuthPageContainer = ({ children, sx }: AuthContextChildren) => {
   return (
     <Box
       sx={sx}
       component={motion.div}
       variants={{
-        hidden: { x: 25, opacity: 0 },
+        fadeOutLeft: { x: -50, opacity: 0 },
         visible: { x: 0, opacity: 1 },
       }}
       transition={{ duration: 0.5 }}
-      initial="hidden"
-      animate="visible"
+      initial="visible"
+      exit="fadeOutLeft"
     >
       {children}
     </Box>
   );
 };
 
-export default AnimatedPageContainer;
+export default AnimatedAuthPageContainer;
