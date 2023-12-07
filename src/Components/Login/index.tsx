@@ -7,11 +7,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
-import { Card, AnimatedAuthPageContainer } from "..";
+import { AuthCard, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
 import { useAuth, Auth } from "../../context";
 import { useNavigate } from "react-router-dom";
-import { useAxios, usePersistantLogin, useWindowSize } from "../../hooks";
+import { useAxios, usePersistantLogin } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
 import { motion } from "framer-motion";
@@ -40,9 +40,7 @@ const LoginInput = () => {
   const axios = useAxios();
   const [isLoading, setIsLoading] = useState(false);
   const { setPersistantLogin } = usePersistantLogin();
-  const windowHeight = useWindowSize();
-
-  console.log(windowHeight);
+  const theme = useTheme();
 
   const handleSubmitForm = async (data: FormValues) => {
     const { email, password } = data;
@@ -75,7 +73,7 @@ const LoginInput = () => {
 
   return (
     <form noValidate onSubmit={handleSubmit(handleSubmitForm)}>
-      <Card
+      <AuthCard
         sx={{
           padding: "0rem",
           height: "100vh",
@@ -92,7 +90,10 @@ const LoginInput = () => {
             margin: "auto 0",
           }}
         >
-          <Typography variant="h3" sx={{ marginBottom: "0rem" }}>
+          <Typography
+            variant="h3"
+            sx={{ marginBottom: "0rem", color: theme.palette.neutral.main }}
+          >
             Welcome Back!
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -124,7 +125,10 @@ const LoginInput = () => {
             />
             <Box sx={{ display: "flex", width: "80%", alignSelf: "center" }}>
               <Checkbox />
-              <Typography variant="body1" sx={{ alignSelf: "center" }}>
+              <Typography
+                variant="body1"
+                sx={{ alignSelf: "center", color: theme.palette.neutral.main }}
+              >
                 Remember me
               </Typography>
             </Box>
@@ -158,7 +162,7 @@ const LoginInput = () => {
             </Link>
           </Box>
         </Box>
-      </Card>
+      </AuthCard>
     </form>
   );
 };

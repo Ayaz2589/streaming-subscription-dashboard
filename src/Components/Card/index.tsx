@@ -15,4 +15,16 @@ const Card = styled(Paper)(({ theme }) => {
   };
 });
 
+export const AuthCard = styled(Paper)(({ theme }) => {
+  return {
+    backgroundColor: "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: "#fff",
+    minHeight: "5rem",
+    boxShadow: theme.shadows[1],
+  }
+});
+
 export default Card;
