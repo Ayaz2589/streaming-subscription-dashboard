@@ -9,7 +9,7 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useDarkMode } from "../../context";
-import { SearchBar } from "..";
+import { SearchToggle } from "..";
 
 const drawerWidth = 240;
 
@@ -52,7 +52,7 @@ const DashboardAppBar = ({
         {isDesktop ? (
           <Box>
             {isDarkMode ? <LightModeButton /> : <DarkModeButton />}
-            <SearchBar />
+            <SearchToggle />
           </Box>
         ) : (
           <MenuRoundedIcon
