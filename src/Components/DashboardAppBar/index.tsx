@@ -24,7 +24,7 @@ const DashboardAppBar = ({
   const isDesktop = useMediaQuery(
     `(min-width:${theme.breakpoints.values.sm}px)`
   );
-  const { isDarkMode, setDarkMode, removeDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
   return (
     <AppBar
       position="fixed"
