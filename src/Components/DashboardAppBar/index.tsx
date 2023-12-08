@@ -1,11 +1,15 @@
 import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useDarkMode } from "../../context";
-import { SearchBar } from "..";
+import { SearchToggle } from "..";
 
 const drawerWidth = 240;
 
@@ -46,7 +50,10 @@ const DashboardAppBar = ({
           {currentSection}
         </Typography>
         {isDesktop ? (
-          <SearchBar />
+          <Box>
+            {isDarkMode ? <LightModeButton /> : <DarkModeButton />}
+            <SearchToggle />
+          </Box>
         ) : (
           <MenuRoundedIcon
             sx={{ color: theme.palette.primary.main, cursor: "pointer" }}
@@ -55,6 +62,56 @@ const DashboardAppBar = ({
         )}
       </Toolbar>
     </AppBar>
+  );
+};
+
+const LightModeButton = () => {
+  const { removeDarkMode } = useDarkMode();
+  const theme = useTheme();
+  return (
+    <IconButton
+      onClick={() => {
+        removeDarkMode();
+        const body = document.querySelector("body");
+        if (body) {
+          body.style.backgroundColor = theme.palette.primary.light;
+        }
+      }}
+      sx={{
+        backgroundColor: theme.palette.neutral.main,
+        margin: "0 1rem 0 1rem",
+        ":hover": {
+          backgroundColor: theme.palette.neutral.light,
+        },
+      }}
+    >
+      <LightModeIcon sx={{ color: "yellow" }} />
+    </IconButton>
+  );
+};
+
+const DarkModeButton = () => {
+  const { setDarkMode } = useDarkMode();
+  const theme = useTheme();
+  return (
+    <IconButton
+      onClick={() => {
+        setDarkMode();
+        const body = document.querySelector("body");
+        if (body) {
+          body.style.backgroundColor = theme.palette.primary.dark;
+        }
+      }}
+      sx={{
+        backgroundColor: theme.palette.neutral.light,
+        margin: "0 1rem 0 1rem",
+        ":hover": {
+          backgroundColor: theme.palette.neutral.main,
+        },
+      }}
+    >
+      <DarkModeIcon sx={{ color: "#7e57c2" }} />
+    </IconButton>
   );
 };
 

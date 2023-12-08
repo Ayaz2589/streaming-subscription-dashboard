@@ -34,14 +34,14 @@ const darkModeReducer = (state: InitialState, action: Actions) => {
     case ActionType.SET_DARKMODE:
       return { isDarkMode: true };
     case ActionType.REMOVE_DARKMODE:
-      return { isDarkMode: true };
+      return { isDarkMode: false };
     default:
       return state;
   }
 };
 
 const initialDarkModeContext: UseDarkModeContext = {
-  isDarkMode: true,
+  isDarkMode: false,
   setDarkMode: () => {},
   removeDarkMode: () => {},
 };
@@ -54,7 +54,7 @@ export const useDarkMode = () => useContext(DarkModeContext);
 
 export const DarkModeProvider = ({ children }: DarkModeContextChildren) => {
   const [state, dispatch] = useReducer(darkModeReducer, {
-    isDarkMode: true,
+    isDarkMode: false,
   });
 
   const setDarkMode = useCallback(() => {
