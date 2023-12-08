@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { useAuth, useDarkMode } from "../../context";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { LoadingButton } from "@mui/lab";
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAxios } from "../../hooks";
@@ -13,8 +13,10 @@ const UserSettings = () => {
   const { removePersistantLogin } = usePersistantLogin();
   const { isDarkMode } = useDarkMode();
   const theme = useTheme();
+  const [loading, setLoading] = useState(false);
 
   const handleLogout = async () => {
+    setLoading(true);
     try {
       await axios.delete("/api/dashboardv2/auth/logout");
       removeAuth();
@@ -22,19 +24,24 @@ const UserSettings = () => {
       navigate("/auth/login");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Button sx={{ marginBottom: "1rem" }} onClick={handleLogout}>
-      <Typography
-        color={
-          isDarkMode ? theme.palette.neutral.light : theme.palette.neutral.main
-        }
-      >
-        Logout
-      </Typography>
-    </Button>
+    <LoadingButton
+      sx={{
+        marginBottom: "1rem",
+        color: isDarkMode
+          ? theme.palette.neutral.light
+          : theme.palette.neutral.main,
+      }}
+      onClick={handleLogout}
+      loading={loading}
+    >
+      Log out
+    </LoadingButton>
   );
 };
 
