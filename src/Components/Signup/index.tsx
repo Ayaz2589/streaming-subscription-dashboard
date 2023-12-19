@@ -135,8 +135,8 @@ const SignupInput = () => {
                   message: "Password must be atleast 8 charcters",
                 },
               })}
-              error={!!errors.password}
-              helperText={errors.password?.message}
+              error={!!errors.passwordMatch}
+              helperText={errors.passwordMatch?.message}
             />
           </Box>
           <Box
