@@ -1,27 +1,51 @@
-import axios from "axios";
+import axios from "../api";
 import { useAuth } from "../context";
+import { useEffect, useCallback } from "react";
 
 const useAxios = () => {
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
-  const api = axios.create({
-    baseURL: "https://app-backend-62sfwjhbj-ayaz2589.vercel.app",
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
+  const refresh = useCallback(async () => {
+    try {
+      const { data } = await axios.post("/api/dashboardv2/auth/token");
+      setAuth({ ...auth, accessToken: data.accessToken });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [auth, setAuth]);
 
-  api.interceptors.request.use(
-    (config) => {
-      if (auth?.refreshToken) {
-        config.headers.Authorization = `Bearer ${auth.refreshToken}`;
+  useEffect(() => {
+    const requestInterceptor = axios.interceptors.request.use(
+      (config) => {
+        if (!config.headers.Authorization && auth?.refreshToken) {
+          config.headers.Authorization = `Bearer ${auth.refreshToken}`;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
+
+    const responseInterceptor = axios.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        const originalRequest = error?.config;
+        if (error.response.status === 401 && !originalRequest._retry) {
+          originalRequest._retry = true;
+          await refresh();
+          originalRequest.headers.Authorization = `Bearer ${auth?.accessToken}`;
+          return axios(originalRequest);
+        }
+        return Promise.reject(error);
       }
-      return config;
-    },
-    (error) => Promise.reject(error)
-  );
+    );
 
-  return api;
+    return () => {
+      axios.interceptors.response.eject(responseInterceptor);
+      axios.interceptors.request.eject(requestInterceptor);
+    };
+  }, [auth, refresh]);
+
+  return axios;
 };
 
 export default useAxios;
