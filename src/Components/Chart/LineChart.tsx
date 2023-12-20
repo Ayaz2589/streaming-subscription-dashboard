@@ -12,6 +12,7 @@ import { useTheme } from "@mui/material";
 
 const Chart = () => {
   const theme = useTheme();
+  const naturalLight = theme.palette.neutral.light;
   return (
     <ResponsiveContainer width="100%" aspect={1.5}>
       <LineChartRecharts
@@ -29,7 +30,7 @@ const Chart = () => {
           dataKey="name"
           axisLine={false}
           tickSize={0}
-          tick={{ fill: theme.palette.neutral.light }}
+          tick={{ fill: naturalLight }}
         />
         <Tooltip
           contentStyle={{

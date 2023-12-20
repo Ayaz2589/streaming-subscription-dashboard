@@ -16,6 +16,7 @@ const Dashboard = ({
         flexGrow: 1,
         padding: "7rem 1rem 1rem 1rem",
       }}
+      data-testid="dashboard-container"
     >
       <Grid container spacing={2}>
         {data.map((item, index) => (

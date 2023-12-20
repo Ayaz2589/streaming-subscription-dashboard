@@ -1,4 +1,8 @@
-import { createTheme, responsiveFontSizes, Shadows } from "@mui/material";
+import {
+  createTheme,
+  responsiveFontSizes,
+  Shadows,
+} from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface Palette {

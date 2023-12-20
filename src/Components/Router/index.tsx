@@ -38,7 +38,10 @@ const Router = () => {
   const isAuthScreens = currentSection !== "Authentication";
 
   return (
-    <Box sx={{ display: isAuthScreens ? "flex" : "block" }}>
+    <Box
+      sx={{ display: isAuthScreens ? "flex" : "block" }}
+      data-testId="dashboard-container"
+    >
       {isAuthScreens ? <Navigation currentSection={currentSection} /> : null}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
