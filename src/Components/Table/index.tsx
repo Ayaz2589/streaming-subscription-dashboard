@@ -32,8 +32,6 @@ const Table = ({ rows }: { rows: Row[] }) => {
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
   const { isDarkMode } = useDarkMode();
 
-  console.log(rows);
-
   const columnDefs: ColumnDef[] = [
     { headerName: "Task", field: "task", cellStyle: { textAlign: "left" } },
     { headerName: "Admin", field: "admin", cellStyle: { textAlign: "left" } },

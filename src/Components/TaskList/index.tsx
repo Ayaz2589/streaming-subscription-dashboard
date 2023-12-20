@@ -29,7 +29,6 @@ const columns: GridColDef[] = [
 ];
 
 const TaskList = ({ rows }: { rows: Task[] }) => {
-  // const rowHeight = useResponsiveTableSizes();
   const taskCompleted = rows.filter((task) => task.status === "completed");
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");

@@ -20,8 +20,6 @@ const Router = () => {
   const location = useLocation();
   const { isDarkMode } = useDarkMode();
 
-  console.log(isDarkMode);
-
   useEffect(() => {
     const body = document.querySelector("body");
     if (body) {
