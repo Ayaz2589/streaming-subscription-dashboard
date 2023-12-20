@@ -27,7 +27,7 @@ function App() {
   }, [themeState]);
 
   return (
-    <Box>
+    <Box data-testid="app-container">
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <DarkModeProvider>
