@@ -32,6 +32,8 @@ The Dashboard serves as a demonstration of a responsive and interactive user das
 
 - **Animations by Framer Motion**: The user interface is enriched with animations powered by Framer Motion, adding a touch of interactivity and dynamism.
 
+- **Testing**: The Application is testable using `vitest` and `react-testing-library`.
+
 ## Getting Started
 
 To run the Streaming Subscription Dashboard locally, follow these steps:
