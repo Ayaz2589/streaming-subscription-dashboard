@@ -11,47 +11,49 @@ interface Props {
 
 const TotalsCard = ({ title, value }: Props) => {
   return (
-    <Card elevation={0}>
-      <Box
-        sx={{
-          display: "flex",
-          padding: "0rem 1rem",
-          minHeight: "5rem",
-        }}
-      >
+    <div data-testid="totals-card-container">
+      <Card elevation={0}>
         <Box
           sx={{
-            width: "3rem",
-            height: "3rem",
-            backgroundColor: "primary.light",
-            borderRadius: "25px",
-            alignSelf: "center",
+            display: "flex",
+            padding: "0rem 1rem",
+            minHeight: "5rem",
           }}
         >
-          <BarChartIcon
-            fontSize="large"
-            sx={{ marginTop: "5px", color: "primary.main" }}
-          />
-        </Box>
-        <Box
-          sx={{
-            alignSelf: "center",
-            textAlign: "left",
-            marginLeft: "1rem",
-          }}
-        >
-          <Typography
-            variant="body2"
-            sx={{ color: "neutral.light", fontWeight: "bold" }}
+          <Box
+            sx={{
+              width: "3rem",
+              height: "3rem",
+              backgroundColor: "primary.light",
+              borderRadius: "25px",
+              alignSelf: "center",
+            }}
           >
-            {title}
-          </Typography>
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-            {value}
-          </Typography>
+            <BarChartIcon
+              fontSize="large"
+              sx={{ marginTop: "5px", color: "primary.main" }}
+            />
+          </Box>
+          <Box
+            sx={{
+              alignSelf: "center",
+              textAlign: "left",
+              marginLeft: "1rem",
+            }}
+          >
+            <Typography
+              variant="body2"
+              sx={{ color: "neutral.light", fontWeight: "bold" }}
+            >
+              {title}
+            </Typography>
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {value}
+            </Typography>
+          </Box>
         </Box>
-      </Box>
-    </Card>
+      </Card>
+    </div>
   );
 };
 
