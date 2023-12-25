@@ -11,7 +11,7 @@ import Divider from "@mui/material/Divider";
 import { DashboardIcon, ProjectIcon } from "../../svg";
 
 import { UserSettings } from "..";
-import { SideNavItems } from "../../enums";
+import { SectionItems } from "../../enums";
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
@@ -38,9 +38,9 @@ const DashboardDrawer = ({
   const navigate = useNavigate();
   const { isDarkMode } = useDarkMode();
 
-  const SideNavItemsArray = [
+  const SectionItemsArray = [
     {
-      section: SideNavItems.Dashboard,
+      section: SectionItems.Charts,
       index: 0,
       selected: (
         <DashboardIcon
@@ -58,10 +58,10 @@ const DashboardDrawer = ({
           }
         />
       ),
-      path: "/dashboard",
+      path: "/charts",
     },
     {
-      section: SideNavItems.Project,
+      section: SectionItems.Project,
       index: 1,
       selected: (
         <ProjectIcon
@@ -144,7 +144,7 @@ const DashboardDrawer = ({
             </>
           )}
           <List sx={{ marginTop: "3rem" }}>
-            {SideNavItemsArray.map((item) => {
+            {SectionItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
               const isSelected = currentSection === section ?? false;
               return (

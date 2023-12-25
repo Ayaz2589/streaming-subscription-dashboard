@@ -1,7 +1,16 @@
 import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
+import {
+  TotalsCard,
+  LineChart,
+  BarChart,
+  AnimatedPageContainer,
+  AreaChart,
+  PieChart,
+  Table,
+} from "..";
 import { dashboardDummyData as data } from "../../utils/dummyData";
+import { generateProjectTaskList } from "../../utils";
 
 const Dashboard = ({
   updateCurrentSection,
@@ -9,6 +18,7 @@ const Dashboard = ({
   updateCurrentSection: (value: string) => void;
 }) => {
   useEffect(() => updateCurrentSection("Dashboard"), []);
+  const taskList = generateProjectTaskList(100);
 
   return (
     <div data-testid="dashboard-container">
@@ -36,6 +46,15 @@ const Dashboard = ({
           </Grid>
           <Grid item xs={12} md={6} lg={2} data-testid="bar-chart">
             <BarChart />
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <AreaChart />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <PieChart />
+          </Grid>
+          <Grid item xs={12}>
+            <Table rows={taskList} />
           </Grid>
         </Grid>
       </AnimatedPageContainer>

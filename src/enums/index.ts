@@ -1,1 +1,1 @@
-export { default as SideNavItems } from "./SideNavItems";
+export { default as SectionItems } from "./SectionItems";

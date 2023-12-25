@@ -8,10 +8,8 @@ import { usePersistantLogin } from "../../hooks";
 import { AnimatePresence } from "framer-motion";
 
 export enum SectionRoutes {
-  Dashboard = "/dashboard",
+  Charts = "/charts",
   Project = "/project",
-  Client = "/client",
-  Finance = "/finance",
 }
 
 const Router = () => {
@@ -55,7 +53,7 @@ const Router = () => {
           />
           <Route element={<RequireAuth />}>
             <Route
-              path={SectionRoutes.Dashboard}
+              path={SectionRoutes.Charts}
               element={
                 <Dashboard updateCurrentSection={updateCurrentSection} />
               }
@@ -66,7 +64,7 @@ const Router = () => {
             />
             <Route
               path="*"
-              element={<Navigate to={SectionRoutes.Dashboard} replace />}
+              element={<Navigate to={SectionRoutes.Charts} replace />}
             />
           </Route>
         </Routes>
