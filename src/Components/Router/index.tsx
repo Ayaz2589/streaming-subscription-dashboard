@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material";
-import { Login, Navigation, ChartDashboard, Project, Signup } from "..";
+import {
+  Login,
+  Navigation,
+  ChartDashboard,
+  StreamingService,
+  Signup,
+} from "..";
 import { useAuth, useDarkMode } from "../../context";
 import { usePersistantLogin } from "../../hooks";
 import { AnimatePresence } from "framer-motion";
@@ -60,7 +66,9 @@ const Router = () => {
             />
             <Route
               path={SectionRoutes.StreamingService}
-              element={<Project updateCurrentSection={updateCurrentSection} />}
+              element={
+                <StreamingService updateCurrentSection={updateCurrentSection} />
+              }
             />
             <Route
               path="*"
