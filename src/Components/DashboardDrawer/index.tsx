@@ -63,7 +63,7 @@ const DashboardDrawer = ({
       path: "/charts",
     },
     {
-      section: SectionItems.Project,
+      section: SectionItems.StreamingService,
       index: 1,
       selected: (
         <ProjectIcon
@@ -81,7 +81,7 @@ const DashboardDrawer = ({
           }
         />
       ),
-      path: "/project",
+      path: "/streaming-service",
     },
   ];
 

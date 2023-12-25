@@ -1,6 +1,6 @@
 enum SectionItems {
   Charts = "Charts",
-  Project = "Project",
+  StreamingService = "Streaming",
 }
 
 export default SectionItems;

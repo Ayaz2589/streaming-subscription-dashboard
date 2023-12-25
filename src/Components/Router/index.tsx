@@ -9,7 +9,7 @@ import { AnimatePresence } from "framer-motion";
 
 export enum SectionRoutes {
   Charts = "/charts",
-  Project = "/project",
+  StreamingService = "/streaming-service",
 }
 
 const Router = () => {
@@ -59,7 +59,7 @@ const Router = () => {
               }
             />
             <Route
-              path={SectionRoutes.Project}
+              path={SectionRoutes.StreamingService}
               element={<Project updateCurrentSection={updateCurrentSection} />}
             />
             <Route
