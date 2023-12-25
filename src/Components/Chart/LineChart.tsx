@@ -13,7 +13,7 @@ import { useTheme } from "@mui/material";
 const Chart = () => {
   const theme = useTheme();
   return (
-    <ResponsiveContainer width="100%" aspect={1.5}>
+    <ResponsiveContainer width="100%" aspect={1.8}>
       <LineChartRecharts
         width={500}
         height={500}

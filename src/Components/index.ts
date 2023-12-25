@@ -3,7 +3,7 @@ export { default as DashboardAppBar } from "./DashboardAppBar";
 export { default as DashboardDrawer } from "./DashboardDrawer";
 export { default as SearchToggle } from "./SearchToggle";
 export { default as UserSettings } from "./DashboardDrawer/UserSettings";
-export { default as Dashboard } from "./Dashboard";
+export { default as ChartDashboard } from "./Chart/ChartDashboard";
 export { default as TotalsCard } from "./TotalsCard";
 export { default as LineChart } from "./Chart/LineChart";
 export { default as BarChart } from "./Chart/BarChart";

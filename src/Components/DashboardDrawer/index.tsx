@@ -38,6 +38,8 @@ const DashboardDrawer = ({
   const navigate = useNavigate();
   const { isDarkMode } = useDarkMode();
 
+  console.log(currentSection);
+
   const SectionItemsArray = [
     {
       section: SectionItems.Charts,

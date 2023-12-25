@@ -12,12 +12,12 @@ import {
 import { dashboardDummyData as data } from "../../utils/dummyData";
 import { generateProjectTaskList } from "../../utils";
 
-const Dashboard = ({
+const ChartDashboard = ({
   updateCurrentSection,
 }: {
   updateCurrentSection: (value: string) => void;
 }) => {
-  useEffect(() => updateCurrentSection("Dashboard"), []);
+  useEffect(() => updateCurrentSection("Charts"), []);
   const taskList = generateProjectTaskList(100);
 
   return (
@@ -62,4 +62,4 @@ const Dashboard = ({
   );
 };
 
-export default Dashboard;
+export default ChartDashboard;

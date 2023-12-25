@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material";
-import { Login, Navigation, Dashboard, Project, Signup } from "..";
+import { Login, Navigation, ChartDashboard, Project, Signup } from "..";
 import { useAuth, useDarkMode } from "../../context";
 import { usePersistantLogin } from "../../hooks";
 import { AnimatePresence } from "framer-motion";
@@ -55,7 +55,7 @@ const Router = () => {
             <Route
               path={SectionRoutes.Charts}
               element={
-                <Dashboard updateCurrentSection={updateCurrentSection} />
+                <ChartDashboard updateCurrentSection={updateCurrentSection} />
               }
             />
             <Route
