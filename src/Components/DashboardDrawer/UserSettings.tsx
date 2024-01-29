@@ -18,7 +18,7 @@ const UserSettings = () => {
   const handleLogout = async () => {
     setLoading(true);
     try {
-      await axios.delete("/api/dashboardv2/auth/logout");
+      await axios.delete("/api/auth/logout");
       removeAuth();
       removePersistantLogin();
       navigate("/auth/login");

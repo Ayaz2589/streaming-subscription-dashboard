@@ -48,7 +48,7 @@ const LoginInput = () => {
       setIsLoading(true);
       try {
         const response = await axios.post(
-          "/api/dashboardv2/auth/login",
+          "/api/auth/login",
           JSON.stringify(data)
         );
         const { accessToken, refreshToken } = response.data;
