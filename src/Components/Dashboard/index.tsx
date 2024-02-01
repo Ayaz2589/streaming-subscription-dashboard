@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
 import { dashboardDummyData as data } from "../../utils/dummyData";
-import { useAuth } from "../../context";
 import { usePersistantLogin } from "../../hooks";
 
 const Dashboard = ({
