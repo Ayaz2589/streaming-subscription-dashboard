@@ -138,6 +138,12 @@ const SignupInput = () => {
               error={!!errors.passwordMatch}
               helperText={errors.passwordMatch?.message}
             />
+            <Typography
+              variant="body2"
+              sx={{ alignSelf: "center", color: theme.palette.neutral.main }}
+            >
+              * Fake Email Address will work *
+            </Typography>
           </Box>
           <Box
             sx={{
