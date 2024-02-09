@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
+import { useBackendService } from "../../hooks";
+
 import { dashboardDummyData as data } from "../../utils/dummyData";
 
 const Dashboard = ({
@@ -8,7 +10,21 @@ const Dashboard = ({
 }: {
   updateCurrentSection: (value: string) => void;
 }) => {
+  const { getDashboardChartData } = useBackendService();
   useEffect(() => updateCurrentSection("Dashboard"), []);
+
+  useEffect(() => {
+    const fetchDashboardChartData = async () => {
+      try {
+        const data = await getDashboardChartData();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDashboardChartData();
+    console.log(data);
+  }, []);
 
   return (
     <div data-testid="dashboard-container">
