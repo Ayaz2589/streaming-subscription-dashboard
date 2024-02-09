@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
-import { useBackendService } from "../../hooks";
+import { useUserAuthentication } from "../../hooks";
+import { useAuth } from "../../context";
 
 import { dashboardDummyData as data } from "../../utils/dummyData";
 
@@ -10,8 +11,11 @@ const Dashboard = ({
 }: {
   updateCurrentSection: (value: string) => void;
 }) => {
-  const { getDashboardChartData } = useBackendService();
+  const { getDashboardChartData } = useUserAuthentication();
   useEffect(() => updateCurrentSection("Dashboard"), []);
+  const { auth } = useAuth();
+
+  console.log(auth.accessToken);
 
   useEffect(() => {
     const fetchDashboardChartData = async () => {
@@ -23,7 +27,6 @@ const Dashboard = ({
       }
     };
     fetchDashboardChartData();
-    console.log(data);
   }, []);
 
   return (
