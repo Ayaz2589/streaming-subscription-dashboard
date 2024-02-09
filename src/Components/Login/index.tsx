@@ -35,7 +35,7 @@ export const buttonVariants = {
 const LoginInput = () => {
   const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
   const axios = useAxios();
   const [isLoading, setIsLoading] = useState(false);
