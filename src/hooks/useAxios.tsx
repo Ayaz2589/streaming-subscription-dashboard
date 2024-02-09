@@ -9,7 +9,7 @@ const useAxios = () => {
 
   const refresh = useCallback(async () => {
     try {
-      const { data } = await axios.post("/api/dashboardv2/auth/token");
+      const { data } = await axios.post("/api/auth/token");
       setAuth({ ...auth, accessToken: data.accessToken });
     } catch (error) {
       console.log(error);
@@ -20,7 +20,7 @@ const useAxios = () => {
     async (email: string, password: string) => {
       try {
         const response = await axios.post(
-          "/api/dashboardv2/auth/login",
+          "/api/auth/login",
           JSON.stringify({ email, password })
         );
         const { accessToken, refreshToken } = response.data;
@@ -38,7 +38,7 @@ const useAxios = () => {
     async (email: string, password: string) => {
       try {
         const response = await axios.post(
-          "/api/dashboardv2/auth/signup",
+          "/api/auth/signup",
           JSON.stringify({ email, password })
         );
         const { accessToken, refreshToken } = response.data;
@@ -54,7 +54,7 @@ const useAxios = () => {
 
   const authLogout = useCallback(async () => {
     try {
-      await axios.delete("/api/dashboardv2/auth/logout");
+      await axios.delete("/api/auth/logout");
       removeAuth();
       removePersistantLogin();
     } catch (error) {
