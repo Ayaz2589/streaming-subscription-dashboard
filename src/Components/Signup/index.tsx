@@ -5,10 +5,9 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
-import { useAxios, usePersistantLogin } from "../../hooks";
+import { useAxios } from "../../hooks";
 import { AuthCard, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
-import { Auth, useAuth } from "../../context";
 import { useNavigate } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -23,9 +22,7 @@ interface FormValues {
 const SignupInput = () => {
   const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
-  const axios = useAxios();
-  const { setPersistantLogin } = usePersistantLogin();
-  const { setAuth } = useAuth();
+  const { authSignup } = useAxios();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const theme = useTheme();
@@ -40,14 +37,7 @@ const SignupInput = () => {
     ) {
       setIsLoading(true);
       try {
-        const response = await axios.post(
-          "/api/dashboardv2/auth/signup",
-          JSON.stringify(data)
-        );
-        const { accessToken, refreshToken } = response.data;
-        const auth: Auth = { accessToken, email, password, refreshToken };
-        setPersistantLogin(auth);
-        setAuth(auth);
+        await authSignup(email, password);
         navigate("/dashboard");
       } catch (error: unknown) {
         //@ts-expect-error AxiosError
