@@ -3,7 +3,7 @@ import { useAuth } from "../context";
 import { usePersistantLogin } from ".";
 import { useEffect, useCallback } from "react";
 
-const useAxios = () => {
+const useBackendService = () => {
   const { auth, setAuth, removeAuth } = useAuth();
   const { setPersistantLogin, removePersistantLogin } = usePersistantLogin();
 
@@ -96,4 +96,4 @@ const useAxios = () => {
   return { authLogin, authSignup, authLogout };
 };
 
-export default useAxios;
+export default useBackendService;

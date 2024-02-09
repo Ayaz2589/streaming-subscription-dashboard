@@ -3,11 +3,11 @@ import { useDarkMode } from "../../context";
 import { LoadingButton } from "@mui/lab";
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAxios } from "../../hooks";
+import { useBackendService } from "../../hooks";
 
 const UserSettings = () => {
   const navigate = useNavigate();
-  const { authLogout } = useAxios();
+  const { authLogout } = useBackendService();
   const { isDarkMode } = useDarkMode();
   const theme = useTheme();
   const [loading, setLoading] = useState(false);
