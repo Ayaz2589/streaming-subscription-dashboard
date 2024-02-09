@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
-import { useUserAuthentication } from "../../hooks";
 import { useAuth } from "../../context";
 
 import { dashboardDummyData as data } from "../../utils/dummyData";
@@ -11,7 +10,6 @@ const Dashboard = ({
 }: {
   updateCurrentSection: (value: string) => void;
 }) => {
-  const { getDashboardChartData } = useUserAuthentication();
   useEffect(() => updateCurrentSection("Dashboard"), []);
   const { auth } = useAuth();
 
@@ -20,8 +18,8 @@ const Dashboard = ({
   useEffect(() => {
     const fetchDashboardChartData = async () => {
       try {
-        const data = await getDashboardChartData();
-        console.log(data);
+        // const data = await getDashboardChartData();
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
