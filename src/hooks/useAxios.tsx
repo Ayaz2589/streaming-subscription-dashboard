@@ -1,9 +1,11 @@
 import axios from "../api";
 import { useAuth } from "../context";
+import { usePersistantLogin } from ".";
 import { useEffect, useCallback } from "react";
 
 const useAxios = () => {
   const { auth, setAuth } = useAuth();
+  const { setPersistantLogin } = usePersistantLogin();
 
   const refresh = useCallback(async () => {
     try {
@@ -13,6 +15,24 @@ const useAxios = () => {
       console.log(error);
     }
   }, [auth, setAuth]);
+
+  const authLogin = useCallback(
+    async (email: string, password: string) => {
+      try {
+        const response = await axios.post(
+          "/api/dashboardv2/auth/login",
+          JSON.stringify({ email, password })
+        );
+        const { accessToken, refreshToken } = response.data;
+        const auth = { accessToken, email, password, refreshToken };
+        setPersistantLogin(auth);
+        setAuth(auth);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [setAuth]
+  );
 
   useEffect(() => {
     const requestInterceptor = axios.interceptors.request.use(
