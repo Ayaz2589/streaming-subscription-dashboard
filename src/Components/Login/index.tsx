@@ -9,9 +9,8 @@ import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
 import { AuthCard, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
-import { useAuth, Auth } from "../../context";
 import { useNavigate } from "react-router-dom";
-import { useAxios, usePersistantLogin } from "../../hooks";
+import { useAxios } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
 import { motion } from "framer-motion";
@@ -35,11 +34,9 @@ export const buttonVariants = {
 const LoginInput = () => {
   const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const axios = useAxios();
+  const { authLogin } = useAxios();
   const [isLoading, setIsLoading] = useState(false);
-  const { setPersistantLogin } = usePersistantLogin();
   const theme = useTheme();
 
   const handleSubmitForm = async (data: FormValues) => {
@@ -47,15 +44,7 @@ const LoginInput = () => {
     if (email && password && Object.keys(errors).length === 0) {
       setIsLoading(true);
       try {
-        const response = await axios.post(
-          "/api/dashboardv2/auth/login",
-          JSON.stringify(data)
-        );
-        const { accessToken, refreshToken } = response.data;
-
-        const auth: Auth = { accessToken, email, password, refreshToken };
-        setPersistantLogin(auth);
-        setAuth(auth);
+        await authLogin(email, password);
         navigate("/dashboard");
       } catch (error: unknown) {
         //@ts-expect-error AxiosError
