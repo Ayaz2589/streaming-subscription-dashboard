@@ -83,7 +83,7 @@ const RequireAuth = () => {
 
   useEffect(() => {
     if (persistedUser) {
-      setAuth(persistedUser);
+      setAuth({ ...persistedUser });
     }
   }, []);
 

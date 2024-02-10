@@ -3,9 +3,10 @@ import { useAuth } from "../context";
 import { usePersistantLogin } from ".";
 import { useEffect, useCallback } from "react";
 
-const useBackendService = () => {
+const useUserAuthentication = () => {
   const { auth, setAuth, removeAuth } = useAuth();
-  const { setPersistantLogin, removePersistantLogin } = usePersistantLogin();
+  const { setPersistantLogin, removePersistantLogin, getPersistantLogin } =
+    usePersistantLogin();
 
   const refresh = useCallback(async () => {
     try {
@@ -54,7 +55,9 @@ const useBackendService = () => {
 
   const authLogout = useCallback(async () => {
     try {
-      await axios.delete("/api/auth/logout");
+      await axios.delete("/api/auth/logout", {
+        data: { refreshToken: auth.refreshToken },
+      });
       removeAuth();
       removePersistantLogin();
     } catch (error) {
@@ -62,11 +65,26 @@ const useBackendService = () => {
     }
   }, [removeAuth, removePersistantLogin]);
 
+  const getDashboardChartData = useCallback(async () => {
+    try {
+      const response = await axios.get("/api/dashboard/chart-data/dashboard");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   useEffect(() => {
     const requestInterceptor = axios.interceptors.request.use(
       (config) => {
-        if (!config.headers.Authorization && auth?.refreshToken) {
-          config.headers.Authorization = `Bearer ${auth.refreshToken}`;
+        const currentAuth = getPersistantLogin();
+        if (auth.accessToken) {
+          config.headers.Authorization = `Bearer ${auth.accessToken}`;
+          return config;
+        }
+        if (currentAuth) {
+          config.headers.Authorization = `Bearer ${currentAuth.accessToken}`;
+          return config;
         }
         return config;
       },
@@ -93,7 +111,7 @@ const useBackendService = () => {
     };
   }, [auth, refresh]);
 
-  return { authLogin, authSignup, authLogout };
+  return { authLogin, authSignup, authLogout, getDashboardChartData };
 };
 
-export default useBackendService;
+export default useUserAuthentication;

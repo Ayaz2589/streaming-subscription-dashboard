@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
-import { useBackendService } from "../../hooks";
+import { useUserAuthentication } from "../../hooks";
 import { AuthCard, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ interface FormValues {
 const SignupInput = () => {
   const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
-  const { authSignup } = useBackendService();
+  const { authSignup } = useUserAuthentication();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const theme = useTheme();
