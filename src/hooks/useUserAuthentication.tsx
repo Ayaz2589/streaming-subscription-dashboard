@@ -5,7 +5,8 @@ import { useEffect, useCallback } from "react";
 
 const useUserAuthentication = () => {
   const { auth, setAuth, removeAuth } = useAuth();
-  const { setPersistantLogin, removePersistantLogin } = usePersistantLogin();
+  const { setPersistantLogin, removePersistantLogin, getPersistantLogin } =
+    usePersistantLogin();
 
   const refresh = useCallback(async () => {
     try {
@@ -54,7 +55,9 @@ const useUserAuthentication = () => {
 
   const authLogout = useCallback(async () => {
     try {
-      await axios.delete("/api/auth/logout");
+      await axios.delete("/api/auth/logout", {
+        data: { refreshToken: auth.refreshToken },
+      });
       removeAuth();
       removePersistantLogin();
     } catch (error) {
@@ -74,8 +77,14 @@ const useUserAuthentication = () => {
   useEffect(() => {
     const requestInterceptor = axios.interceptors.request.use(
       (config) => {
-        if (!config.headers.Authorization && auth?.refreshToken) {
-          config.headers.Authorization = `Bearer ${auth.refreshToken}`;
+        const currentAuth = getPersistantLogin();
+        if (auth.accessToken) {
+          config.headers.Authorization = `Bearer ${auth.accessToken}`;
+          return config;
+        }
+        if (currentAuth) {
+          config.headers.Authorization = `Bearer ${currentAuth.accessToken}`;
+          return config;
         }
         return config;
       },

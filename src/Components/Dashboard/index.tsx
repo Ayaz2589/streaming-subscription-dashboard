@@ -15,13 +15,11 @@ const Dashboard = ({
   const { getDashboardChartData } = useUserAuthentication();
   const { auth } = useAuth();
 
-  console.log(auth.accessToken);
-
   useEffect(() => {
     const fetchDashboardChartData = async () => {
       try {
-        // const data = await getDashboardChartData();
-        // console.log(data);
+        const data = await getDashboardChartData();
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
