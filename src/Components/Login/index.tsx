@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { AuthCard, AnimatedAuthPageContainer } from "..";
 import { AppLogo } from "../../svg";
 import { useNavigate } from "react-router-dom";
-import { useUserAuthentication } from "../../hooks";
+import { useBackendService } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
 import { motion } from "framer-motion";
@@ -35,7 +35,7 @@ const LoginInput = () => {
   const { handleSubmit, register, formState, setError } = useForm<FormValues>();
   const { errors } = formState;
   const navigate = useNavigate();
-  const { authLogin } = useUserAuthentication();
+  const { authLogin } = useBackendService();
   const [isLoading, setIsLoading] = useState(false);
   const theme = useTheme();
 
