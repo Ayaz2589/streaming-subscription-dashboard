@@ -11,6 +11,7 @@ const useUserAuthentication = () => {
   const refresh = useCallback(async () => {
     try {
       const { data } = await axios.post("/api/auth/token");
+      setPersistantLogin({ ...auth, accessToken: data.accessToken });
       setAuth({ ...auth, accessToken: data.accessToken });
     } catch (error) {
       console.log(error);
