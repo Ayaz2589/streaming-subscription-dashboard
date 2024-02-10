@@ -62,6 +62,15 @@ const useUserAuthentication = () => {
     }
   }, [removeAuth, removePersistantLogin]);
 
+  const getDashboardChartData = useCallback(async () => {
+    try {
+      const response = await axios.get("/api/dashboard/chart-data/dashboard");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   useEffect(() => {
     const requestInterceptor = axios.interceptors.request.use(
       (config) => {
@@ -93,7 +102,7 @@ const useUserAuthentication = () => {
     };
   }, [auth, refresh]);
 
-  return { authLogin, authSignup, authLogout };
+  return { authLogin, authSignup, authLogout, getDashboardChartData };
 };
 
 export default useUserAuthentication;
