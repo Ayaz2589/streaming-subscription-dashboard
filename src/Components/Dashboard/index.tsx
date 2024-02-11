@@ -18,7 +18,8 @@ const Dashboard = ({
     const fetchDashboardChartData = async () => {
       try {
         const data = await getDashboardChartData();
-        transformDashboardData(data);
+        const tranformedData = transformDashboardData(data);
+        console.log(tranformedData);
       } catch (error) {
         console.log(error);
       }

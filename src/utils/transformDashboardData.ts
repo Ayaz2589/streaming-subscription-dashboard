@@ -1,9 +1,4 @@
-import { camelCaseToRegular } from ".";
-
-const floatToDollar = (floatValue: any) => {
-  const dollarString = floatValue.toFixed(2);
-  return "$" + dollarString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+import { camelCaseToRegular, floatToDollar } from ".";
 
 const transformDashboardData = (data: any) => {
   let monthlyCosts;
