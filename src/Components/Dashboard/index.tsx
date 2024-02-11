@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
 import { useBackendService } from "../../hooks";
+import { transformDashboardData } from "../../utils";
 
 import { dashboardDummyData as data } from "../../utils/dummyData";
 
@@ -17,7 +18,7 @@ const Dashboard = ({
     const fetchDashboardChartData = async () => {
       try {
         const data = await getDashboardChartData();
-        console.log(data);
+        transformDashboardData(data);
       } catch (error) {
         console.log(error);
       }
