@@ -35,18 +35,13 @@ const Router = () => {
     };
   }, []);
 
-  const isAuthScreens = currentSection !== "Authentication";
-
   return (
-    <Box
-      sx={{ display: isAuthScreens ? "flex" : "block" }}
-      data-testId="dashboard-container"
-    >
+    <Box data-testId="dashboard-container">
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
             path="/auth/login"
-            element={<Login updateCurrentSection={updateCurrentSection} />}
+            element={<Login />}
           />
           <Route
             path="/auth/signup"
