@@ -4,7 +4,7 @@ import { Dashboard } from "../../Components";
 
 describe("Dashboard", () => {
   beforeEach(() => {
-    render(<Dashboard updateCurrentSection={() => {}} />);
+    render(<Dashboard />);
   });
 
   it("renders dashboard component", () => {
