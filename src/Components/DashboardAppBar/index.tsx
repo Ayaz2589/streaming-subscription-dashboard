@@ -14,10 +14,8 @@ import { SearchToggle } from "..";
 const drawerWidth = 240;
 
 const DashboardAppBar = ({
-  currentSection,
   handleDrawerToggle,
 }: {
-  currentSection: string;
   handleDrawerToggle: () => void;
 }) => {
   const theme = useTheme();
@@ -48,7 +46,6 @@ const DashboardAppBar = ({
                 : theme.palette?.neutral?.main || "#506570"
             }
           >
-            {currentSection}
           </Typography>
           {isDesktop ? (
             <Box datatest-id="button-container">

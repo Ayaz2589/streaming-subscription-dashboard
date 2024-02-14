@@ -67,7 +67,7 @@ const RequireAuth = () => {
   }, []);
 
   return persistedUser ? (
-    <Navigation currentSection={"Dashboard"}>
+    <Navigation>
       <Outlet />
     </Navigation>
   ) : (

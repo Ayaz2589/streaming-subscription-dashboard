@@ -23,17 +23,11 @@ const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
-  currentSection: string;
   handleDrawerToggle: () => void;
   mobileOpen: boolean;
 }
 
-const DashboardDrawer = ({
-  window,
-  currentSection,
-  mobileOpen,
-  handleDrawerToggle,
-}: Props) => {
+const DashboardDrawer = ({ window, mobileOpen, handleDrawerToggle }: Props) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { isDarkMode } = useDarkMode();
@@ -146,7 +140,7 @@ const DashboardDrawer = ({
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
-              const isSelected = currentSection === section ?? false;
+              const isSelected = false;
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton

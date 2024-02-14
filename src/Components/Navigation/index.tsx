@@ -3,11 +3,10 @@ import { DashboardAppBar, DashboardDrawer } from "..";
 import Box from "@mui/material/Box";
 
 interface Props {
-  currentSection: string;
   children: React.ReactNode;
 }
 
-const Navigation = ({ currentSection, children }: Props) => {
+const Navigation = ({ children }: Props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -15,12 +14,8 @@ const Navigation = ({ currentSection, children }: Props) => {
   return (
     <Box sx={{ display: "flex" }}>
       <Box>
-        <DashboardAppBar
-          currentSection={currentSection}
-          handleDrawerToggle={handleDrawerToggle}
-        />
+        <DashboardAppBar handleDrawerToggle={handleDrawerToggle} />
         <DashboardDrawer
-          currentSection={currentSection}
           handleDrawerToggle={handleDrawerToggle}
           mobileOpen={mobileOpen}
         />
