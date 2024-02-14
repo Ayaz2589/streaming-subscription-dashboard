@@ -42,12 +42,7 @@ const Router = () => {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />
           <Route element={<RequireAuth />}>
-            <Route
-              path={SectionRoutes.Dashboard}
-              element={
-                <Dashboard updateCurrentSection={updateCurrentSection} />
-              }
-            />
+            <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
             <Route
               path={SectionRoutes.Project}
               element={<Project updateCurrentSection={updateCurrentSection} />}

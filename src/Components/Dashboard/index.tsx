@@ -6,12 +6,7 @@ import { transformDashboardData } from "../../utils";
 
 import { dashboardDummyData as data } from "../../utils/dummyData";
 
-const Dashboard = ({
-  updateCurrentSection,
-}: {
-  updateCurrentSection: (value: string) => void;
-}) => {
-  useEffect(() => updateCurrentSection("Dashboard"), []);
+const Dashboard = () => {
   const { getDashboardChartData } = useBackendService();
 
   useEffect(() => {
