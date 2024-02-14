@@ -15,7 +15,6 @@ export enum SectionRoutes {
 }
 
 const Router = () => {
-  const [currentSection, updateCurrentSection] = useState("");
   const theme = useTheme();
   const location = useLocation();
   const { isDarkMode } = useDarkMode();
