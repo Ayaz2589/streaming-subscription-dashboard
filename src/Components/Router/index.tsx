@@ -43,10 +43,7 @@ const Router = () => {
           <Route path="/auth/signup" element={<Signup />} />
           <Route element={<RequireAuth />}>
             <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
-            <Route
-              path={SectionRoutes.Project}
-              element={<Project updateCurrentSection={updateCurrentSection} />}
-            />
+            <Route path={SectionRoutes.Project} element={<Project />} />
             <Route
               path="*"
               element={<Navigate to={SectionRoutes.Dashboard} replace />}

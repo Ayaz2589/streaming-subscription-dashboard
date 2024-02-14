@@ -1,15 +1,9 @@
-import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { AreaChart, PieChart, Table, AnimatedPageContainer } from "..";
 
 import { generateProjectTaskList } from "../../utils";
 
-const Project = ({
-  updateCurrentSection,
-}: {
-  updateCurrentSection: (value: string) => void;
-}) => {
-  useEffect(() => updateCurrentSection("Project"), []);
+const Project = () => {
   const taskList = generateProjectTaskList(100);
 
   return (
