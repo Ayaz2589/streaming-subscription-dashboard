@@ -42,7 +42,6 @@ const Router = () => {
       sx={{ display: isAuthScreens ? "flex" : "block" }}
       data-testId="dashboard-container"
     >
-      {isAuthScreens ? <Navigation currentSection={currentSection} /> : null}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
@@ -88,7 +87,9 @@ const RequireAuth = () => {
   }, []);
 
   return persistedUser ? (
-    <Outlet />
+    <Navigation currentSection={"Dashboard"}>
+      <Outlet />
+    </Navigation>
   ) : (
     <Navigate to="/auth/login" state={{ from: location }} replace />
   );
