@@ -156,11 +156,7 @@ const SignupInput = () => {
   );
 };
 
-const Signup = ({
-  updateCurrentSection,
-}: {
-  updateCurrentSection: (value: string) => void;
-}) => {
+const Signup = () => {
   const matches = useMediaQuery("(min-width:950px)");
   const useUltraWideImage = useMediaQuery("(min-width:2000px)");
 
@@ -169,7 +165,6 @@ const Signup = ({
     `(min-width:${theme.breakpoints.values.sm}px)`
   );
 
-  useEffect(() => updateCurrentSection("Authentication"), []);
   return (
     <AnimatedAuthPageContainer
       sx={{

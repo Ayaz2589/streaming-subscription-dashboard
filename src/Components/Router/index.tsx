@@ -39,14 +39,8 @@ const Router = () => {
     <Box data-testId="dashboard-container">
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route
-            path="/auth/login"
-            element={<Login />}
-          />
-          <Route
-            path="/auth/signup"
-            element={<Signup updateCurrentSection={updateCurrentSection} />}
-          />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
           <Route element={<RequireAuth />}>
             <Route
               path={SectionRoutes.Dashboard}
