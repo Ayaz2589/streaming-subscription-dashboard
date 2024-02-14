@@ -2,11 +2,19 @@ import axios from "../api";
 import { useAuth } from "../context";
 import { usePersistantLogin } from ".";
 import { useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useBackendService = () => {
   const { auth, setAuth, removeAuth } = useAuth();
   const { setPersistantLogin, removePersistantLogin, getPersistantLogin } =
     usePersistantLogin();
+  const navigate = useNavigate();
+
+  const _handleLogout = () => {
+    removeAuth();
+    removePersistantLogin();
+    navigate("/auth/login");
+  };
 
   const refresh = useCallback(async () => {
     try {
@@ -59,8 +67,7 @@ const useBackendService = () => {
       await axios.delete("/api/auth/logout", {
         data: { refreshToken: auth.refreshToken },
       });
-      removeAuth();
-      removePersistantLogin();
+      _handleLogout();
     } catch (error) {
       console.log(error);
     }
@@ -70,8 +77,10 @@ const useBackendService = () => {
     try {
       const response = await axios.get("/api/dashboard/chart-data/dashboard");
       return response.data;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      if (error.response.status === 403) {
+        _handleLogout();
+      }
     }
   }, []);
 
