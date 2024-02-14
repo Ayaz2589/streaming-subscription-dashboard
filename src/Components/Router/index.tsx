@@ -15,7 +15,6 @@ export enum SectionRoutes {
 }
 
 const Router = () => {
-  const [currentSection, updateCurrentSection] = useState("");
   const theme = useTheme();
   const location = useLocation();
   const { isDarkMode } = useDarkMode();
@@ -35,35 +34,15 @@ const Router = () => {
     };
   }, []);
 
-  const isAuthScreens = currentSection !== "Authentication";
-
   return (
-    <Box
-      sx={{ display: isAuthScreens ? "flex" : "block" }}
-      data-testId="dashboard-container"
-    >
-      {isAuthScreens ? <Navigation currentSection={currentSection} /> : null}
+    <Box data-testId="dashboard-container">
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route
-            path="/auth/login"
-            element={<Login updateCurrentSection={updateCurrentSection} />}
-          />
-          <Route
-            path="/auth/signup"
-            element={<Signup updateCurrentSection={updateCurrentSection} />}
-          />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
           <Route element={<RequireAuth />}>
-            <Route
-              path={SectionRoutes.Dashboard}
-              element={
-                <Dashboard updateCurrentSection={updateCurrentSection} />
-              }
-            />
-            <Route
-              path={SectionRoutes.Project}
-              element={<Project updateCurrentSection={updateCurrentSection} />}
-            />
+            <Route path={SectionRoutes.Dashboard} element={<Dashboard />} />
+            <Route path={SectionRoutes.Project} element={<Project />} />
             <Route
               path="*"
               element={<Navigate to={SectionRoutes.Dashboard} replace />}
@@ -88,7 +67,9 @@ const RequireAuth = () => {
   }, []);
 
   return persistedUser ? (
-    <Outlet />
+    <Navigation>
+      <Outlet />
+    </Navigation>
   ) : (
     <Navigate to="/auth/login" state={{ from: location }} replace />
   );

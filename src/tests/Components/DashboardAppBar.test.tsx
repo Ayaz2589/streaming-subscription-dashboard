@@ -9,7 +9,7 @@ import {
 describe("Area Chart", () => {
   beforeEach(() => {
     render(
-      <DashboardAppBar currentSection="Home" handleDrawerToggle={() => {}} />
+      <DashboardAppBar handleDrawerToggle={() => {}} />
     );
   });
 

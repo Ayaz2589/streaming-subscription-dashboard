@@ -13,7 +13,7 @@ import { DashboardIcon, ProjectIcon } from "../../svg";
 import { UserSettings } from "..";
 import { SideNavItems } from "../../enums";
 import { useTheme } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDarkMode } from "../../context";
@@ -23,20 +23,17 @@ const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
-  currentSection: string;
   handleDrawerToggle: () => void;
   mobileOpen: boolean;
 }
 
-const DashboardDrawer = ({
-  window,
-  currentSection,
-  mobileOpen,
-  handleDrawerToggle,
-}: Props) => {
+const DashboardDrawer = ({ window, mobileOpen, handleDrawerToggle }: Props) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { isDarkMode } = useDarkMode();
+  const location = useLocation();
+
+  console.log(location.pathname);
 
   const SideNavItemsArray = [
     {
@@ -146,7 +143,7 @@ const DashboardDrawer = ({
           <List sx={{ marginTop: "3rem" }}>
             {SideNavItemsArray.map((item) => {
               const { index, selected, notSelected, section } = item;
-              const isSelected = currentSection === section ?? false;
+              const isSelected = location.pathname === item.path;
               return (
                 <ListItem key={index} disablePadding>
                   <ListItemButton
