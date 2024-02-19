@@ -19,13 +19,18 @@ const Snackbar = ({ type, handleClose }: SnackbarProps) => {
     }
   }, [type]);
 
+  const closeSnackbar = () => {
+    setOpen(false);
+    handleClose();
+  };
+
   const action = (
     <React.Fragment>
       <IconButton
         size="small"
         aria-label="close"
         color="inherit"
-        onClick={handleClose}
+        onClick={closeSnackbar}
       >
         <CloseIcon fontSize="small" />
       </IconButton>
@@ -36,7 +41,7 @@ const Snackbar = ({ type, handleClose }: SnackbarProps) => {
     <div>
       <MUISnackbar
         open={open}
-        onClose={handleClose}
+        onClose={closeSnackbar}
         message={message}
         action={action}
       />
