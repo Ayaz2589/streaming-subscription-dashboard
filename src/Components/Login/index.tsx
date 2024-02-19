@@ -1,5 +1,5 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
@@ -15,7 +15,6 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { useError } from "../../context";
-import { useLocation } from "react-router-dom";
 
 interface FormValues {
   email: string;
