@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Router } from "./Components";
 import { useSetTheme } from "./hooks";
-import { AuthProvider, DarkModeProvider } from "./context";
+import { AuthProvider, DarkModeProvider, ErrorProvider } from "./context";
 
 export enum SectionRoutes {
   Dashboard = "/",
@@ -30,11 +30,13 @@ function App() {
     <Box data-testid="app-container">
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <DarkModeProvider>
-            <BrowserRouter>
-              <Router />
-            </BrowserRouter>
-          </DarkModeProvider>
+          <ErrorProvider>
+            <DarkModeProvider>
+              <BrowserRouter>
+                <Router />
+              </BrowserRouter>
+            </DarkModeProvider>
+          </ErrorProvider>
         </AuthProvider>
       </ThemeProvider>
     </Box>

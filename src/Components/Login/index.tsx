@@ -14,6 +14,7 @@ import { useBackendService } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
 import { motion } from "framer-motion";
+import { useError } from "../../context";
 
 interface FormValues {
   email: string;
@@ -164,6 +165,10 @@ const Login = () => {
   const isDesktop = useMediaQuery(
     `(min-width:${theme.breakpoints.values.sm}px)`
   );
+
+  const { error } = useError();
+
+  console.log(error);
 
   return (
     <AnimatedAuthPageContainer

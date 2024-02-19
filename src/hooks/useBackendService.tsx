@@ -1,5 +1,5 @@
 import axios from "../api";
-import { useAuth } from "../context";
+import { useAuth, useError } from "../context";
 import { usePersistantLogin } from ".";
 import { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ const useBackendService = () => {
   const { setPersistantLogin, removePersistantLogin, getPersistantLogin } =
     usePersistantLogin();
   const navigate = useNavigate();
+  const { setJWTError } = useError();
 
   const _handleLogout = () => {
     removeAuth();
@@ -79,6 +80,7 @@ const useBackendService = () => {
       return response.data;
     } catch (error: any) {
       if (error.response.status === 403) {
+        setJWTError();
         _handleLogout();
       }
     }
