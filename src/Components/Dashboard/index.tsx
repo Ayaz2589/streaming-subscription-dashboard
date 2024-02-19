@@ -22,6 +22,17 @@ const Dashboard = () => {
     fetchDashboardChartData();
   }, []);
 
+  const bottomComponentsToRender = [
+    {
+      component: <LineChart />,
+      dataTestId: "line-chart",
+    },
+    {
+      component: <BarChart />,
+      dataTestId: "bar-chart",
+    },
+  ];
+
   return (
     <div data-testid="dashboard-container">
       <AnimatedPageContainer
@@ -43,12 +54,18 @@ const Dashboard = () => {
               <TotalsCard title={item.title} value={item.value} />
             </Grid>
           ))}
-          <Grid item xs={12} md={6} lg={2} data-testid="line-chart">
-            <LineChart />
-          </Grid>
-          <Grid item xs={12} md={6} lg={2} data-testid="bar-chart">
-            <BarChart />
-          </Grid>
+          {bottomComponentsToRender.map((item, index) => (
+            <Grid
+              item
+              xs={12}
+              md={6}
+              lg={2}
+              key={index}
+              data-testid={item.dataTestId}
+            >
+              {item.component}
+            </Grid>
+          ))}
         </Grid>
       </AnimatedPageContainer>
     </div>
