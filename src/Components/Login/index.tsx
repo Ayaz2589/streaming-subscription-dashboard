@@ -1,5 +1,5 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
@@ -14,6 +14,8 @@ import { useBackendService } from "../../hooks";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useTheme } from "@mui/material";
 import { motion } from "framer-motion";
+import { useError } from "../../context";
+import { useLocation } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -164,6 +166,10 @@ const Login = () => {
   const isDesktop = useMediaQuery(
     `(min-width:${theme.breakpoints.values.sm}px)`
   );
+
+  const { error } = useError();
+
+  console.log(error);
 
   return (
     <AnimatedAuthPageContainer

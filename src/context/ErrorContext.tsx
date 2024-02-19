@@ -11,10 +11,9 @@ enum ActionType {
   REMOVE_ERROR = "REMOVE_ERROR",
 }
 
-type Actions = {
-  type: string;
-  payload: InitialState;
-};
+type Actions =
+  | { type: ActionType.SET_JWT_EXPIRED_ERROR; payload: { message: string } }
+  | { type: ActionType.REMOVE_ERROR };
 
 type ErrorType = "jwtExpired" | null;
 
@@ -30,7 +29,7 @@ interface UseErrorContext {
   removeError: () => void;
 }
 
-const initialErrorState: InitialState = {
+export const initialErrorState: InitialState = {
   error: false,
   type: null,
   message: "",
@@ -42,7 +41,7 @@ const initialErrorContext = {
   removeError: () => {},
 };
 
-const errorReducer = (state: InitialState, action: Actions) => {
+const errorReducer = (state: InitialState, action: Actions): InitialState => {
   switch (action.type) {
     case ActionType.SET_JWT_EXPIRED_ERROR:
       return {
@@ -51,7 +50,7 @@ const errorReducer = (state: InitialState, action: Actions) => {
         message: action.payload.message,
       };
     case ActionType.REMOVE_ERROR:
-      return { error: false, type: null, message: "" };
+      return initialErrorState;
     default:
       return state;
   }
@@ -60,3 +59,27 @@ const errorReducer = (state: InitialState, action: Actions) => {
 export const ErrorContext = createContext<UseErrorContext>(initialErrorContext);
 
 export const useError = () => useContext(ErrorContext);
+
+export const ErrorProvider = ({ children }: { children: ReactElement }) => {
+  const [state, dispatch] = useReducer(
+    errorReducer,
+    initialErrorState as InitialState
+  );
+
+  const setJWTError = useCallback(() => {
+    dispatch({
+      type: ActionType.SET_JWT_EXPIRED_ERROR,
+      payload: { message: "JWT expired" },
+    });
+  }, [dispatch]);
+
+  const removeError = useCallback(() => {
+    dispatch({ type: ActionType.REMOVE_ERROR });
+  }, [dispatch]);
+
+  return (
+    <ErrorContext.Provider value={{ error: state, setJWTError, removeError }}>
+      {children}
+    </ErrorContext.Provider>
+  );
+};
