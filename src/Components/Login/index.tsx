@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import { useForm } from "react-hook-form";
-import { AuthCard, AnimatedAuthPageContainer } from "..";
+import { AuthCard, AnimatedAuthPageContainer, Snackbar } from "..";
 import { AppLogo } from "../../svg";
 import { useNavigate } from "react-router-dom";
 import { useBackendService } from "../../hooks";
@@ -166,7 +166,7 @@ const Login = () => {
     `(min-width:${theme.breakpoints.values.sm}px)`
   );
 
-  const { error } = useError();
+  const { error, removeError } = useError();
 
   console.log(error);
 
@@ -181,18 +181,21 @@ const Login = () => {
         backgroundSize: "cover",
       }}
     >
-      {isDesktop ? (
-        <Grid container spacing={2}>
-          <Grid item xs={0} md={8} lg={10}>
-            {matches ? <AppLogo /> : null}
+      <div>
+        <Snackbar type={error.type} handleClose={removeError} />
+        {isDesktop ? (
+          <Grid container spacing={2}>
+            <Grid item xs={0} md={8} lg={10}>
+              {matches ? <AppLogo /> : null}
+            </Grid>
+            <Grid item xs={12} md={4} lg={2}>
+              <LoginInput />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={4} lg={2}>
-            <LoginInput />
-          </Grid>
-        </Grid>
-      ) : (
-        <LoginInput />
-      )}
+        ) : (
+          <LoginInput />
+        )}
+      </div>
     </AnimatedAuthPageContainer>
   );
 };
