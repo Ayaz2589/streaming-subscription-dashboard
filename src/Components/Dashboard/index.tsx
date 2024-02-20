@@ -42,18 +42,7 @@ const Dashboard = () => {
         }}
       >
         <Grid container spacing={2}>
-          {data.map((item, index) => (
-            <Grid
-              item
-              xs={12}
-              md={4}
-              lg={2}
-              key={index}
-              data-testid="totals-card-grid-item"
-            >
-              <TotalsCard title={item.title} value={item.value} />
-            </Grid>
-          ))}
+          <TotalsCard data={data} />
           {bottomComponentsToRender.map((item, index) => (
             <Grid
               item
