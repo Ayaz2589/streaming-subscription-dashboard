@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import {
   TotalsCard,
@@ -10,17 +10,22 @@ import {
 import { useBackendService } from "../../hooks";
 import { transformDashboardData } from "../../utils";
 
-import { dashboardDummyData as data } from "../../utils/dummyData";
+interface BusinessData {
+  title: string;
+  value: string;
+  key: string;
+}
 
 const Dashboard = () => {
   const { getDashboardChartData } = useBackendService();
+  const [businessData, setBusinessData] = useState<BusinessData[]>([]);
 
   useEffect(() => {
     const fetchDashboardChartData = async () => {
       try {
         const data = await getDashboardChartData();
         const tranformedData = transformDashboardData(data);
-        console.log(tranformedData);
+        setBusinessData(tranformedData.businessData);
       } catch (error) {
         console.log(error);
       }
@@ -37,7 +42,8 @@ const Dashboard = () => {
         }}
       >
         <Grid container spacing={2}>
-          <TotalsCard data={data} />
+          {businessData?.length ? <TotalsCard data={businessData} /> : null}
+
           <SameSizeChartContainer xs={12} md={6} lg={2}>
             <LineChart />
             <BarChart />
