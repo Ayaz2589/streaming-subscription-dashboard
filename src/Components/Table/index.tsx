@@ -2,7 +2,7 @@ import { AgGridReact } from "ag-grid-react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material";
-import { Card } from "..";
+import { BasicCard } from "..";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -72,7 +72,7 @@ const Table = ({ rows }: { rows: Row[] }) => {
   ];
 
   return (
-    <Card>
+    <BasicCard>
       <Box
         sx={{
           display: "flex",
@@ -138,7 +138,7 @@ const Table = ({ rows }: { rows: Row[] }) => {
           pagination={true}
         />
       </Box>
-    </Card>
+    </BasicCard>
   );
 };
 

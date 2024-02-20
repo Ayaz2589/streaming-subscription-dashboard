@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "@mui/material";
-import { Card, Header } from "..";
+import { BasicCard, Header } from "..";
 
 const data = [
   {
@@ -35,7 +35,7 @@ const AreaChart = () => {
   const theme = useTheme();
   return (
     <div data-testid="area-chart-container">
-      <Card
+      <BasicCard
         elevation={0}
         sx={{
           display: "flex",
@@ -110,7 +110,7 @@ const AreaChart = () => {
             />
           </AreaChartRecharts>
         </ResponsiveContainer>
-      </Card>
+      </BasicCard>
     </div>
   );
 };

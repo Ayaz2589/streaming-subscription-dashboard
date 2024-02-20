@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Box from "@mui/material/Box";
-import { Legend, Header, Card } from "..";
+import { Legend, Header, BasicCard } from "..";
 import { barChartDummyData as data } from "../../utils/dummyData";
 import { useTheme } from "@mui/material";
 
@@ -55,7 +55,7 @@ const Chart = () => {
 
 const BarChart = () => {
   return (
-    <Card
+    <BasicCard
       elevation={0}
       sx={{
         display: "flex",
@@ -67,7 +67,7 @@ const BarChart = () => {
         <Legend item1="Project" item2="Client" />
         <Chart />
       </Box>
-    </Card>
+    </BasicCard>
   );
 };
 
