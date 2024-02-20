@@ -33,8 +33,6 @@ const DashboardDrawer = ({ window, mobileOpen, handleDrawerToggle }: Props) => {
   const { isDarkMode } = useDarkMode();
   const location = useLocation();
 
-  console.log(location.pathname);
-
   const SideNavItemsArray = [
     {
       section: SideNavItems.Dashboard,

@@ -26,3 +26,4 @@ export { default as AnimatedAuthPageContainer } from "./AnimatedAuthPageContaine
 export { default as Snackbar } from "./Snackbar";
 export { default as SameSizeChartContainer } from "./Chart/SameSizeChartContainer";
 export { default as MultiSizeChartContainer } from "./Chart/MultiSizeChartContainer";
+export { default as TotalsCardLoadingSkeleton } from "./TotalsCard/TotalsCardLoadingSkeleton";
