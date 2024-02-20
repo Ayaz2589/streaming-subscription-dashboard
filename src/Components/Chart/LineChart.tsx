@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Box from "@mui/material/Box";
-import { Legend, Header, Card } from "..";
+import { Legend, Header, BasicCard } from "..";
 import { lineChartDummyData as data } from "../../utils/dummyData";
 import { useTheme } from "@mui/material";
 
@@ -76,7 +76,7 @@ const Chart = () => {
 
 const LineChart = () => {
   return (
-    <Card
+    <BasicCard
       elevation={0}
       sx={{
         display: "flex",
@@ -88,7 +88,7 @@ const LineChart = () => {
         <Legend item1="Sales" item2="Earnings" />
         <Chart />
       </Box>
-    </Card>
+    </BasicCard>
   );
 };
 

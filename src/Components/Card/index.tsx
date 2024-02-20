@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { useDarkMode } from "../../context";
+import { BasicCard } from "..";
 
 const Card = styled(Paper)(({ theme }) => {
   const { isDarkMode } = useDarkMode();
@@ -38,7 +39,7 @@ interface SingleTotalCardProps {
 export const SingleTotalCard = ({ title, value }: SingleTotalCardProps) => {
   return (
     <div data-testid="totals-card-container">
-      <Card elevation={0}>
+      <BasicCard elevation={0}>
         <Box
           sx={{
             display: "flex",
@@ -78,7 +79,7 @@ export const SingleTotalCard = ({ title, value }: SingleTotalCardProps) => {
             </Typography>
           </Box>
         </Box>
-      </Card>
+      </BasicCard>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import { Task } from "../../types";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
-import { Card } from "..";
+import { BasicCard } from "..";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -33,7 +33,7 @@ const TaskList = ({ rows }: { rows: Task[] }) => {
   const taskPending = rows.filter((task) => task.status === "pending");
   const taskInProgress = rows.filter((task) => task.status === "in-progress");
   return (
-    <Card>
+    <BasicCard>
       <Box
         sx={{
           display: "flex",
@@ -90,7 +90,7 @@ const TaskList = ({ rows }: { rows: Task[] }) => {
           disableRowSelectionOnClick
         />
       </Box>
-    </Card>
+    </BasicCard>
   );
 };
 

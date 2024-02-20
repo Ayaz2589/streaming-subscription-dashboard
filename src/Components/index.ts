@@ -11,6 +11,7 @@ export { default as Legend } from "./Chart/Legend";
 export { default as Header } from "./Chart/Header";
 export { default as ControlledOpenSelect } from "./Chart/ControlledOpenSelect";
 export { default as Card, AuthCard, SingleTotalCard } from "./Card";
+export { default as BasicCard } from "./Card/BasicCard";
 export { default as Project } from "./Project";
 export { default as TaskList } from "./TaskList";
 export { default as AreaChart } from "./Chart/AreaChart";

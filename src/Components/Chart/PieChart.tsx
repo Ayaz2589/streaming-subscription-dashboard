@@ -4,7 +4,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "@mui/material";
-import { Card, Header } from "..";
+import { BasicCard, Header } from "..";
 
 const data = [
   {
@@ -32,7 +32,7 @@ const data = [
 const PieChart = () => {
   const theme = useTheme();
   return (
-    <Card>
+    <BasicCard>
       <Header title="Task Status" />
       <ResponsiveContainer width="100%" aspect={1.68}>
         <PieChartRecharts>
@@ -43,7 +43,7 @@ const PieChart = () => {
           />
         </PieChartRecharts>
       </ResponsiveContainer>
-    </Card>
+    </BasicCard>
   );
 };
 
