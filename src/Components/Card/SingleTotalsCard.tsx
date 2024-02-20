@@ -1,35 +1,7 @@
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import { useDarkMode } from "../../context";
 import { BasicCard } from "..";
-
-const Card = styled(Paper)(({ theme }) => {
-  const { isDarkMode } = useDarkMode();
-  return {
-    backgroundColor: isDarkMode ? theme.palette.neutral.main : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-    minHeight: "5rem",
-    boxShadow: theme.shadows[1],
-  };
-});
-
-export const AuthCard = styled(Paper)(({ theme }) => {
-  return {
-    backgroundColor: "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: "#fff",
-    minHeight: "5rem",
-    boxShadow: theme.shadows[1],
-  };
-});
 
 interface SingleTotalCardProps {
   title: string;
@@ -84,4 +56,4 @@ export const SingleTotalCard = ({ title, value }: SingleTotalCardProps) => {
   );
 };
 
-export default Card;
+export default SingleTotalCard;
