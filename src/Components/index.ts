@@ -24,3 +24,5 @@ export { default as Table } from "./Table";
 export { default as AnimatedPageContainer } from "./AnimatedPageContainer";
 export { default as AnimatedAuthPageContainer } from "./AnimatedAuthPageContainer";
 export { default as Snackbar } from "./Snackbar";
+export { default as SameSizeChartContainer } from "./Chart/SameSizeChartContainer";
+export { default as MultiSizeChartContainer } from "./Chart/MultiSizeChartContainer";
