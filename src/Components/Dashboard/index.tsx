@@ -8,13 +8,16 @@ import { dashboardDummyData as data } from "../../utils/dummyData";
 
 interface ChartContainerChildren {
   children: ReactElement | ReactElement[];
+  xs?: number;
+  md?: number;
+  lg?: number;
 }
 
-const ChartContainer = ({ children }: ChartContainerChildren) => (
+const ChartContainer = ({ children, xs, md, lg }: ChartContainerChildren) => (
   <>
     {Children.map(children, (child) => {
       return (
-        <Grid item xs={12} md={6} lg={2}>
+        <Grid item xs={xs} md={md} lg={lg}>
           {child}
         </Grid>
       );
@@ -48,7 +51,7 @@ const Dashboard = () => {
       >
         <Grid container spacing={2}>
           <TotalsCard data={data} />
-          <ChartContainer>
+          <ChartContainer xs={12} md={6} lg={2}>
             <LineChart />
             <BarChart />
           </ChartContainer>
