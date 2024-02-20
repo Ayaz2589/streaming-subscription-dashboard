@@ -1,10 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, Children, ReactElement } from "react";
 import Grid from "@mui/material/Grid";
 import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
 import { useBackendService } from "../../hooks";
 import { transformDashboardData } from "../../utils";
 
 import { dashboardDummyData as data } from "../../utils/dummyData";
+
+interface ChartContainerChildren {
+  children: ReactElement | ReactElement[];
+}
+
+const ChartContainer = ({ children }: ChartContainerChildren) => (
+  <>
+    {Children.map(children, (child) => {
+      return (
+        <Grid item xs={12} md={6} lg={2}>
+          {child}
+        </Grid>
+      );
+    })}
+  </>
+);
 
 const Dashboard = () => {
   const { getDashboardChartData } = useBackendService();
@@ -22,17 +38,6 @@ const Dashboard = () => {
     fetchDashboardChartData();
   }, []);
 
-  const bottomComponentsToRender = [
-    {
-      component: <LineChart />,
-      dataTestId: "line-chart",
-    },
-    {
-      component: <BarChart />,
-      dataTestId: "bar-chart",
-    },
-  ];
-
   return (
     <div data-testid="dashboard-container">
       <AnimatedPageContainer
@@ -43,18 +48,10 @@ const Dashboard = () => {
       >
         <Grid container spacing={2}>
           <TotalsCard data={data} />
-          {bottomComponentsToRender.map((item, index) => (
-            <Grid
-              item
-              xs={12}
-              md={6}
-              lg={2}
-              key={index}
-              data-testid={item.dataTestId}
-            >
-              {item.component}
-            </Grid>
-          ))}
+          <ChartContainer>
+            <LineChart />
+            <BarChart />
+          </ChartContainer>
         </Grid>
       </AnimatedPageContainer>
     </div>
