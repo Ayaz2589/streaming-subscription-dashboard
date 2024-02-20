@@ -1,29 +1,16 @@
-import { useEffect, Children, ReactElement } from "react";
+import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import { TotalsCard, LineChart, BarChart, AnimatedPageContainer } from "..";
+import {
+  TotalsCard,
+  LineChart,
+  BarChart,
+  AnimatedPageContainer,
+  ChartContainer,
+} from "..";
 import { useBackendService } from "../../hooks";
 import { transformDashboardData } from "../../utils";
 
 import { dashboardDummyData as data } from "../../utils/dummyData";
-
-interface ChartContainerChildren {
-  children: ReactElement | ReactElement[];
-  xs?: number;
-  md?: number;
-  lg?: number;
-}
-
-const ChartContainer = ({ children, xs, md, lg }: ChartContainerChildren) => (
-  <>
-    {Children.map(children, (child) => {
-      return (
-        <Grid item xs={xs} md={md} lg={lg}>
-          {child}
-        </Grid>
-      );
-    })}
-  </>
-);
 
 const Dashboard = () => {
   const { getDashboardChartData } = useBackendService();
