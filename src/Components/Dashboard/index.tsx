@@ -5,7 +5,7 @@ import {
   LineChart,
   BarChart,
   AnimatedPageContainer,
-  ChartContainer,
+  SameSizeChartContainer,
 } from "..";
 import { useBackendService } from "../../hooks";
 import { transformDashboardData } from "../../utils";
@@ -38,10 +38,10 @@ const Dashboard = () => {
       >
         <Grid container spacing={2}>
           <TotalsCard data={data} />
-          <ChartContainer xs={12} md={6} lg={2}>
+          <SameSizeChartContainer xs={12} md={6} lg={2}>
             <LineChart />
             <BarChart />
-          </ChartContainer>
+          </SameSizeChartContainer>
         </Grid>
       </AnimatedPageContainer>
     </div>
